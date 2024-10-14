@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('modelos', function (Blueprint $table) {
-            $table->unsignedBigInteger('mod_base_id');
-            $table->foreign('mod_base_id')->references('id')->on('modelos')->onDelete()->nullable();
+            $table->unsignedBigInteger('mod_base_id')->nullable();
+            $table->foreign('mod_base_id')->references('id')->on('modelos')->onDelete('cascade');
         });
     }
 
