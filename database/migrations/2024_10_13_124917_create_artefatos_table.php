@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('artefatos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('pro_id')->constrained()->onDelete('cascade');
+            $table->foreignId('pro_id')->constrained(table: 'projetos')->onDelete('cascade');
             $table->string('arquivo');
             $table->string('descricao');
         });
