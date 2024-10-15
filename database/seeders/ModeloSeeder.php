@@ -16,7 +16,29 @@ class ModeloSeeder extends Seeder
     {
 
         $json = [
-            'componentes' =>  [
+            'capa' => [
+                [
+                    'tipo' => 'campo_texto',
+                    'titulo' => 'Instituição',
+                    'obrigatorio' => true
+                ],
+                [
+                    'tipo' => 'campo_texto',
+                    'titulo' => 'Título Projeto',
+                    'obrigatorio' => true
+                ],
+                [
+                    'tipo' => 'campo_texto',
+                    'titulo' => 'Autores',
+                    'obrigatorio' => true
+                ],
+                [
+                    'tipo' => 'campo_texto',
+                    'titulo' => 'Data/Localização',
+                    'obrigatorio' => true
+                ]
+            ],
+            'conteudo' =>  [
                 [
                     'tipo' => 'secao',
                     'titulo' => 'Introdução',
