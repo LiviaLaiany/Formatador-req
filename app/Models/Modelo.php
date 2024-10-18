@@ -19,10 +19,10 @@ class Modelo extends Model
     }
 
     public function modeloBase() {
-        return $this->belongsTo(Model::class, 'mod_base_id');
+        return $this->belongsTo(Modelo::class, 'mod_base_id');
     }
 
     public function modeloPersonalizado() {
-        return $this->hasMany(Model::class, 'mod_base_id');
+        return $this->hasMany(Modelo::class, 'mod_base_id');
     }
 }
