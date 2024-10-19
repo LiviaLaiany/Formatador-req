@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProjetoController;
+use App\Http\Controllers\ModeloController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,6 +35,24 @@ Route::middleware('auth')->group(function () {
     
     //DELETE
     Route::delete('/projetos/{projeto}', [ProjetoController::class, 'destroyView'])->name('projetos.destroyView');
+
+    // ---- CRUD MODELOS ----
+
+    //CREATE
+    Route::get('/modelos/create', [ModeloController::class, 'createView'])->name('modelos.create');
+    Route::post('/modelos', [ModeloController::class, 'storeView'])->name('modelos.store');
+
+    //READ
+    Route::get('/modelos', [ModeloController::class, 'indexView'])->name('modelos.index');
+    Route::get('/modelos/{modelo}', [ModeloController::class, 'showView'])->name('modelos.show');
+
+    //UPDATE
+    Route::get('/modelos/{modelo}/edit', [ModeloController::class, 'editView'])->name('modelos.edit');
+    Route::put('/modelos/{modelo}', [ModeloController::class, 'updateView'])->name('modelos.update');
+    
+    //DELETE
+    Route::delete('/modelos/{modelo}', [ModeloController::class, 'destroyView'])->name('modelos.destroy');
+
 });
 
 require __DIR__.'/auth.php';
