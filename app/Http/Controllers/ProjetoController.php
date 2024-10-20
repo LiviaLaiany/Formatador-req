@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Projeto;
+use App\Models\Modelo;
 
 class ProjetoController extends Controller
 {
@@ -115,7 +116,8 @@ class ProjetoController extends Controller
     }
 
     public function showView(Projeto $projeto) {
-        return view('projetos.show', ['projeto' => $projeto]);
+        $modelos = Modelo::where('user_id', auth()->id())->get();
+        return view('projetos.show', ['projeto' => $projeto, 'modelos' => $modelos]);
     }
 
     public function editView(Projeto $projeto) {
