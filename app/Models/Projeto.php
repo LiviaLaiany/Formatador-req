@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use User;
 use Artefato;
-use DocumentoRequisitos;
+use App\Models\DocumentoRequisitos;
 
 class Projeto extends Model
 {
