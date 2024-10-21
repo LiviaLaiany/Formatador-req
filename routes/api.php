@@ -10,10 +10,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->group(function() {
-    Route::apiResource('projetos', ProjetoController::class);
-    Route::apiResource('modelos', ModeloController::class);
-    Route::apiResource('documentos_requisitos', DocumentoRequisitosController::class);
-});
+Route::apiResource('projetos', ProjetoController::class);
+Route::apiResource('modelos', ModeloController::class);
+Route::apiResource('documentos', DocumentoRequisitosController::class);
 
 

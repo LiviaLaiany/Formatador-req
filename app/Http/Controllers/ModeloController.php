@@ -32,14 +32,19 @@ class ModeloController extends Controller
 
         $request->validate([
             'nome' => 'required|string|max:255',
-            'mod_json' => 'required|json',
+            'mod_json' => 'required',
             'mod_base_id' => 'required'
         ]);
 
+        $id_usuario = $request->input('user_id');
+        if (!$request->input('user_id')) {
+            $id_usuario = auth()->id();
+        }
+
         $modeloPersonalizado = Modelo::create([
             'nome' => $request->input('nome'),
-            'mod_json' => json_encode($request->input('mod_json'), JSON_UNESCAPED_UNICODE),
-            'user_id' => auth()->id(),
+            'mod_json' => $request->input('mod_json'),
+            'user_id' => $id_usuario,
             'mod_base_id' => $request->input('mod_base_id')
         ]);
 
@@ -81,7 +86,7 @@ class ModeloController extends Controller
 
         $mod_json = $request->input('mod_json');
         if($mod_json) {
-            $modelo->mod_json = json_encode($mod_json, JSON_UNESCAPED_UNICODE);
+            $modelo->mod_json = $mod_json;
         }
 
         $modelo->save();

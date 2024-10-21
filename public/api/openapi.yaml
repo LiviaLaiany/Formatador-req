@@ -45,6 +45,10 @@ paths:
                   type: string
                   description: Descrição do projeto
                   example: "Este projeto consiste no desenvolvimento de uma plataforma de e-commerce..."
+                user_id:
+                  type: integer
+                  description: Id do usuário
+                  example: 1
       responses:
         201:
           description: Projeto criado
@@ -145,13 +149,109 @@ paths:
                   example:
                     {
                       "capa": [
-                        {"titulo": "Instituição", "tipo": "campo_texto", "obrigatorio": true, "descricao": "Nome da instituição responsável pelo projeto."},
-                        {"titulo": "Autores", "tipo": "campo_texto", "obrigatorio": true, "descricao": "Nomes dos autores do documento."}
-                      ],
+                        {
+                          "tipo": "campo_texto", 
+                          "titulo": "Instituição", 
+                          "descricao": "Nome da instituição responsável pelo projeto.", 
+                          "obrigatorio": true
+                        }, 
+                        {
+                          "tipo": "campo_texto", 
+                          "titulo": "Título Projeto", 
+                          "descricao": "Título oficial do projeto que será descrito no documento.", 
+                          "obrigatorio": true
+                        }, 
+                        {
+                          "tipo": "campo_texto", 
+                          "titulo": "Autores", 
+                          "descricao": "Nomes dos autores responsáveis pelo documento.", 
+                          "obrigatorio": true
+                        }, 
+                        {
+                          "tipo": "campo_texto", 
+                          "titulo": "Data/Localização", 
+                          "descricao": "Data e local de elaboração do documento.", 
+                          "obrigatorio": true
+                        }
+                      ], 
                       "conteudo": [
-                        {"titulo": "Introdução", "tipo": "secao", "obrigatorio": true, "componentes": [{"titulo": "Objetivo Geral", "tipo": "campo_texto", "obrigatorio": true}]}
+                        {
+                          "tipo": 
+                          "secao", 
+                          "titulo": "Introdução", 
+                          "componentes": [
+                            {
+                              "tipo": "campo_texto", 
+                              "titulo": "Objetivo Geral", 
+                              "descricao": "Descrição do principal objetivo do projeto.", 
+                              "obrigatorio": true
+                            }, 
+                            {
+                              "tipo": "campo_texto", 
+                              "titulo": "Objetivos Específicos", 
+                              "descricao": "Lista dos objetivos específicos a serem alcançados no projeto.", 
+                              "obrigatorio": true
+                            }
+                          ], 
+                          "obrigatorio": true, 
+                          "texto-secao": {
+                            "tipo": "campo_texto", 
+                            "descricao": "Texto que aparece logo após o título da introdução, explicando o contexto inicial do projeto.", 
+                            "obrigatorio": false
+                          }
+                        }, 
+                        {
+                          "tipo": "lista", 
+                          "titulo": "Requisitos Funcionais", 
+                          "descricao": "Funcionalidades essenciais do sistema.", 
+                          "obrigatorio": true
+                        }, 
+                        {
+                          "tipo": "lista", 
+                          "titulo": "Requisitos Não Funcionais", 
+                          "descricao": "Especificações técnicas que o sistema deve cumprir.", 
+                          "obrigatorio": true
+                        }, 
+                        {
+                          "tipo": "secao", 
+                          "titulo": "Anexos", 
+                          "componentes": [
+                            {
+                              "tipo": "campo_texto", 
+                              "titulo": "Descrição", 
+                              "descricao": "Breve descrição do conteúdo do anexo.", 
+                              "obrigatorio": false
+                            }, 
+                            {
+                              "tipo": "arquivo", 
+                              "titulo": "Arquivo anexo", 
+                              "descricao": "Arquivo anexado ao documento.", 
+                              "obrigatorio": false
+                            }
+                          ], 
+                          "obrigatorio": false, 
+                          "texto-secao": {
+                            "tipo": "campo_texto", 
+                            "descricao": "Texto explicando o que pode ser anexado ao documento.",
+                            "obrigatorio": false
+                            }
+                        }, 
+                        {
+                          "tipo": "campo_texto", 
+                          "titulo": "Referências", 
+                          "descricao": "Lista de fontes e referências utilizadas no documento.", 
+                          "obrigatorio": true
+                        }
                       ]
                     }
+                user_id:
+                  type: integer
+                  description: Id do usuário
+                  example: 1
+                mod_base_id:
+                  type: integer
+                  description: Id do modelo que serviu de Base
+                  example: 1
       responses:
         201:
           description: Modelo criado com sucesso
@@ -266,6 +366,14 @@ paths:
                         }
                       }
                     }
+                mod_id:
+                  type: integer
+                  description: Id do modelo
+                  example: 1
+                pro_id:
+                  type: integer
+                  description: Id do projeto
+                  example: 1
       responses:
         201:
           description: Documento de requisitos criado com sucesso

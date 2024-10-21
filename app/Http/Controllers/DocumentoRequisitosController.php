@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Projeto;
 use App\Models\Modelo;
+use App\Models\DocumentoRequisitos;
 
 class DocumentoRequisitosController extends Controller
 {
@@ -17,13 +18,13 @@ class DocumentoRequisitosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($pro_id)
+    public function index()
     {
+        // $projeto = Projeto::where('id', $pro_id)->firstOrFail();
 
-        //verifica se o projeto existe/se o usuário tem ele
-        $projeto = Projeto::where('id', $pro_id)->where('user_id', auth()->id())->firstOrFail();
+        // $documentos = DocumentoRequisitos::where('pro_id', $projeto->id)->get();
 
-        $documentos = DocumentoRequisitos::where('pro_id', $projeto->id)->get();
+        $documentos = DocumentoRequisitos::all();
 
         return $documentos;
     }
@@ -41,7 +42,7 @@ class DocumentoRequisitosController extends Controller
             'nome' => 'required|string|max:255',
             'pro_id' => 'required|exists:projetos,id',
             'mod_id' => 'required|exists:modelos,id',
-            'doc_json' => 'required|json'
+            'doc_json' => 'required'
         ]);
 
         $projeto = Projeto::findOrFail($request->input('pro_id'));
@@ -53,7 +54,7 @@ class DocumentoRequisitosController extends Controller
             'nome' => $request->input('nome'),
             'pro_id' => $request->input('pro_id'),
             'mod_id' => $request->input('mod_id'),
-            'doc_json' => json_encode($request->input('doc_json'), JSON_UNESCAPED_UNICODE),
+            'doc_json' => $request->input('doc_json'),
         ]);
 
         return response(
@@ -94,7 +95,7 @@ class DocumentoRequisitosController extends Controller
 
         $doc_json = $request->input('doc_json');
         if($doc_json) {
-            $documento->doc_json = json_encode($doc_json, JSON_UNESCAPED_UNICODE);
+            $documento->doc_json = $doc_json;
         }
 
         $documento->save();

@@ -19,7 +19,7 @@ class ProjetoController extends Controller
      */
     public function index()
     {
-        $projetos = Projeto::where('user_id', auth()->id())->get();
+        $projetos = Projeto::where('user_id', 1)->get();
         return $projetos;
     }
 
@@ -37,10 +37,15 @@ class ProjetoController extends Controller
             'descricao' => 'nullable|string|max:300',
         ]);
 
+        $id_usuario = $request->input('user_id');
+        if (!$request->input('user_id')) {
+            $id_usuario = auth()->id();
+        }
+
         $projeto = Projeto::create([
             'nome' => $request->input('nome'),
             'descricao' => $request->input('descricao'),
-            'user_id' => auth()->id(),
+            'user_id' => $id_usuario,
         ]);
 
         return response(
