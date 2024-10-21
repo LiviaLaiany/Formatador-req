@@ -17,8 +17,8 @@ class ModeloController extends Controller
      */
     public function index()
     {
-        $modelos = Modelo::all();
-        return response()->json($modelos);
+        $modelos = Modelo::where('user_id', auth()->id())->get();
+        return $modelos;
     }
 
     /**
@@ -38,12 +38,15 @@ class ModeloController extends Controller
 
         $modeloPersonalizado = Modelo::create([
             'nome' => $request->input('nome'),
-            'mod_json' => $request->input('mod_json'),
+            'mod_json' => json_encode($request->input('mod_json'), JSON_UNESCAPED_UNICODE),
             'user_id' => auth()->id(),
             'mod_base_id' => $request->input('mod_base_id')
         ]);
 
-        return response()->json($modelo, 201);
+        return response(
+            ['location' => route('modelos.show', $modeloPersonalizado->id)],
+            201
+        );;
     }
 
     /**
@@ -54,7 +57,7 @@ class ModeloController extends Controller
      */
     public function show(Modelo $modelo)
     {
-        return response()->json($modelo);
+        return $modelo;
     }
 
     /**
@@ -66,15 +69,22 @@ class ModeloController extends Controller
      */
     public function update(Request $request, Modelo $modelo)
     {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-            'mod_json' => 'json'
-        ]);
+        // $request->validate([
+        //     'nome' => 'required|string|max:255',
+        //     'mod_json' => 'json'
+        // ]);
 
-        $modelo->nome = $request->input('nome');
-        $modelo->mod_json = $request->input('mod_json');
+        $nome = $request->input('nome');
+        if ($nome) {
+            $modelo->nome = $nome;
+        }
 
-        return response()->json($modelo, 200);
+        $mod_json = $request->input('mod_json');
+        if($mod_json) {
+            $modelo->mod_json = json_encode($mod_json, JSON_UNESCAPED_UNICODE);
+        }
+
+        $modelo->save();
     }
 
     /**
@@ -86,7 +96,6 @@ class ModeloController extends Controller
     public function destroy(Modelo $modelo)
     {
         $modelo->delete();
-        return response()->json(['message' => 'Modelo deletado com sucesso'], 200);
     }
 
     /*---- TEMPLATE/TESTE MÉTODOS ----*/

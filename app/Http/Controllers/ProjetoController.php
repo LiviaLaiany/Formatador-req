@@ -20,7 +20,7 @@ class ProjetoController extends Controller
     public function index()
     {
         $projetos = Projeto::where('user_id', auth()->id())->get();
-        return response()->json($projetos, 200);
+        return $projetos;
     }
 
     /**
@@ -43,7 +43,10 @@ class ProjetoController extends Controller
             'user_id' => auth()->id(),
         ]);
 
-        return response()->json($projeto, 201);
+        return response(
+            ['location' => route('projetos.show', $projeto->id)],
+            201
+        );
     }
 
     /**
@@ -54,7 +57,7 @@ class ProjetoController extends Controller
      */
     public function show(Projeto $projeto)
     {
-        return response()->json($projeto);
+        return $projeto;
     }
 
     /**
@@ -66,15 +69,22 @@ class ProjetoController extends Controller
      */
     public function update(Request $request, Projeto $projeto)
     {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-            'descricao' => 'nullable|string|max:300',
-        ]);
+        // $request->validate([
+        //     'nome' => 'required|string|max:255',
+        //     'descricao' => 'nullable|string|max:300',
+        // ]);
 
-        $projeto->nome = $request->input('nome');
-        $projeto->descricao = $request->input('descricao');
+        $nome = $request->input('nome');
+        if($nome) {
+            $projeto->nome = $nome;
+        }
 
-        return response()->json($projeto, 200);
+        $descricao = $request->input('descricao');
+        if($descricao) {
+            $projeto->descricao = $descricao;
+        }
+        
+        $projeto->save();
     }
 
     /**
@@ -86,7 +96,6 @@ class ProjetoController extends Controller
     public function destroy(projeto $projeto)
     {
         $projeto->delete();
-        return response()->json(['message' => 'Projeto deletado com sucesso'], 200);
     }
 
     /*---- TEMPLATE/TESTE MÉTODOS ----*/

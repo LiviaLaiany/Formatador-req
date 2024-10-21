@@ -10,6 +10,110 @@ use App\Models\Modelo;
 class DocumentoRequisitosController extends Controller
 {
     
+    /* ---- API MÉTODOS ----*/
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($pro_id)
+    {
+
+        //verifica se o projeto existe/se o usuário tem ele
+        $projeto = Projeto::where('id', $pro_id)->where('user_id', auth()->id())->firstOrFail();
+
+        $documentos = DocumentoRequisitos::where('pro_id', $projeto->id)->get();
+
+        return $documentos;
+    }
+
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'pro_id' => 'required|exists:projetos,id',
+            'mod_id' => 'required|exists:modelos,id',
+            'doc_json' => 'required|json'
+        ]);
+
+        $projeto = Projeto::findOrFail($request->input('pro_id'));
+        if($projeto->documentoRequisitos) {
+            return response()->json(['error' => 'Esse projeto já possui um documento de requisitos']);
+        }
+
+        $documento = DocumentoRequisitos::create([
+            'nome' => $request->input('nome'),
+            'pro_id' => $request->input('pro_id'),
+            'mod_id' => $request->input('mod_id'),
+            'doc_json' => json_encode($request->input('doc_json'), JSON_UNESCAPED_UNICODE),
+        ]);
+
+        return response(
+            ['location' => route('documentos.show', $documento->id)],
+            201
+        );;
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\DocumentoRequisitos  $documento
+     * @return \Illuminate\Http\Response
+     */
+    public function show(DocumentoRequisitos $documento)
+    {
+        return $documento;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\DocumentoRequisitos  $documento
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, DocumentoRequisitos $documento)
+    {
+        // $request->validate([
+        //     'nome' => 'required|string|max:255',
+        //     'doc_json' => 'json'
+        // ]);
+
+        $nome = $request->input('nome');
+        if ($nome) {
+            $documento->nome = $nome;
+        }
+
+        $doc_json = $request->input('doc_json');
+        if($doc_json) {
+            $documento->doc_json = json_encode($doc_json, JSON_UNESCAPED_UNICODE);
+        }
+
+        $documento->save();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\DocumentoRequisitos  $documento
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(DocumentoRequisitos $documento)
+    {
+        $documento->delete();
+    }
+
+
+    /*---- TEMPLATE/TESTE MÉTODOS ----*/
+
     //Essa função não faz sentido ter, já que o documento de requisitos aparece na aba do projeto que ele está contido
     // public function indexView() {
     //     $projetos = Projeto::where('user_id', auth()->id())->get();
