@@ -126,11 +126,11 @@ class ProjetoController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        return redirect()->route('projetos.indexView');
+        return redirect()->route('projetos.index');
     }
 
     public function showView(Projeto $projeto) {
-        $modelos = Modelo::where('user_id', auth()->id())->get();
+        $modelos = Modelo::where('user_id', auth()->id())->orWhereNull('user_id')->get();
         return view('projetos.show', ['projeto' => $projeto, 'modelos' => $modelos]);
     }
 
@@ -148,12 +148,12 @@ class ProjetoController extends Controller
         $projeto->descricao = $request->input('descricao');
         $projeto->save();
 
-        return redirect()->route('projetos.indexView');
+        return redirect()->route('projetos.index');
     }
 
     public function destroyView(Projeto $projeto) {
         $projeto->delete();
-        return redirect()->route('projetos.indexView');
+        return redirect()->route('projetos.index');
     }
 
 

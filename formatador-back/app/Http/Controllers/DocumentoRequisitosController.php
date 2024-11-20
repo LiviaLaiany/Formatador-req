@@ -142,7 +142,7 @@ class DocumentoRequisitosController extends Controller
         ]);
 
         $projeto = Projeto::where('id', $request->input('pro_id'))->where('user_id', auth()->id())->first();
-        $modelo = Modelo::where('id', $request->input('mod_id'))->where('user_id', auth()->id())->first();
+        $modelo = Modelo::where('id', $request->input('mod_id'))->first();
 
         if ($projeto->documentoRequisitos) {
             return redirect()->routes('projetos.showView', $projeto->id);
