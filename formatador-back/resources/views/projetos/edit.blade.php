@@ -16,5 +16,5 @@
         <button type="submit">Atualizar</button>
     </form>
 
-    <a href="{{ route('projetos.indexView') }}">Voltar para a lista de projetos</a>
+    <a href="{{ route('projetos.index') }}">Voltar para a lista de projetos</a>
 @endsection
