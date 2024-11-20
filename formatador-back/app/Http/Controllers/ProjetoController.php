@@ -130,7 +130,7 @@ class ProjetoController extends Controller
     }
 
     public function showView(Projeto $projeto) {
-        $modelos = Modelo::where('user_id', auth()->id())->get();
+        $modelos = Modelo::where('user_id', auth()->id())->orWhereNull('user_id')->get();
         return view('projetos.show', ['projeto' => $projeto, 'modelos' => $modelos]);
     }
 
