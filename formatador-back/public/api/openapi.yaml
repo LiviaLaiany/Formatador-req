@@ -11,7 +11,157 @@ servers:
       porta:
         default: '8000'
 paths:
-  /projetos:
+  /register:
+    post:
+        summary: Registro de usuário
+        operationId: postUser
+        security:
+          - bearer: []
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Nome do usuário
+                    example: Aluno
+                  email:
+                    type: string
+                    description: Email do usuário
+                    example: aluno@gmail.com
+                  password:
+                    type: string
+                    description: Senha do usuário
+                    example: senha1234
+        responses:
+          200:
+            description: Usuário registrado
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/users'
+
+  /login:
+    post:
+        summary: Login de usuário
+        operationId: postLoginUser
+        security:
+          - bearer: []
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    description: Email do usuário já registrado
+                    example: aluno@gmail.com
+                  password:
+                    type: string
+                    description: Senha do usuário já registrado
+                    example: senha1234
+        responses:
+          201:
+            description: Usuário logado
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/users'
+
+  /v1/logout:
+    post:
+        summary: Logout de usuário
+        operationId: postLogoutUser
+        security:
+          - bearer: []
+        responses:
+          201:
+            description: Usuário deslogado
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/users'
+
+  /v1/users:
+    get:
+      operationId: getUsers
+      summary: Acessar todos os usuários
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/users'
+    
+  /v1/users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/users/properties/id"
+    
+    get:
+      operationId: getUser
+      summary: Acessar um usuário
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/users'
+        404:
+          description: Usuário não encontrado
+    
+    put:
+      summary: Atualizar usuário
+      security:
+        - bearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Trocar o nome do usuário
+                  example: Aluno2
+                email:
+                  type: string
+                  description: Trocar o email do usuário
+                  example: aluno2@gmail.com
+                senha:
+                  type: string
+                  description: Trocar a senha do usuário
+                  example: 1234senha
+      responses:
+        200:
+          description: Usuário atualizado
+        404:
+          description: Usuário não encontrado
+    
+    delete:
+      summary: Apagar usuário
+      security: 
+        - bearer: []
+      responses:
+        200:
+          description: Usuário deletado com sucesso
+        404:
+          description: Usuário não encontrado
+
+  /v1/projetos:
     get:
       operationId: getProjetos
       summary: Acessar todos os projetos
@@ -57,7 +207,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/projetos'
 
-  /projetos/{id}:
+  /v1/projetos/{id}:
     parameters:
       - name: id
         in: path
@@ -113,7 +263,7 @@ paths:
         404:
           description: Projeto não encontrado
 
-  /modelos:
+  /v1/modelos:
     get:
       operationId: getModelos
       summary: Acessar todos os modelos disponíveis
@@ -260,7 +410,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/modelos'
 
-  /modelos/{id}:
+  /v1/modelos/{id}:
     parameters:
       - name: id
         in: path
@@ -321,7 +471,7 @@ paths:
         404:
           description: Modelo não encontrado
 
-  /documentos:
+  /v1/documentos:
     get:
       operationId: getDocumentos
       summary: Acessar todos os documentos de requisitos
@@ -382,7 +532,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/documentos'
 
-  /documentos/{id}:
+  /v1/documentos/{id}:
     parameters:
       - name: id
         in: path
@@ -444,7 +594,28 @@ paths:
           description: Documento não encontrado
 
 components:
-  schemas:  
+  schemas:
+    users:
+      type: object
+      description: Um usuário.
+      properties:
+        id:
+          type: string
+          description: Um id gerado automaticamente pelo sistema.
+          example: 123
+        email:
+          type: string
+          description: Email usado para autenticação.
+          example: aluno@gmail.com
+        nome:
+          type: string
+          description: Nome do usuário.
+          example: Aluno
+        senha:
+          type: string 
+          description: Senha para autenticação.
+          example: senha1234
+
     projetos:
       type: object
       description: Um projeto.

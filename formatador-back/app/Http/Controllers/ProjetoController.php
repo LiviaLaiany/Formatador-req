@@ -98,7 +98,7 @@ class ProjetoController extends Controller
      * @param  \App\Models\projeto  $projeto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(projeto $projeto)
+    public function destroy(Projeto $projeto)
     {
         $projeto->delete();
     }
