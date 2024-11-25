@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api.js';
 import Nav from './Navbar.js';
+import Rodape from './Rodape.js';
 import '../css/Formatador.css';
 import mais from '../imagens/mais.svg';
 //FALTA RESPONSIVO E TUDO
@@ -101,54 +102,52 @@ export default function Formatador() {
     }
 
     return (
-        <div>
+        <div className="" style={{ backgroundColor:'#2CAEEF' }}>
             <Nav text="Formatador" />
-            <div style={{ backgroundColor: '#ebebeb', paddingTop: '10%' }} className="pb-3">
-                <div className="d-flex justify-content-between p-4">
-                    {/* <span className="fw-bold"><a href=''>Criar novo documento</a></span>*/}                            
+            <div style={{  paddingTop: '10%' }} className="pb-3 vh-100  container rounded my-5  ">
+                <div className=" p-4 bg-light rounded " id='projeto'>
                     <button onClick={handleCriarProjeto} className="btn fw-bold btn-primary">
-                                Criar Novo Projeto
+                        Criar Novo Projeto
                     </button>
-                    <span className="fw-bold">Galeria de modelos</span>
-                </div>
+                
 
-                <div className="container">
-                    {projetos?.length === 0 ? (
-                        <div className="text-center">
-                            <p>Nenhum projeto encontrado.</p>
-                            {/* <button
-                                onClick= {handleCriarProjeto}
-                                className="btn btn-primary"
-                                style={{ marginTop: '20px' }}
-                            >
-                                Criar Novo Projeto
-                            </button> */}
-                        </div>
-                    ) : (
-                        <div className="row d-flex justify-content-center w-100">
-                            {projetos.map((projeto) => (
-                                <div
-                                    key={projeto.id}
-                                    className="col-3 col-sm-1 border border-dark bg-light d-flex align-items-center justify-content-center m-2"
-                                    onClick={() => handleAbrirProjeto(projeto.id)}
-                                    style={{ cursor: 'pointer', height: '150px' }}
+                    <div className="container">
+                        {projetos?.length === 0 ? (
+                            <div className="text-center">
+                                <p>Nenhum projeto encontrado.</p>
+                                {/* <button
+                                    onClick= {handleCriarProjeto}
+                                    className="btn btn-primary"
+                                    style={{ marginTop: '20px' }}
                                 >
-                                    <div className="text-center ">
-                                        {projeto.nome}
-                                        <button key={projeto.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirProjeto(projeto.id, e)}>
-                                            Excluir
-                                        </button>
-                                        <button key={projeto.id} className='btn btn-primary btn-sm' onClick={(e) => handleEditarProjeto(projeto.id, e)}>
-                                            Editar
-                                        </button>
+                                    Criar Novo Projeto
+                                </button> */}
+                            </div>
+                        ) : (
+                            <div className="row d-flex justify-content-center w-100">
+                                {projetos.map((projeto) => (
+                                    <div
+                                        key={projeto.id}
+                                        className="col-3 col-sm-1 border border-dark bg-light d-flex align-items-center justify-content-center m-2"
+                                        onClick={() => handleAbrirProjeto(projeto.id)}
+                                        style={{ cursor: 'pointer', height: '150px' }}
+                                    >
+                                        <div className="text-center fs-5">
+                                            {projeto.nome}
+                                            <button key={projeto.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirProjeto(projeto.id, e)}>
+                                                Excluir
+                                            </button>
+                                            <button key={projeto.id} className='btn btn-primary btn-sm' onClick={(e) => handleEditarProjeto(projeto.id, e)}>
+                                                Editar
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </div>
-
-                <div className="container mt-5">
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>                   
+                <div className="container   bg-light " id='modelo'>
                     <h3 className="text-center">Meus Modelos</h3>
                     <div className="row d-flex justify-content-center">
                         {modelos.map((modelo) => (
@@ -185,6 +184,7 @@ export default function Formatador() {
                     </div>
                 </div>
             </div>
+            <Rodape/>
         </div>
     );
 }
