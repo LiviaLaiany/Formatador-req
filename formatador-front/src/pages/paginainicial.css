@@ -1,6 +1,24 @@
-#image{
-    background-image: url('../imagens/computador.svg');
+
+#name{
+    background-color: #2CAEEF;
 }
 #box-2{
-    background-color: #FFEE55;
+    background-color: #FFEE55    ;
+}
+#bt-1, #bt-2{
+    background-color:#FFEE55 ;
+    color: black;
+}
+#bt-1:hover, #bt-2:hover, #name:hover{
+    background-color: #003060;
+    color: white;
+}
+.nome{
+     z-index:-1;
+}
+.botoes{
+    z-index: 2;
+}
+.video{
+    z-index:1;
 }
