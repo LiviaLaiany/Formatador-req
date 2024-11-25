@@ -65,6 +65,13 @@ class ModeloSeeder extends Seeder
                             'obrigatorio' => true,
                             'descricao' => 'Lista dos objetivos específicos a serem alcançados no projeto.'
                         ]
+            // <--mudanças do problema 1-->
+                        [
+                            'tipo' => 'campo_texto',
+                            'titulo' => 'Termos e Defnições',
+                            'obrigatorio' => false,
+                            'descricao' => 'Lista dos termos citados no documento e suas respectivas definições.'
+                        ]
                     ]
                 ],
                 [
