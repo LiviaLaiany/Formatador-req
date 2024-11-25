@@ -1,0 +1,8 @@
+.background{
+    /* background-image: url({Tutorial1}), url({TutorialImage}) ;Substitua pelo caminho da sua imagem */
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh; 
+}

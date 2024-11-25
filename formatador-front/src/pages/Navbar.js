@@ -1,15 +1,16 @@
-import logo from "./imagens/FDR-preto.svg"; 
-import React, {useEffect, useState} from 'react';
+import logo from "../imagens/FDR-preto.svg"; 
+import React, {useLayoutEffect, useState, } from 'react';
 import './Navbar.css';
 export default function Nav(props){
     const [TutStyle, setTutStyle] = useState({});
     const [FormStyle, setFormStyle] = useState({});
-    useEffect(() => {
+ 
+    useLayoutEffect(() => {
         if(props.text === "Tutorial"){
-            setTutStyle({backgroundColor : '#FFCC54'});
+            setTutStyle({backgroundColor : '#68BBE4'});
             setFormStyle({});
-        } else if (props.text === "Formatador"){
-            setFormStyle( {backgroundColor : '#FFCC54'});
+        } else if (props.text === "Formatador" ){
+            setFormStyle({backgroundColor : '#68BBE4'});
             setTutStyle({}); 
         }
     }, [props.text]);

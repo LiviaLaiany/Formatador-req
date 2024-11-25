@@ -15,8 +15,8 @@ root.render(
     {/* <Cadastro /> */}
     {/* <Login/> */}
     {/* <Navbar/> */}
-    <Tutorial/>
-    {/* <Formatador/> */}
+    {/* <Tutorial/> */}
+    <Formatador/>
   </React.StrictMode>
 );
 

@@ -1,0 +1,67 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 323 442" width="323" height="442">
+	<title>Tutorial-svg</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m283.52-53.8h243v243h-243z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp2">
+			<path d="m-0.31 43h163.31v276h-163.31z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp3">
+			<path d="m61 224h248v218.21h-248z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp4">
+			<path d="m-0.31 83h143.31v302h-143.31z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp5">
+			<path d="m-0.31-2.22h257.31v444.43h-257.31z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp6">
+			<path d="m98 301h226.3v141.21h-226.3z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp7">
+			<path d="m-0.31 273h156.31v169.21h-156.31z"/>
+		</clipPath>
+	</defs>
+	<style>
+		.s0 { fill: #68bbe4 } 
+		.s1 { fill: #ffcc54 } 
+		.s2 { fill: #00617d } 
+		.s3 { fill: #fff0aa } 
+		.s4 { fill: #003060 } 
+	</style>
+	<g id="Clip-Path" clip-path="url(#cp1)">
+		<g>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp2)">
+		<g>
+			<path class="s0" d="m-0.4 318.1l162.5-93.8-104.1-180.4-58.4 33.7z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp3)">
+		<g>
+			<path class="s1" d="m182.7 224.3l-121.1 69.9 85.6 148.3h161.4z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp4)">
+		<g>
+			<path class="s2" d="m-0.4 292.8l52.7 91.3 90.6-52.3-143.3-248.1z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp5)">
+		<g>
+			<path class="s3" d="m221.6 442.5h35l-257-445v60.4z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp6)">
+		<g>
+			<path class="s0" d="m243.2 301.9l-144.7 83.6 32.9 57h193z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp7)">
+		<g>
+			<path class="s4" d="m57.3 273.1l-57.7 33.3v136.1h155.5z"/>
+		</g>
+	</g>
+</svg>
