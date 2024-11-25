@@ -1,0 +1,92 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 439" width="420" height="439">
+	<title>Interface Formatador-svg</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m-0.08-0.12h197.08v182.12h-197.08z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp2">
+			<path d="m-0.08 41h177.08v252h-177.08z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp3">
+			<path d="m-0.08 56h283.08v339h-283.08z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp4">
+			<path d="m95-0.12h203v147.12h-203z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp5">
+			<path d="m237-0.12h138v95.12h-138z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp6">
+			<path d="m283-0.12h138.36v136.12h-138.36z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp7">
+			<path d="m-0.08 92h345.08v348.11h-345.08z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp8">
+			<path d="m-0.08 111h228.08v231h-228.08z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp9">
+			<path d="m282-0.12h50v46.12h-50z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp10">
+			<path d="m53-0.12h192v190.12h-192z"/>
+		</clipPath>
+	</defs>
+	<style>
+		.s0 { fill: #818181 } 
+		.s1 { fill: #fff0aa } 
+		.s2 { fill: #ffd155 } 
+		.s3 { fill: #68bbe4 } 
+		.s4 { fill: #055c9d } 
+	</style>
+	<g id="Clip-Path" clip-path="url(#cp1)">
+		<g>
+			<path class="s0" d="m-0.1-0.1v165.9l15.5 15.6 181.5-181.5z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp2)">
+		<g>
+			<path class="s1" d="m-0.1 292.5l177.1-177.1-74-74-103.1 103.1z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp3)">
+		<g>
+			<path class="s2" d="m-0.1 394.8l282.6-282.7-55.2-55.2-227.4 227.5z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp4)">
+		<g>
+			<path class="s3" d="m186.9-0.1l-90.9 91 55.2 55.2 146.1-146.2z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp5)">
+		<g>
+			<path class="s0" d="m289.9-0.1l-52.2 52.3 42.1 42.1 94.3-94.4z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp6)">
+		<g>
+			<path class="s3" d="m416.6-0.1l-133.2 133.2 2.5 2.4 135.5-135.6z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp7)">
+		<g>
+			<path class="s4" d="m-0.1 440l344.7-344.7-2.5-2.4-342.2 342.3z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp8)">
+		<g>
+			<path class="s1" d="m-0.1 342l227.6-227.6-2.4-2.4-225.2 225.1z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp9)">
+		<g>
+			<path class="s3" d="m327-0.1l-44.3 42.8 2.4 2.4 46.9-45.2z"/>
+		</g>
+	</g>
+	<g id="Clip-Path" clip-path="url(#cp10)">
+		<g>
+			<path class="s4" d="m240-0.1l-186.9 186.9 2.5 2.5 189.3-189.4z"/>
+		</g>
+	</g>
+</svg>

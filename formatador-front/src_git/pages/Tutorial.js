@@ -11,14 +11,12 @@ import T3 from '../imagens/T3.svg';
 import T4 from '../imagens/T4.svg';
 import T5 from '../imagens/T5.svg';
 import Rodape from './Rodape.js';
-import Cadastro from '../imagens/Cadastro.PNG';
-import Criar from '../imagens/Criar.PNG';
 
 export default function Tutorial(){
     return(
-        <div >
+        <div>
             <Nav text = "Tutorial"/>
-            <div className='background d-flex align-items-center justify-content-center my-5'  style = {{ paddingTop: '10%' }}> 
+            <div className='background d-flex align-items-center justify-content-center my-5' > 
                 <img src={passos} className='img-fluid'></img>
             </div>
             <div className='justify-content-between d-flex'>
@@ -43,7 +41,7 @@ export default function Tutorial(){
                         </div>
                     </div>
                     <div className='col-5'>
-                        <img alt='imagem' className='border rounded ' src={Cadastro}></img>
+                        <img alt='imagem' className='border'></img>
                     </div>
                 </div>
                 <div className='justify-content-between d-flex'>
@@ -71,7 +69,7 @@ export default function Tutorial(){
                         </div>
                     </div>
                     <div className='col-5'>
-                        <img alt='imagem' className='border' src={Criar}></img>
+                        <img alt='imagem' className='border'></img>
                     </div>
                 </div>
                 <div className='justify-content-between d-flex'>

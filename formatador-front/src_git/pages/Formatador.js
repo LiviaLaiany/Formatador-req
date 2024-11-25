@@ -6,7 +6,7 @@ export default function Formatador(){
     return(
         <div>
             <Nav text = "Formatador"/>
-            <div style= {{backgroundColor:'#ebebeb', paddingTop: '10%' }} className="pb-3   ">
+            <div style= {{backgroundColor:'#ebebeb'}} className="pb-3   ">
                 <div className='d-flex justify-content-between p-4'>
                     <span className='fw-bold'>Criar novo documento</span>
                     <span className='fw-bold'>Galeria de modelos </span>

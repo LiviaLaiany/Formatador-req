@@ -13,7 +13,7 @@ export default function Rotas() {
         <Route path='/login' element={<Login />}/>
         <Route path='/formatador' element={<Formatador />}/>
         <Route path='/tutorial' element={<Tutorial />}/>
-        <Route path='/paginainicial' element={<Paginainicial />}/>
+        <Route path='/paginainicial' element={<Paginainicial/>}/>
       </Routes>
     </BrowserRouter>
   );

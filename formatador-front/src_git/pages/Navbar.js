@@ -6,7 +6,6 @@ export default function Nav(props){
     const [TutStyle, setTutStyle] = useState({});
     const [FormStyle, setFormStyle] = useState({});
     const [Display, setDisplay] = useState({});
-    const [InicialStyle, setInicialStyle] = useState({});
  
     useLayoutEffect(() => {
         if(props.text === "Tutorial"){
@@ -15,11 +14,7 @@ export default function Nav(props){
         } else if (props.text === "Formatador" ){
             setFormStyle({backgroundColor : '#68BBE4', color: 'white'});
             setTutStyle({}); 
-            setInicialStyle({});
-            setDisplay({display: 'none'});
-        }else if(props.text === "PaginaInicial") {
-            setInicialStyle({backgroundColor: '#68BBE4', color: 'white'});
-            setFormStyle({display:'none'});
+            setDisplay({display: 'none'})
         }
     }, [props.text]);
     
@@ -32,32 +27,40 @@ export default function Nav(props){
                     </a>
                     <div class="collapse navbar-collapse justify-content-end d-flex d-none d-sm-none d-md-none d-lg-none d-lx-none d-xxl-block " id="navbarNav">
                         <ul class="navbar-nav">
-                            <li class="nav-item rounded quadrado" style= {InicialStyle}>
-                                <Link to={'/paginainicial'}>
-                                    <a className="nav-link fs-5 m-2 fw-bold " style= {InicialStyle}  href="#">Página Inicial</a>
-                                </Link>
-                            </li>
                             <li class="nav-item rounded quadrado" style= {FormStyle}>
-                                <Link to={'/formatador'}>
-                                    <a className="nav-link fs-5 m-2 fw-bold " style= {FormStyle}  href="#">Formatador</a>
-                                </Link>
+                                <a className="nav-link fs-5 m-2 fw-bold d-none d-sm-block" style= {FormStyle}  href="#">Formatador</a>
                             </li>
                             <li className="nav-item rounded quadrado" style= {TutStyle}>
-                                <Link to={'/tutorial'}>
-                                    <a className="nav-link fs-5 m-2 fw-bold " style= {TutStyle} href="#" >Tutorial</a>
-                                </Link>
+                                <a className="nav-link fs-5 m-2 fw-bold d-none d-sm-block" style= {TutStyle} href="#" >Tutorial</a>
                             </li>
                             <li class="nav-item rounded quadrado">
                                 <Link to={'/register'}>
-                                    <a className="nav-link fs-5 m-2 fw-bold " style= {Display} href="#">Cadastro</a>
+                                    <a className="nav-link fs-5 m-2 fw-bold d-none d-sm-block" style= {Display} href="#">Cadastro</a>
                                 </Link>
                             </li>
                             <li class="nav-item rounded quadrado">
                                 <Link to={'/login'}>
-                                    <a className="nav-link fs-5 m-2 fw-bold " style= {Display} href="#">Login</a>
+                                    <a className="nav-link fs-5 m-2 fw-bold d-none d-sm-block" style= {Display} href="#">Login</a>
                                 </Link>
                             </li>
                         </ul>
+                    </div>
+                    <div className="d-block d-sm-none">
+                        <div className="collapse navbar-collapse justify-content-end d-flex d-none d-sm-block" id="navbarNav">
+                            <ul className="navbar-nav">
+                            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
