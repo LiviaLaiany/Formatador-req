@@ -56,7 +56,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function login($credentials){
         if (!$token = JWTAuth::attempt($credentials)) {
-          throw new \Exception('Credencias incorretas, verifique-as e tente novamente.', -404);
+          throw new \Exception('Credenciais incorretas, verifique-as e tente novamente.', -404);
         }
         return $token;
     }

@@ -91,6 +91,8 @@ paths:
     get:
       operationId: getUsers
       summary: Acessar todos os usuários
+      security:
+          - bearer: []
       responses:
         200:
           description: OK
@@ -112,6 +114,8 @@ paths:
     get:
       operationId: getUser
       summary: Acessar um usuário
+      security:
+          - bearer: []
       responses:
         200:
           description: OK
@@ -165,6 +169,8 @@ paths:
     get:
       operationId: getProjetos
       summary: Acessar todos os projetos
+      security:
+          - bearer: []
       responses:
         200:
           description: OK
@@ -218,6 +224,8 @@ paths:
     get:
       operationId: getProjeto
       summary: Acessar um projeto
+      security:
+          - bearer: []
       responses:
         200:
           description: OK
@@ -267,6 +275,8 @@ paths:
     get:
       operationId: getModelos
       summary: Acessar todos os modelos disponíveis
+      security:
+          - bearer: []
       responses:
         200:
           description: OK
@@ -421,6 +431,8 @@ paths:
     get:
       operationId: getModelo
       summary: Acessar um modelo
+      security:
+          - bearer: []
       responses:
         200:
           description: OK
@@ -475,6 +487,8 @@ paths:
     get:
       operationId: getDocumentos
       summary: Acessar todos os documentos de requisitos
+      security:
+          - bearer: []
       responses:
         200:
           description: OK
@@ -543,6 +557,8 @@ paths:
     get:
       operationId: getDocumento
       summary: Acessar um documento de requisitos específico
+      security:
+          - bearer: []
       responses:
         200:
           description: OK
