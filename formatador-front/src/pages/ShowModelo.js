@@ -5,7 +5,7 @@ import Nav from './Navbar.js';
 import "../css/ShowModelo.css";
 import Rodape from './Rodape.js';
 //RESPONSIVO E PRONTO
-export default function ModeloDetalhes() {
+export default function ShowModelo() {
     const { id } = useParams();
     const [modelo, setModelo] = useState(null);
     const [token] = useState(localStorage.getItem('token'));
@@ -70,7 +70,6 @@ export default function ModeloDetalhes() {
                 <h4 className=' fs-2  mt-4 card-header color'>Capa</h4>
                 <div className='py-3 card-body rounded'>{modelo.mod_json.capa.length > 0 ? renderCapa(modelo.mod_json.capa) : <p>Sem dados na capa.</p>}</div>
             </div>
-            <div className='container bg-light card  text-dark rounded mb-4 mt-4'>
             <div className='container bg-light card  text-dark rounded  mt-4 mb-4'>
                 <h4 className="mt-4 card-header fs-2">Conteúdo</h4>
                 <div className='rounded card-body box-2'>
@@ -85,7 +84,6 @@ export default function ModeloDetalhes() {
                 </div>
             </div>
             <Rodape/>
-        </div>
         </div>
     );
 }
