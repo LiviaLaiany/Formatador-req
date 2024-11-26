@@ -60,31 +60,74 @@ class ModeloSeeder extends Seeder
                             'descricao' => 'Descrição do principal objetivo do projeto.'
                         ],
                         [
-                            'tipo' => 'campo_texto',
+                            'tipo' => 'lista',
                             'titulo' => 'Objetivos Específicos',
                             'obrigatorio' => true,
                             'descricao' => 'Lista dos objetivos específicos a serem alcançados no projeto.'
-                        ]
+                        ],
+                        [
+                            'tipo' => 'campo_texto',
+                            'titulo' => 'Escopo',
+                            'obrigatorio' => true,
+                            'descricao' => 'Descrição dos limites do projeto e orientação para a equipe sobre o que será incluido ou não no projeto.'
+                        ],
+                        [
+                            'tipo' => 'campo_texto',
+                            'titulo' => 'Visão Geral',
+                            'obrigatorio' => true,
+                            'descricao' => 'Define as bases do projeto e orienta os leitores para que entendam o contexto do desenvolvimento.'
+                        ],
             // <--mudanças do problema 1-->
                         [
                             'tipo' => 'campo_texto',
+                            // colocar tipo tabela 
                             'titulo' => 'Termos e Defnições',
                             'obrigatorio' => false,
                             'descricao' => 'Lista dos termos citados no documento e suas respectivas definições.'
+                        ]
+                        
+                    ]
+                ],
+                [
+                    'tipo' => 'campo_texto',
+                    'titulo' => 'Descrição Geral',
+                    'obrigatorio' => false,
+                    'descricao' => 'Descrição Geral do projeto.',
+                    'componentes' => [
+                         [
+                            'tipo' => 'campo_texto',
+                            'titulo' => 'Análise de Público-Alvo',
+                            'obrigatorio' => false,
+                            'descricao' => 'Texto com análise do público-alvo.'
+                        ],                       
+                        [
+                            'tipo' => 'lista',
+                            //tabela
+                            'titulo' => 'Análise de Riscos',
+                            'obrigatorio' => false,
+                            'descricao' => 'Lista dos riscos do projeto com suas respectivas definições e impactos.'
                         ]
                     ]
                 ],
                 [
                     'tipo' => 'lista',
+                    // tipo tabela
                     'titulo' => 'Requisitos Funcionais',
                     'obrigatorio' => true,
                     'descricao' => 'Funcionalidades essenciais do sistema.'
                 ],
                 [
                     'tipo' => 'lista',
+                        // tipo tabela
                     'titulo' => 'Requisitos Não Funcionais',
                     'obrigatorio' => true,
                     'descricao' => 'Especificações técnicas que o sistema deve cumprir.'
+                ],
+                [
+                    'tipo' => 'arquivo',
+                    'titulo' => 'Diagrama de Caso de Uso',
+                    'obrigatorio' => false,
+                    'descricao' => 'Imagem do Diagrama de Caso de Uso.'
                 ],
                 [
                     'tipo' => 'secao',
