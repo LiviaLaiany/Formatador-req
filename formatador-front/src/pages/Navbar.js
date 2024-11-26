@@ -4,14 +4,16 @@ import './Navbar.css';
 export default function Nav(props){
     const [TutStyle, setTutStyle] = useState({});
     const [FormStyle, setFormStyle] = useState({});
+    const [Display, setDisplay] = useState({});
  
     useLayoutEffect(() => {
         if(props.text === "Tutorial"){
-            setTutStyle({backgroundColor : '#68BBE4'});
+            setTutStyle({backgroundColor : '#68BBE4', color:'white'});
             setFormStyle({});
         } else if (props.text === "Formatador" ){
-            setFormStyle({backgroundColor : '#68BBE4'});
+            setFormStyle({backgroundColor : '#68BBE4', color: 'white'});
             setTutStyle({}); 
+            setDisplay({display: 'none'})
         }
     }, [props.text]);
     
@@ -25,16 +27,16 @@ export default function Nav(props){
                     <div class="collapse navbar-collapse justify-content-end d-flex" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item rounded quadrado" style= {FormStyle}>
-                                <a className="nav-link fs-5 m-2 fw-bold "  href="#">Formatador</a>
+                                <a className="nav-link fs-5 m-2 fw-bold " style= {FormStyle}  href="#">Formatador</a>
                             </li>
                             <li className="nav-item rounded quadrado" style= {TutStyle}>
-                            <a className="nav-link fs-5 m-2 fw-bold " href="#" >Tutorial</a>
+                            <a className="nav-link fs-5 m-2 fw-bold " style= {TutStyle} href="#" >Tutorial</a>
                             </li>
                             <li class="nav-item rounded quadrado">
-                            <a className="nav-link fs-5 m-2 fw-bold" href="#">Cadastro</a>
+                            <a className="nav-link fs-5 m-2 fw-bold" style= {Display} href="#">Cadastro</a>
                             </li>
                             <li class="nav-item rounded quadrado">
-                            <a className="nav-link fs-5 m-2 fw-bold" href="#">Login</a>
+                            <a className="nav-link fs-5 m-2 fw-bold" style= {Display} href="#">Login</a>
                             </li>
                         </ul>
                     </div>
