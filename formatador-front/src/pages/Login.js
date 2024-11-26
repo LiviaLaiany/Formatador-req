@@ -30,9 +30,9 @@ export default function Login(){
         <form onSubmit={handleLogin}>
             <div className="row w-100 h-100 ">
                 <div className="col-sm h-auto   justify-content-center d-flex" id="back">
-                    <img src={fundo2} className="position-fixed fixed-bottom  img-fluid" alt="fundo"></img>
-                    <img src={fundo1} className="position-fixed fixed-top img-fluid w-25"  alt="fundo"></img>
-                    <img src={logo} className=" d-flex justify-content-center align-self-center text-light img-fluid w-50" alt="logo"></img>
+                    <img src={fundo2} className="position-fixed fixed-bottom  img-fluid d-none d-sm-block" alt="fundo"></img>
+                    <img src={fundo1} className="position-fixed fixed-top img-fluid w-25 d-none d-sm-block"  alt="fundo"></img>
+                    <img src={logo} className=" d-flex justify-content-center align-self-center text-light img-fluid w-50 d-none d-sm-block" alt="logo"></img>
                 </div>
                 <div className="col-sm vh-100 pt-5 d-flex justify-content-center align-items-center" id="back2">
                     <div className="d-flex flex-column justify-content-center align-items-center w-100" style={{ maxWidth: '400px' }}>
@@ -48,6 +48,9 @@ export default function Login(){
                             <Link to='/register'>
                                 <button className='btn w-30 rounded-pill' id="volte">Voltar para página inicial</button>
                             </Link>
+                        </div>
+                        <div className='align-items-center d-flex justify-content-center'>
+                            <img src={logo} className=" d-flex justify-content-center align-self-center text-light img-fluid d-block d-sm-none w-50 " alt="logo"></img>
                         </div>
                     </div>
                 </div>
