@@ -3,6 +3,8 @@ import api from '../services/api.js'
 import {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
+
+
 //IMAGENS E CSS
 import './Login.css';
 import logo from "../imagens/FDR.svg"; 
@@ -45,6 +47,11 @@ export default function Login(){
                         </div>
                         <div className="mt-5 d-flex align-items-center justify-content-center w-100">
                             <button className="btn btn-primary w-25 rounded-pill m-3" id="enviar" type='submit'>Enviar</button>
+                            <Link to='/register'>
+                                <button className='btn w-30 rounded-pill' id="volte">Voltar para página inicial</button>
+                            </Link>
+                        </div>
+                        <div className="mt-5 d-flex align-items-center justify-content-center w-100">
                             <Link to='/register'>
                                 <button className='btn w-30 rounded-pill' id="volte">Voltar para página inicial</button>
                             </Link>
