@@ -1,6 +1,7 @@
 import logo from "../imagens/FDR-preto.svg"; 
 import React, {useLayoutEffect, useState, } from 'react';
 import './Navbar.css';
+import { Link } from 'react-router-dom';
 export default function Nav(props){
     const [TutStyle, setTutStyle] = useState({});
     const [FormStyle, setFormStyle] = useState({});
@@ -30,13 +31,17 @@ export default function Nav(props){
                                 <a className="nav-link fs-5 m-2 fw-bold d-none d-sm-block" style= {FormStyle}  href="#">Formatador</a>
                             </li>
                             <li className="nav-item rounded quadrado" style= {TutStyle}>
-                            <a className="nav-link fs-5 m-2 fw-bold d-none d-sm-block" style= {TutStyle} href="#" >Tutorial</a>
+                                <a className="nav-link fs-5 m-2 fw-bold d-none d-sm-block" style= {TutStyle} href="#" >Tutorial</a>
                             </li>
                             <li class="nav-item rounded quadrado">
-                            <a className="nav-link fs-5 m-2 fw-bold d-none d-sm-block" style= {Display} href="#">Cadastro</a>
+                                <Link to={'/register'}>
+                                    <a className="nav-link fs-5 m-2 fw-bold d-none d-sm-block" style= {Display} href="#">Cadastro</a>
+                                </Link>
                             </li>
                             <li class="nav-item rounded quadrado">
-                            <a className="nav-link fs-5 m-2 fw-bold d-none d-sm-block" style= {Display} href="#">Login</a>
+                                <Link to={'/login'}>
+                                    <a className="nav-link fs-5 m-2 fw-bold d-none d-sm-block" style= {Display} href="#">Login</a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
