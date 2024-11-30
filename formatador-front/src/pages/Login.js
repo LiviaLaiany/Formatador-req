@@ -21,7 +21,20 @@ export default function Login(){
             localStorage.setItem('token', response.data.token);
             navigate('/formatador');
         } catch (err) {
-            alert('Falha no login, tente novamente.' + err);
+
+            if (err.response) {
+                console.error('Erro no servidor:', err.response.data);
+                console.error('Código de status:', err.response.status);
+                console.error('Headers:', err.response.headers);
+
+                alert(`Erro no login: ${err.response.data.error}`);
+            } else if (err.request) {
+                console.error('Nenhuma resposta recebida:', err.request);
+                alert('Erro no login: Nenhuma resposta do servidor. Verifique sua conexão ou tente novamente mais tarde.');
+            } else {
+                console.error('Erro na configuração:', err.message);
+                alert(`Erro inesperado: ${err.message}`);
+            }
         }
     }
 
@@ -41,7 +54,7 @@ export default function Login(){
                         </div>
                         <div className="d-flex flex-column align-items-center justify-content-center w-100">
                             <input id="email" placeholder="exemplo@dominio.com" className="form-control mt-2 w-100" value={email} onChange={e => setEmail(e.target.value)}/>
-                            <input id="senha" placeholder="Senha" className="form-control mt-2 w-100" value={password} onChange={e => setPassword(e.target.value)}/>
+                            <input type='password' id="senha" placeholder="Senha" className="form-control mt-2 w-100" value={password} onChange={e => setPassword(e.target.value)}/>
                         </div>
                         <div className="mt-5 d-flex align-items-center justify-content-center w-100">
                             <button className="btn btn-primary w-25 rounded-pill m-3" id="enviar" type='submit'>Enviar</button>
