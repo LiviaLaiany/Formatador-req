@@ -1,13 +1,17 @@
-import logo from "../imagens/FDR-preto.svg"; 
 import React, {useLayoutEffect, useState, } from 'react';
-import './Navbar.css';
+import logo from "../imagens/FDR-preto.svg"; 
 import { Link } from 'react-router-dom';
+import './Navbar.css';
+
 export default function Nav(props){
     const [TutStyle, setTutStyle] = useState({});
     const [FormStyle, setFormStyle] = useState({});
     const [Display, setDisplay] = useState({});
     const [InicialStyle, setInicialStyle] = useState({});
- 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const toggleMenu = () => {
+        setIsMenuOpen((prev) => !prev);
+    };
     useLayoutEffect(() => {
         if(props.text === "Tutorial"){
             setTutStyle({backgroundColor : '#68BBE4', color:'white'});
@@ -24,44 +28,44 @@ export default function Nav(props){
     }, [props.text]);
     
     return(
-        <div>
-            <nav class="navbar navbar-expand-lg rounded  fixed fixed-top   " id="nav" >
-                <div class="container-fluid  ">
-                    <a class="navbar-brand quadrado rounded" href="#">
+            <nav class="navbar navbar-expand-lg rounded fixed-top" id="nav">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
                         <img src={logo} alt="Logo" width="100px" className="d-inline-block align-text-top"></img>
                     </a>
-                    <div class="collapse navbar-collapse justify-content-end d-flex d-none d-sm-none d-md-none d-lg-none d-lx-none d-xxl-block " id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item rounded quadrado" style= {InicialStyle}>
-                                <Link to={'/paginainicial'}>
-                                    <a className="nav-link fs-5 m-2 fw-bold " style= {InicialStyle}  href="#">Página Inicial</a>
-                                </Link>
+                    <button class="navbar-toggler" type="button" onClick={toggleMenu}>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div className={`navbar-collapse ${ isMenuOpen ? "show justify-content-start" : "collapse justify-content-end"}`} id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item rounded quadrado" style={InicialStyle}>
+                            <Link to={"/paginainicial"} className="nav-link fs-5 m-2 fw-bold">
+                                Página Inicial
+                            </Link>
                             </li>
-                            <li class="nav-item rounded quadrado" style= {FormStyle}>
-                                <Link to={'/formatador'}>
-                                    <a className="nav-link fs-5 m-2 fw-bold " style= {FormStyle}  href="#">Formatador</a>
-                                </Link>
+                            <li className="nav-item rounded quadrado" style={FormStyle}>
+                            <Link to={"/formatador"} className="nav-link fs-5 m-2 fw-bold">
+                                Formatador
+                            </Link>
                             </li>
-                            <li className="nav-item rounded quadrado" style= {TutStyle}>
-                                <Link to={'/tutorial'}>
-                                    <a className="nav-link fs-5 m-2 fw-bold " style= {TutStyle} href="#" >Tutorial</a>
-                                </Link>
+                            <li className="nav-item rounded quadrado" style={TutStyle}>
+                            <Link to={"/tutorial"} className="nav-link fs-5 m-2 fw-bold">
+                                Tutorial
+                            </Link>
                             </li>
-                            <li class="nav-item rounded quadrado">
-                                <Link to={'/register'}>
-                                    <a className="nav-link fs-5 m-2 fw-bold " style= {Display} href="#">Cadastro</a>
-                                </Link>
+                            <li className="nav-item rounded quadrado" style={Display}>
+                            <Link to={"/register"} className="nav-link fs-5 m-2 fw-bold">
+                                Cadastro
+                            </Link>
                             </li>
-                            <li class="nav-item rounded quadrado">
-                                <Link to={'/login'}>
-                                    <a className="nav-link fs-5 m-2 fw-bold " style= {Display} href="#">Login</a>
-                                </Link>
+                            <li className="nav-item rounded quadrado" style={Display}>
+                            <Link to={"/login"} className="nav-link fs-5 m-2 fw-bold">
+                                Login
+                            </Link>
                             </li>
                         </ul>
                     </div>
-
-                </div>
+                 </div>
             </nav>
-        </div>
     )
 }
