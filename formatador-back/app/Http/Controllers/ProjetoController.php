@@ -19,7 +19,7 @@ class ProjetoController extends Controller
      */
     public function index()
     {
-        $projetos = Projeto::where('user_id', 1)->get();
+        $projetos = Projeto::where('user_id', auth()->id())->get();
         return $projetos;
     }
 
@@ -62,7 +62,11 @@ class ProjetoController extends Controller
      */
     public function show(Projeto $projeto)
     {
-        return $projeto;
+        if (!$projeto || $projeto->user_id !== auth()->id()) {
+            return response()->json(['message' => 'Projeto não encontrado ou acesso não autorizado'], 404);
+        }
+    
+        return response()->json($projeto, 200);
     }
 
     /**
