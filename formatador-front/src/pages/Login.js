@@ -43,7 +43,7 @@ export default function Login(){
         <form onSubmit={handleLogin}>
             <div className="row w-100 h-100 ">
                 <div className="col-sm h-auto   justify-content-center d-flex" id="back">
-                    <img src={fundo2} className="position-fixed fixed-bottom  img-fluid d-none d-sm-block" alt="fundo"></img>
+                    <img src={fundo2} className="position-fixed fixed-bottom  img-fluid w-25 d-none d-sm-block" alt="fundo"></img>
                     <img src={fundo1} className="position-fixed fixed-top img-fluid w-25 d-none d-sm-block"  alt="fundo"></img>
                     <img src={logo} className=" d-flex justify-content-center align-self-center text-light img-fluid w-50 d-none d-sm-block" alt="logo"></img>
                 </div>
