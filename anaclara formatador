@@ -1,0 +1,212 @@
+import api from '../services/api.js'
+
+import React, { useState } from 'react';
+
+export default function CriarDocumento({ modelo, projeto, onSubmit }) {
+  // Estado inicial para armazenar os dados do formulário
+  const [formData, setFormData] = useState({
+    nome: '',
+    capa: {},
+    conteudo: {}
+  });
+
+  // Função para atualizar os valores no estado
+  const handleChange = (section, field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [section]: {
+        ...prev[section],
+        [field]: value
+      }
+    }));
+  };
+
+  // Função para lidar com o envio do formulário
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (onSubmit) {
+      onSubmit(formData);
+    }
+  };
+
+  return (
+    <div>
+      <h1 className="text-center font-bold">Criar Documento de Requisitos</h1>
+
+      <form onSubmit={handleSubmit}>
+        {/* Dados escondidos */}
+        <input type="hidden" name="pro_id" value={projeto.id} />
+        <input type="hidden" name="mod_id" value={modelo.id} />
+
+        {/* Nome do Documento */}
+        <div className="text-center">
+          <label htmlFor="nome">Nome do Documento:</label><br />
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            required
+            value={formData.nome}
+            onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+          />
+        </div>
+
+        <br />
+
+        {/* Seção Capa */}
+        <h2 className="font-bold mt-4 text-center">Capa</h2>
+        <br />
+        {modelo.mod_json.capa && modelo.mod_json.capa.map((campo, index) => (
+          <div key={index} className="text-center">
+            <label>{campo.titulo}:</label>
+            {campo.tipo === 'campo_texto' ? (
+              <input
+                type="text"
+                name={`capa[${campo.titulo}]`}
+                required={campo.obrigatorio}
+                value={formData.capa[campo.titulo] || ''}
+                onChange={(e) => handleChange('capa', campo.titulo, e.target.value)}
+              />
+            ) : campo.tipo === 'arquivo' ? (
+              <input
+                type="file"
+                name={`capa[${campo.titulo}]`}
+                required={campo.obrigatorio}
+                onChange={(e) => handleChange('capa', campo.titulo, e.target.files[0])}
+              />
+            ) : null}
+            {campo.descricao && (
+              <p className="text-sm text-gray-500">{campo.descricao}</p>
+            )}
+          </div>
+        ))}
+
+        <br />
+
+        {/* Seção Conteúdo */}
+        <h2 className="font-bold mt-4 text-center">Conteúdo</h2>
+        <br />
+        {modelo.mod_json.conteudo && modelo.mod_json.conteudo.map((secao, index) => (
+          <div key={index} className="text-center">
+            <h3 className="font-bold">{secao.titulo}</h3>
+            <br />
+            {secao['texto-secao'] && (
+              <>
+                <label>
+                  {secao['texto-secao'].descricao || 'Texto da Seção'}:
+                </label>
+                <input
+                  name={`conteudo[${secao.titulo}][texto-secao]`}
+                  required={secao['texto-secao'].obrigatorio}
+                  value={formData.conteudo[secao.titulo]?.['texto-secao'] || ''}
+                  onChange={(e) =>
+                    handleChange('conteudo', `${secao.titulo}.texto-secao`, e.target.value)
+                  }
+                />
+              </>
+            )}
+            {secao.componentes && secao.componentes.map((componente, i) => (
+              <div key={i}>
+                <label>{componente.titulo}:</label>
+                {componente.tipo === 'campo_texto' ? (
+                  <input
+                    type="text"
+                    name={`conteudo[${secao.titulo}][${componente.titulo}]`}
+                    required={componente.obrigatorio}
+                    value={formData.conteudo[secao.titulo]?.[componente.titulo] || ''}
+                    onChange={(e) =>
+                      handleChange(
+                        'conteudo',
+                        `${secao.titulo}.${componente.titulo}`,
+                        e.target.value
+                      )
+                    }
+                  />
+                ) : componente.tipo === 'arquivo' ? (
+                  <input
+                    type="file"
+                    name={`conteudo[${secao.titulo}][${componente.titulo}]`}
+                    required={componente.obrigatorio}
+                    onChange={(e) =>
+                      handleChange(
+                        'conteudo',
+                        `${secao.titulo}.${componente.titulo}`,
+                        e.target.files[0]
+                      )
+                    }
+                  />
+                ) : componente.tipo === 'tabela' ? (
+                    <table>
+                      <thead>
+                        <tr>
+                          {componente.colunas.map((coluna, index) => (
+                            <th key={index}>{coluna}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {(formData.conteudo[secao.titulo]?.[componente.titulo] || []).map((linha, linhaIndex) => (
+                          <tr key={linhaIndex}>
+                            {componente.colunas.map((coluna, colunaIndex) => (
+                              <td key={colunaIndex}>
+                                <input
+                                  type="text"
+                                  value={linha[coluna] || ''}
+                                  onChange={(e) =>
+                                    handleChange(
+                                      'conteudo',
+                                      `${secao.titulo}.${componente.titulo}`,
+                                      [
+                                        ...formData.conteudo[secao.titulo]?.[componente.titulo]?.slice(0, linhaIndex),
+                                        { ...linha, [coluna]: e.target.value },
+                                        ...formData.conteudo[secao.titulo]?.[componente.titulo]?.slice(linhaIndex + 1),
+                                      ]
+                                    )
+                                  }
+                                />
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                ) : componente.tipo === 'lista' ? (
+                    <ul>
+                      {(formData.conteudo[secao.titulo]?.[componente.titulo] || []).map((item, index) => (
+                        <li key={index}>
+                          <input
+                            type="text"
+                            value={item || ''}
+                            onChange={(e) =>
+                              handleChange(
+                                'conteudo',
+                                `${secao.titulo}.${componente.titulo}`,
+                                [
+                                  ...formData.conteudo[secao.titulo]?.[componente.titulo]?.slice(0, index),
+                                  e.target.value,
+                                  ...formData.conteudo[secao.titulo]?.[componente.titulo]?.slice(index + 1),
+                                ]
+                              )
+                            }
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                ) : null}
+                {componente.descricao && (
+                  <p className="text-sm text-gray-500">{componente.descricao}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        ))}
+
+        <div className="mt-4">
+          <button type="submit" className="btn btn-primary">
+            Criar Documento
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}

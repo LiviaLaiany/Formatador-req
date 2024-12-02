@@ -1,0 +1,697 @@
+openapi: '3.0.1'
+info:
+  title: Formatador de Requisitos
+  description: O Formatador de Requisitos é um serviço que gera um documento que coleta os requisitos de um software e gera um PDF do documento.
+  version: '3.0.1'
+servers:
+  - url: http://{host}:{porta}/api
+    variables:
+      host:
+        default: localhost
+      porta:
+        default: '8000'
+paths:
+  /register:
+    post:
+        summary: Registro de usuário
+        operationId: postUser
+        security:
+          - bearer: []
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Nome do usuário
+                    example: Aluno
+                  email:
+                    type: string
+                    description: Email do usuário
+                    example: aluno@gmail.com
+                  password:
+                    type: string
+                    description: Senha do usuário
+                    example: senha1234
+        responses:
+          200:
+            description: Usuário registrado
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/users'
+
+  /login:
+    post:
+        summary: Login de usuário
+        operationId: postLoginUser
+        security:
+          - bearer: []
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    description: Email do usuário já registrado
+                    example: aluno@gmail.com
+                  password:
+                    type: string
+                    description: Senha do usuário já registrado
+                    example: senha1234
+        responses:
+          200:
+            description: Usuário logado
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/users'
+
+  /v1/logout:
+    post:
+        summary: Logout de usuário
+        operationId: postLogoutUser
+        security:
+          - bearer: []
+        responses:
+          201:
+            description: Usuário deslogado
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/users'
+
+  /v1/users:
+    get:
+      operationId: getUsers
+      summary: Acessar todos os usuários
+      security:
+          - bearer: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/users'
+    
+  /v1/users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/users/properties/id"
+    
+    get:
+      operationId: getUser
+      summary: Acessar um usuário
+      security:
+          - bearer: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/users'
+        404:
+          description: Usuário não encontrado
+    
+    put:
+      summary: Atualizar usuário
+      security:
+        - bearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Trocar o nome do usuário
+                  example: Aluno2
+                email:
+                  type: string
+                  description: Trocar o email do usuário
+                  example: aluno2@gmail.com
+                senha:
+                  type: string
+                  description: Trocar a senha do usuário
+                  example: 1234senha
+      responses:
+        200:
+          description: Usuário atualizado
+        404:
+          description: Usuário não encontrado
+    
+    delete:
+      summary: Apagar usuário
+      security: 
+        - bearer: []
+      responses:
+        200:
+          description: Usuário deletado com sucesso
+        404:
+          description: Usuário não encontrado
+
+  /v1/projetos:
+    get:
+      operationId: getProjetos
+      summary: Acessar todos os projetos
+      security:
+          - bearer: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/projetos'
+
+    post:
+      summary: Criar um projeto
+      operationId: postProjeto
+      security:
+        - bearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  description: Nome do projeto
+                  example: "Novo Sistema de E-commerce"
+                descricao:
+                  type: string
+                  description: Descrição do projeto
+                  example: "Este projeto consiste no desenvolvimento de uma plataforma de e-commerce..."
+                user_id:
+                  type: integer
+                  description: Id do usuário
+                  example: 1
+      responses:
+        201:
+          description: Projeto criado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/projetos'
+
+  /v1/projetos/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/projetos/properties/id"
+    
+    get:
+      operationId: getProjeto
+      summary: Acessar um projeto
+      security:
+          - bearer: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/projetos'
+        404:
+          description: Projeto não encontrado
+    
+    put:
+      summary: Atualizar projeto
+      security:
+        - bearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  description: Nome do projeto
+                  example: "Sistema de E-commerce Atualizado"
+                descricao:
+                  type: string
+                  description: Descrição do projeto atualizada
+                  example: "Alteração para incluir PIX como método de pagamento."
+      responses:
+        200:
+          description: Projeto atualizado
+        404:
+          description: Projeto não encontrado
+    
+    delete:
+      summary: Apagar projeto
+      security: 
+        - bearer: []
+      responses:
+        200:
+          description: Projeto deletado com sucesso
+        404:
+          description: Projeto não encontrado
+
+  /v1/modelos:
+    get:
+      operationId: getModelos
+      summary: Acessar todos os modelos disponíveis
+      security:
+          - bearer: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/modelos'
+    
+    post:
+      summary: Criar um novo modelo
+      operationId: postModelo
+      security:
+        - bearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  description: Nome do modelo
+                  example: "Modelo Base de Requisitos"
+                mod_json:
+                  type: object
+                  description: Estrutura JSON do modelo
+                  example:
+                    {
+                      "capa": [
+                        {
+                          "tipo": "campo_texto", 
+                          "titulo": "Instituição", 
+                          "descricao": "Nome da instituição responsável pelo projeto.", 
+                          "obrigatorio": true
+                        }, 
+                        {
+                          "tipo": "campo_texto", 
+                          "titulo": "Título Projeto", 
+                          "descricao": "Título oficial do projeto que será descrito no documento.", 
+                          "obrigatorio": true
+                        }, 
+                        {
+                          "tipo": "campo_texto", 
+                          "titulo": "Autores", 
+                          "descricao": "Nomes dos autores responsáveis pelo documento.", 
+                          "obrigatorio": true
+                        }, 
+                        {
+                          "tipo": "campo_texto", 
+                          "titulo": "Data/Localização", 
+                          "descricao": "Data e local de elaboração do documento.", 
+                          "obrigatorio": true
+                        }
+                      ], 
+                      "conteudo": [
+                        {
+                          "tipo": 
+                          "secao", 
+                          "titulo": "Introdução", 
+                          "componentes": [
+                            {
+                              "tipo": "campo_texto", 
+                              "titulo": "Objetivo Geral", 
+                              "descricao": "Descrição do principal objetivo do projeto.", 
+                              "obrigatorio": true
+                            }, 
+                            {
+                              "tipo": "campo_texto", 
+                              "titulo": "Objetivos Específicos", 
+                              "descricao": "Lista dos objetivos específicos a serem alcançados no projeto.", 
+                              "obrigatorio": true
+                            }
+                          ], 
+                          "obrigatorio": true, 
+                          "texto-secao": {
+                            "tipo": "campo_texto", 
+                            "descricao": "Texto que aparece logo após o título da introdução, explicando o contexto inicial do projeto.", 
+                            "obrigatorio": false
+                          }
+                        }, 
+                        {
+                          "tipo": "lista", 
+                          "titulo": "Requisitos Funcionais", 
+                          "descricao": "Funcionalidades essenciais do sistema.", 
+                          "obrigatorio": true
+                        }, 
+                        {
+                          "tipo": "lista", 
+                          "titulo": "Requisitos Não Funcionais", 
+                          "descricao": "Especificações técnicas que o sistema deve cumprir.", 
+                          "obrigatorio": true
+                        }, 
+                        {
+                          "tipo": "secao", 
+                          "titulo": "Anexos", 
+                          "componentes": [
+                            {
+                              "tipo": "campo_texto", 
+                              "titulo": "Descrição", 
+                              "descricao": "Breve descrição do conteúdo do anexo.", 
+                              "obrigatorio": false
+                            }, 
+                            {
+                              "tipo": "arquivo", 
+                              "titulo": "Arquivo anexo", 
+                              "descricao": "Arquivo anexado ao documento.", 
+                              "obrigatorio": false
+                            }
+                          ], 
+                          "obrigatorio": false, 
+                          "texto-secao": {
+                            "tipo": "campo_texto", 
+                            "descricao": "Texto explicando o que pode ser anexado ao documento.",
+                            "obrigatorio": false
+                            }
+                        }, 
+                        {
+                          "tipo": "campo_texto", 
+                          "titulo": "Referências", 
+                          "descricao": "Lista de fontes e referências utilizadas no documento.", 
+                          "obrigatorio": true
+                        }
+                      ]
+                    }
+                user_id:
+                  type: integer
+                  description: Id do usuário
+                  example: 1
+                mod_base_id:
+                  type: integer
+                  description: Id do modelo que serviu de Base
+                  example: 1
+      responses:
+        201:
+          description: Modelo criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modelos'
+
+  /v1/modelos/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/modelos/properties/id"
+    
+    get:
+      operationId: getModelo
+      summary: Acessar um modelo
+      security:
+          - bearer: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modelos'
+        404:
+          description: Modelo não encontrado
+    
+    put:
+      summary: Atualizar modelo
+      security:
+        - bearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  description: Nome do modelo atualizado
+                  example: "Modelo Atualizado"
+                mod_json:
+                  type: object
+                  description: Estrutura JSON atualizada do modelo
+                  example:
+                    {
+                      "capa": [
+                        {"titulo": "Nova Instituição", "tipo": "campo_texto", "obrigatorio": true, "descricao": "Nome atualizado da instituição."}
+                      ]
+                    }
+      responses:
+        200:
+          description: Modelo atualizado com sucesso
+        404:
+          description: Modelo não encontrado
+    
+    delete:
+      summary: Apagar modelo
+      security: 
+        - bearer: []
+      responses:
+        200:
+          description: Modelo deletado com sucesso
+        404:
+          description: Modelo não encontrado
+
+  /v1/documentos:
+    get:
+      operationId: getDocumentos
+      summary: Acessar todos os documentos de requisitos
+      security:
+          - bearer: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/documentos'
+    
+    post:
+      summary: Criar um documento de requisitos
+      operationId: postDocumento
+      security:
+        - bearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  description: Nome do documento de requisitos
+                  example: "Documento de Requisitos para Projeto X"
+                doc_json:
+                  type: object
+                  description: Estrutura preenchida do documento de requisitos
+                  example:
+                    {
+                      "capa": {
+                        "Instituição": "Universidade ABC",
+                        "Autores": "Fulano de Tal"
+                      },
+                      "conteudo": {
+                        "Introdução": {
+                          "Objetivo Geral": "Desenvolver uma plataforma de vendas online"
+                        }
+                      }
+                    }
+                mod_id:
+                  type: integer
+                  description: Id do modelo
+                  example: 1
+                pro_id:
+                  type: integer
+                  description: Id do projeto
+                  example: 1
+      responses:
+        201:
+          description: Documento de requisitos criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/documentos'
+
+  /v1/documentos/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/documentos/properties/id"
+    
+    get:
+      operationId: getDocumento
+      summary: Acessar um documento de requisitos específico
+      security:
+          - bearer: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/documentos'
+        404:
+          description: Documento não encontrado
+    
+    put:
+      summary: Atualizar documento de requisitos
+      security:
+        - bearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  description: Nome do documento atualizado
+                  example: "Documento de Requisitos Atualizado"
+                doc_json:
+                  type: object
+                  description: Estrutura JSON atualizada do documento
+                  example:
+                    {
+                      "capa": {
+                        "Instituição": "Nova Universidade"
+                      }
+                    }
+      responses:
+        200:
+          description: Documento atualizado com sucesso
+        404:
+          description: Documento não encontrado
+    
+    delete:
+      summary: Apagar documento de requisitos
+      security: 
+        - bearer: []
+      responses:
+        200:
+          description: Documento deletado com sucesso
+        404:
+          description: Documento não encontrado
+
+components:
+  schemas:
+    users:
+      type: object
+      description: Um usuário.
+      properties:
+        id:
+          type: string
+          description: Um id gerado automaticamente pelo sistema.
+          example: 123
+        email:
+          type: string
+          description: Email usado para autenticação.
+          example: aluno@gmail.com
+        nome:
+          type: string
+          description: Nome do usuário.
+          example: Aluno
+        senha:
+          type: string 
+          description: Senha para autenticação.
+          example: senha1234
+
+    projetos:
+      type: object
+      description: Um projeto.
+      properties:
+        id:
+          type: string
+          description: Um id gerado automaticamente pelo sistema.
+          example: 123
+        nome:
+          type: string
+          description: Nome do projeto.
+          example: "Novo Sistema de E-commerce"
+        descricao:
+          type: string 
+          description: Descrição do projeto.
+          example: "Este projeto consiste no desenvolvimento de uma plataforma de e-commerce."
+        criacao:
+          type: string
+          format: date-time
+
+    modelos:
+      type: object
+      description: Um modelo de documento de requisitos.
+      properties:
+        id:
+          type: string
+          description: Um id gerado automaticamente pelo sistema.
+          example: 123
+        nome:
+          type: string
+          description: Nome do modelo.
+          example: "Modelo Base de Requisitos"
+        mod_json:
+          type: object
+          description: Estrutura JSON do modelo
+        criacao:
+          type: string
+          format: date-time
+
+    documentos:
+      type: object
+      description: Um documento de requisitos.
+      properties:
+        id:
+          type: string
+          description: Um id gerado automaticamente pelo sistema.
+          example: 123
+        nome:
+          type: string
+          description: Nome do documento de requisitos.
+          example: "Documento de Requisitos para Projeto X"
+        doc_json:
+          type: object
+          description: Estrutura preenchida do documento de requisitos
+        criacao:
+          type: string
+          format: date-time
+
+  securitySchemes:
+    bearer: 
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,195 @@
+import { useState } from 'react';
+
+const CriarDocumento = ({ modeloSelecionado, projeto }) => {
+  const [formData, setFormData] = useState({
+    nome: '',
+    capa: {},
+    conteudo: {},
+  });
+
+  const handleChange = (section, key, value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [section]: {
+        ...prevData[section],
+        [key]: value,
+      },
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Aqui você pode adicionar a lógica para enviar os dados do formulário
+    console.log(formData);
+  };
+
+  return (
+    <div>
+      <h1 className="text-center font-bold">Criar Documento de Requisitos</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="hidden" name="pro_id" value={projeto.id} />
+        <input type="hidden" name="mod_id" value={modeloSelecionado.id} />
+
+        <div className="text-center">
+          <label htmlFor="nome">Nome do Documento:</label><br />
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            required
+            value={formData.nome}
+            onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+          />
+        </div>
+
+        {/* Seções dinâmicas */}
+        <h2 className="font-bold mt-4 text-center">Capa</h2>
+        <br />
+        {modeloSelecionado.mod_json.capa &&
+          modeloSelecionado.mod_json.capa.map((campo, index) => (
+            <div key={index} className="text-center">
+              <label>{campo.titulo}:</label>
+              {campo.tipo === 'campo_texto' ? (
+                <input
+                  type="text"
+                  name={`capa[${campo.titulo}]`}
+                  required={campo.obrigatorio}
+                  value={formData.capa[campo.titulo] || ''}
+                  onChange={(e) => handleChange('capa', campo.titulo, e.target.value)}
+                />
+            //   ) : campo.tipo === 'arquivo' ? (
+            //     <input
+            //       type="file"
+            //       name={`capa[${campo.titulo}]`}
+            //       required={campo.obrigatorio}
+            //       onChange={(e) => handleChange('capa', campo.titulo, e.target.files[0])}
+            //     />
+              ) : null}
+              {campo.descricao && (
+                <p className="text-sm text-gray-500">{campo.descricao}</p>
+              )}
+            </div>
+          ))}
+
+        <h2 className="font-bold mt-4 text-center">Conteúdo</h2>
+        <br />
+        {modeloSelecionado.mod_json.conteudo &&
+          modeloSelecionado.mod_json.conteudo.map((secao, index) => (
+            <div key={index} className="text-center">
+              <h3 className="font-bold">{secao.titulo}</h3>
+              <br />
+              {secao['texto-secao'] && (
+                <>
+                  <label>
+                    {secao['texto-secao'].descricao || 'Texto da Seção'}:
+                  </label>
+                  <input
+                    name={`conteudo[${secao.titulo}][texto-secao]`}
+                    required={secao['texto-secao'].obrigatorio}
+                    value={formData.conteudo[secao.titulo]?.['texto-secao'] || ''}
+                    onChange={(e) =>
+                      handleChange('conteudo', `${secao.titulo}.texto-secao`, e.target.value)
+                    }
+                  />
+                </>
+              )}
+              {secao.componentes &&
+                secao.componentes.map((campo, subIndex) => (
+                  <div key={subIndex}>
+                    {campo.tipo === 'campo_texto' ? (
+                      <div className="text-center">
+                        <label>{campo.titulo}:</label>
+                        <input
+                          type="text"
+                          name={`conteudo[${secao.titulo}][${campo.titulo}]`}
+                          required={campo.obrigatorio}
+                          value={formData.conteudo[secao.titulo]?.[campo.titulo] || ''}
+                          onChange={(e) =>
+                            handleChange('conteudo', `${secao.titulo}.${campo.titulo}`, e.target.value)
+                          }
+                        />
+                        {campo.descricao && (
+                          <p className="text-sm text-gray-500">{campo.descricao}</p>
+                        )}
+                      </div>
+                    ) : campo.tipo === 'lista' ? (
+                      <div className="text-center">
+                        <label>{campo.titulo}:</label>
+                        <textarea
+                          name={`conteudo[${secao.titulo}][${campo.titulo}]`}
+                          required={campo.obrigatorio}
+                          value={formData.conteudo[secao.titulo]?.[campo.titulo] || ''}
+                          onChange={(e) =>
+                            handleChange('conteudo', `${secao.titulo}.${campo.titulo}`, e.target.value)
+                          }
+                        />
+                        {campo.descricao && (
+                          <p className="text-sm text-gray-500">{campo.descricao}</p>
+                        )}
+                      </div>
+                    ) : campo.tipo === 'tabela' ? (
+                      <div className="text-center">
+                        <label>{campo.titulo}:</label>
+                        <table className="table-auto">
+                          <thead>
+                            <tr>
+                              {JSON.parse(campo.colunas).map((col, colIndex) => (
+                                <th key={colIndex} className="border px-4 py-2">
+                                  {col}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {JSON.parse(campo.linhas).map((linha, rowIndex) => (
+                              <tr key={rowIndex}>
+                                {Object.values(linha).map((cell, cellIndex) => (
+                                  <td key={cellIndex} className="border px-4 py-2">
+                                    <input
+                                      type="text"
+                                      value={cell}
+                                      onChange={(e) =>
+                                        handleChange('conteudo', `${secao.titulo}.${campo.titulo}.${rowIndex}.${cellIndex}`, e.target.value)
+                                      }
+                                    />
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        {campo.descricao && (
+                          <p className="text-sm text-gray-500">{campo.descricao}</p>
+                        )}
+                      </div>
+                    ) : campo.tipo === 'arquivo' ? (
+                        <div className="text-center">
+                          <label>{campo.titulo}:</label>
+                          <input
+                            type="file"
+                            name={`conteudo[${secao.titulo}][${campo.titulo}]`}
+                            required={campo.obrigatorio}
+                            onChange={(e) =>
+                              handleChange('conteudo', `${secao.titulo}.${campo.titulo}`, e.target.files[0])
+                            }
+                          />
+                          {campo.descricao && (
+                            <p className="text-sm text-gray-500">{campo.descricao}</p>
+                          )}
+                        </div>
+                      ) : null}
+                    </div>
+                  ))}
+              </div>
+            ))}
+          <div className="mt-4">
+            <button type="submit" className="btn btn-primary">
+              Criar Documento
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  };
+
+export default CriarDocumento;
