@@ -1,5 +1,5 @@
 import Nav from './Navbar.js';
-import './Tutorial.css';
+import '../css/Tutorial.css';
 import passos from '../imagens/passos.svg';
 import TutorialImage from '../imagens/Tutorial.svg';
 import Tutorial1 from '../imagens/Tutorial1.svg';

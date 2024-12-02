@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api.js';
 import Nav from './Navbar.js';
-import './Formatador.css';
+import '../css/Formatador.css';
 import mais from '../imagens/mais.svg';
 
 export default function Formatador() {

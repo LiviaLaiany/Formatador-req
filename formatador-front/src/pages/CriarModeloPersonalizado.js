@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api.js';
+import Nav from './Navbar.js';
+import '../css/CriarModeloPersonalizado.css';
 
 export default function CriarModeloPersonalizado() {
     const [token] = useState(localStorage.getItem('token'));
@@ -45,41 +47,55 @@ export default function CriarModeloPersonalizado() {
 
     return (
         <div>
-            <h1>Criar Novo Modelo Personalizado</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Nome do Modelo:
-                    <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} required />
-                </label>
+            <Nav/>
+            <div className=''>
+                <span className='align-self-center d-flex justify-content-center criar rounded ' ><h1  className='rounded p-1 m-3'>Criar Novo Modelo Personalizado</h1></span>
+                <div className='justify-content-center d-flex align-items-center'>
+                    <form onSubmit={handleSubmit} className='my-2'>
+                        <label className='form-label'>
+                            Nome do Modelo: <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} required  className='form-control'/>
+                        </label>
+                        <div className='row'>
+                            <div className='col-5'>
+                                <h3>Capa</h3>
+                                {capa.map((campo, index) => (
+                                    <div key={index}>
+                                        <input
+                                            type="checkbox"
+                                            checked={campo.selecionado || campo.obrigatorio}
+                                            disabled={campo.obrigatorio}
+                                            onChange={() => toggleCampo(capa, setCapa, index)}
+                                        />
+                                        <span>{campo.titulo}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className='col-2'></div>
+                            
+                            <div className='col-5'>
+                                <h3>Conteúdo</h3>
+                                {conteudo.map((secao, index) => (
+                                <div key={index}>
+                                    <input
+                                        type="checkbox"
+                                        checked={secao.selecionado || secao.obrigatorio}
+                                        disabled={secao.obrigatorio}
+                                        onChange={() => toggleCampo(conteudo, setConteudo, index)}
+                                    />
+                                    <span>{secao.titulo}</span>
+                                </div>
+                            ))}
 
-                <h3>Capa</h3>
-                {capa.map((campo, index) => (
-                    <div key={index}>
-                        <input
-                            type="checkbox"
-                            checked={campo.selecionado || campo.obrigatorio}
-                            disabled={campo.obrigatorio}
-                            onChange={() => toggleCampo(capa, setCapa, index)}
-                        />
-                        <span>{campo.titulo}</span>
-                    </div>
-                ))}
-
-                <h3>Conteúdo</h3>
-                {conteudo.map((secao, index) => (
-                    <div key={index}>
-                        <input
-                            type="checkbox"
-                            checked={secao.selecionado || secao.obrigatorio}
-                            disabled={secao.obrigatorio}
-                            onChange={() => toggleCampo(conteudo, setConteudo, index)}
-                        />
-                        <span>{secao.titulo}</span>
-                    </div>
-                ))}
-
-                <button type="submit">Salvar</button>
-            </form>
+                            </div>             
+                            
+                        </div>
+                        
+                        <button type="submit" className='btn criar'>Salvar</button>
+                    </form>
+                </div>
+                
+            </div>
+            
         </div>
     );
 }
