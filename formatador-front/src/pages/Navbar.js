@@ -1,7 +1,7 @@
 import React, {useLayoutEffect, useState, } from 'react';
 import logo from "../imagens/FDR-preto.svg"; 
 import { Link } from 'react-router-dom';
-import './Navbar.css';
+import '../css/Navbar.css';
 
 export default function Nav(props){
     const [TutStyle, setTutStyle] = useState({});

@@ -4,7 +4,7 @@ import {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
 //OUTROS
-import './Cadastro.css';
+import '../css/Cadastro.css';
 import logo from "../imagens/FDR.svg"; 
 import fundo1 from "../imagens/fundo.svg";
 import fundo2 from "../imagens/fundo2.svg";

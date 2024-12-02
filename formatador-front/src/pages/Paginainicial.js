@@ -1,4 +1,4 @@
-import './paginainicial.css';
+import '../css/paginainicial.css';
 import nome from '../imagens/nome.mp4';
 import video1 from '../imagens/video1.mp4';
 import video3 from '../imagens/video3.mp4';

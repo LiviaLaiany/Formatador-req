@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from '../services/api';
 import Nav from './Navbar.js';
+import Rodape from './Rodape.js';
 
 export default function CriarProjeto() {
     const [token] = useState(localStorage.getItem('token'));
@@ -41,7 +42,7 @@ export default function CriarProjeto() {
 
     return (
         <div>
-            <Nav text="Criar Projeto" />
+           <Nav text="Formatador" />
             <div className="container mt-5">
                 <h2 className="text-center">Criar Novo Projeto</h2>
                 <form className="mt-4" onSubmit={handleCriarProjeto}>
@@ -58,6 +59,7 @@ export default function CriarProjeto() {
                     </button>
                 </form>
             </div>
+            <Rodape/>
         </div>
     )
 }
