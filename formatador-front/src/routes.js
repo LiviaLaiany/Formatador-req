@@ -6,6 +6,8 @@ import Tutorial from './pages/Tutorial.js'
 import Paginainicial from './pages/Paginainicial.js';
 import CriarProjeto from './pages/CriarProjeto.js';
 import ShowProjeto from './pages/ShowProjeto.js';
+import ShowModelo from './pages/ShowModelo.js';
+import CriarModeloPersonalizado from './pages/CriarModeloPersonalizado.js';
 
 export default function Rotas() {
   return (
@@ -18,6 +20,8 @@ export default function Rotas() {
         <Route path='/tutorial' element={<Tutorial />}/>
         <Route path='/paginainicial' element={<Paginainicial />}/>
         <Route path='/projetos/:id' element={<ShowProjeto />}/>
+        <Route path='/modelos/:id' element={<ShowModelo />}/>
+        <Route path="/modelos/criar" element={<CriarModeloPersonalizado />} />
       </Routes>
     </BrowserRouter>
   );

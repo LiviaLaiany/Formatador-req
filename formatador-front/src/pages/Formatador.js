@@ -8,15 +8,14 @@ import mais from '../imagens/mais.svg';
 export default function Formatador() {
     const [token] = useState(localStorage.getItem('token'));
     const [projetos, setProjetos] = useState([]);
+    const [modelos, setModelos] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         api.get('/v1/projetos', {
             headers: { Authorization: `Bearer ${token}` },
         })
-            .then((response) => {
-                setProjetos(response.data || []);
-            })
+            .then((response) => setProjetos(response.data || []))
             .catch((error) => {
                 if (error.response?.status === 401 || error.response?.status === 498) {
                     localStorage.clear();
@@ -25,10 +24,31 @@ export default function Formatador() {
                     alert('Erro ao carregar projetos: ' + error.message);
                 }
             });
+
+        api.get('/v1/modelos', {
+            headers: { Authorization: `Bearer ${token}` },
+        })
+            .then((response) => setModelos(response.data || []))
+            .catch((error) => {
+                if (error.response?.status === 401 || error.response?.status === 498) {
+                    localStorage.clear();
+                    navigate('/');
+                } else {
+                    alert('Erro ao carregar modelos: ' + error.message);
+                }
+            });
     }, [token, navigate]);
 
     const handleCriarProjeto = () => {
         navigate('/projetos/criar');
+    };
+
+    const handleAbrirModelo = (id) => {
+        navigate(`/modelos/${id}`)
+    }
+
+    const handleCriarModelo = () => {
+        navigate('/modelos/criar');
     };
 
     const handleAbrirProjeto = (id) => {
@@ -72,57 +92,30 @@ export default function Formatador() {
                     )}
                 </div>
 
-                {projetos.length > 0 && (
-                    <div className="d-flex justify-content-center p-4">
-                        <div
-                            id="cria"
-                            className="col-3 col-sm-1 border border-dark bg-light d-flex align-items-center justify-content-center"
-                            style={{ cursor: 'pointer' }}
-                            onClick={handleCriarProjeto}
+                <div className="container mt-5">
+                    <h3 className="text-center">Meus Modelos</h3>
+                    <div className="row d-flex justify-content-center">
+                        {modelos.map((modelo) => (
+                            <div
+                                key={modelo.id}
+                                className="col-3 col-sm-1 border border-dark bg-light d-flex align-items-center justify-content-center m-2"
+                                style={{ height: '150px', cursor: 'pointer' }}
+                                onClick={() => handleAbrirModelo(modelo.id)}
+                            >
+                                <div className="text-center">{modelo.nome}</div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="text-center mt-4">
+                        <button
+                            onClick={handleCriarModelo}
+                            className="btn btn-primary"
                         >
-                            <img src={mais} alt="Criar Novo Projeto" />
-                        </div>
-                    </div>
-                )}
-            </div>
-
-            <form>
-                <div className="row d-flex justify-content-between w-100">
-                    <div id="Documentos" className="rounded m-5 col-5" style={{ height: '40%' }}>
-                        <span style={{ backgroundColor: '#00617D' }} className="rounded text-light d-block text-center my-2 w-25 fs-5">
-                            Meus Documentos
-                        </span>
-                        <div className="d-flex justify-content-between" style={{ width: '550px', height: '250px' }}>
-                            <div className="border border-dark my-3 mx-2 bg-light text-black d-flex align-items-center justify-content-center w-25 h-75">
-                                Modelo
-                            </div>
-                            <div className="border border-dark my-3 bg-light text-black d-flex align-items-center justify-content-center w-25 h-75">
-                                Modelo
-                            </div>
-                            <div className="border border-dark my-3 mx-2 bg-light text-black d-flex align-items-center justify-content-center w-25 h-75">
-                                Modelo
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="Modelos" className="rounded m-5 col-5" style={{ height: '40%' }}>
-                        <span style={{ backgroundColor: '#99DBFB' }} className="rounded d-block text-center my-2 w-25 fs-5">
-                            Meus Modelos
-                        </span>
-                        <div className="d-flex justify-content-between" style={{ width: '550px', height: '250px' }}>
-                            <div className="border border-dark my-3 mx-2 bg-light text-black d-flex align-items-center justify-content-center w-25 h-75">
-                                Modelo
-                            </div>
-                            <div className="border border-dark my-3 bg-light text-black d-flex align-items-center justify-content-center w-25 h-75">
-                                Modelo
-                            </div>
-                            <div className="border border-dark my-3 mx-2 bg-light text-black d-flex align-items-center justify-content-center w-25 h-75">
-                                Modelo
-                            </div>
-                        </div>
+                            Criar Novo Modelo
+                        </button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     );
 }
