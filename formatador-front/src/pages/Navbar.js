@@ -28,7 +28,7 @@ export default function Nav(props){
     }, [props.text]);
     
     return(
-            <nav class="navbar navbar-expand-lg rounded fixed-sm-top" id="nav">
+            <nav class="navbar navbar-expand-lg rounded fixed-sm-top  w-100" id="nav">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">
                         <img src={logo} alt="Logo" width="100px" className="d-inline-block align-text-top"></img>
