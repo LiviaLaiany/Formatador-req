@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+#nome{
+    border-color: #003060;
+    border: solid 2px;
+
+}
+#descricao{
+    border-color: #003060;
+    border: solid 2px;
+}
+#h2{
+    background-color: #2CAEEF;
+    color: white;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+}
+#botao{
+    background-color: #003060;
+    color: white;
+
+}
+#botao:hover{
+    background-color: #044383;
+
+}
+body{
+    font-family: "DM Sans";
+}
+#imagens{
+    z-index: 3;
+    position: relative;
+    height: 86px;
+}
+#forms{
+    position: relative;
+    z-index: 3;
+}
