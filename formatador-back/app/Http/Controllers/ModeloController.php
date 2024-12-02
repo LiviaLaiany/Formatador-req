@@ -17,8 +17,8 @@ class ModeloController extends Controller
      */
     public function index()
     {
-        $modelos = Modelo::where('user_id', auth()->id())->get();
-        return $modelos;
+        $modelos = Modelo::where('user_id', auth()->id())->orWhereNull('user_id')->get();
+        return response()->json($modelos, 200);
     }
 
     /**
@@ -101,6 +101,8 @@ class ModeloController extends Controller
     public function destroy(Modelo $modelo)
     {
         $modelo->delete();
+
+        return response()->json(['message' => 'Modelo excluído com sucesso.'], 200);
     }
 
     /*---- TEMPLATE/TESTE MÉTODOS ----*/

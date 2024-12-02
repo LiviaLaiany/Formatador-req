@@ -39,7 +39,7 @@ export default function Nav(props){
                     <div className={`navbar-collapse ${ isMenuOpen ? "show justify-content-start" : "collapse justify-content-end"}`} id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item rounded quadrado" style={InicialStyle}>
-                            <Link to={"/paginainicial"} className="nav-link fs-5 m-2 fw-bold">
+                            <Link to={"/"} className="nav-link fs-5 m-2 fw-bold">
                                 Página Inicial
                             </Link>
                             </li>
