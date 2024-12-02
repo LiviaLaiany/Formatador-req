@@ -28,13 +28,13 @@ export default function Nav(props){
     }, [props.text]);
     
     return(
-            <nav class="navbar navbar-expand-lg rounded fixed-sm-top  w-100" id="nav">
-                <div class="container-fluid">
+            <nav className="navbar navbar-expand-lg rounded fixed-sm-top  w-100" id="nav">
+                <div className="container-fluid">
                     <a class="navbar-brand" href="#">
                         <img src={logo} alt="Logo" width="100px" className="d-inline-block align-text-top"></img>
                     </a>
-                    <button class="navbar-toggler" type="button" onClick={toggleMenu}>
-                        <span class="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler" type="button" onClick={toggleMenu}>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className={`navbar-collapse ${ isMenuOpen ? "show justify-content-start" : "collapse justify-content-end"}`} id="navbarNav">
                         <ul className="navbar-nav">

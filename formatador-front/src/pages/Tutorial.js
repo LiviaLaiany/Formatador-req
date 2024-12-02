@@ -20,10 +20,9 @@ export default function Tutorial(){
         <div >
             <Nav text = "Tutorial"/>
 
-            <div className="mt-5">
+            {/* <div className="mt-5">
                 <div className="row justify-content-center align-items-center">
                     <img src={passos} className='img-fluid'></img>
-                    {/* <img src={Teste} className='img-fluid mx-0 my-0 px-0'></img> */}
                 </div>
                 <div className='justify-content-between d-flex'>
                     <img src={TutorialImage} className='img-fluid d-none d-sm-block'></img>
@@ -46,48 +45,46 @@ export default function Tutorial(){
                         <img src={Cadastro} alt="Cadastro" className="img-fluid border rounded"></img>
                     </div>
                 </div>
+            </div> */}
 
-                {/* div passo 2,3,4,5 */}
-            </div>
-
-            {/* <div className=''>
-                <div className='background d-flex align-items-center justify-content-center mt-5'> 
+        <div className=''>
+                        <div className='background d-flex align-items-center justify-content-center mt-5'> 
                     <img src={passos} className='img-fluid'></img>
                 </div>
-                <div className='justify-content-between d-flex'>
-                    <img src={TutorialImage} className='img-fluid d-none d-sm-block'></img>
-                    <img src={Tutorial1} className='d-none d-sm-block'></img>
-                </div>
-                <div>
-                    <div className='justify-content-between d-flex'>
-                        <img src= {Tutorial2}></img>
-                        <img src= {Tutorial3}></img>
+                 <div className='justify-content-between d-flex'>
+                     <img src={TutorialImage} className='img-fluid d-none d-sm-block'></img>
+                     <img src={Tutorial1} className='d-none d-sm-block'></img>
+                 </div>
+                 <div>
+                     <div className='justify-content-between d-flex'>
+                         <img src= {Tutorial2}></img>
+                         <img src= {Tutorial3}></img>
 
-                    </div>
-                    <div className='row vh-100 mx-5 justify-content-center  '>
-                        <div className='col-5 '>
-                            <div className='d-flex justify-content-start align-items-center'>
-                                <img src={T1}></img>
-                                <div className='fw-bolder align-self-center '>Cadastre-se</div>
-                            </div>
-                            <div className='m-5 align-items-center '>
-                                <span className='d-block text-center'>Para acessar as funcionalidades do nosso site é necessário que haja um cadastro com e-mail válido e senha.</span>
-                                <span className='d-block text-center'>Ao se cadastrar, os seus Documentos já editados serão salvos na sua conta. Assim, se necessário poderá acessá-los.</span>
-                            </div>
-                        </div>
-                        <div className='col-5'>
-                            <img alt='imagem' className='border rounded ' src={Cadastro}></img>
-                        </div>
-                    </div>
-                    <div className='justify-content-between d-flex'>
-                        <img src={TutorialImage} className='img-fluid d-none d-sm-block'></img>
-                        <img src={Tutorial1} className='d-none d-sm-block'></img>
-                    </div>                
-                </div>
-                <div>
-                    <div className='justify-content-between d-flex'>
-                        <img src= {Tutorial2}></img>
-                        <img src= {Tutorial3}></img>
+                     </div>
+                     <div className='row vh-100 mx-5 justify-content-center  '>
+                         <div className='col-5 '>
+                             <div className='d-flex justify-content-start align-items-center'>
+                                 <img src={T1}></img>
+                                 <div className='fw-bolder align-self-center '>Cadastre-se</div>
+                             </div>
+                             <div className='m-5 align-items-center '>
+                                 <span className='d-block text-center'>Para acessar as funcionalidades do nosso site é necessário que haja um cadastro com e-mail válido e senha.</span>
+                                 <span className='d-block text-center'>Ao se cadastrar, os seus Documentos já editados serão salvos na sua conta. Assim, se necessário poderá acessá-los.</span>
+                             </div>
+                         </div>
+                         <div className='col-5'>
+                             <img alt='imagem' className='border rounded ' src={Cadastro}></img>
+                         </div>
+                     </div>
+                     <div className='justify-content-between d-flex'>
+                         <img src={TutorialImage} className='img-fluid d-none d-sm-block'></img>
+                         <img src={Tutorial1} className='d-none d-sm-block'></img>
+                     </div>                
+                 </div>
+                 <div>
+                     <div className='justify-content-between d-flex'>
+                         <img src= {Tutorial2}></img>
+                         <img src= {Tutorial3}></img>
 
                     </div>
                     <div className='row vh-100 mx-5 justify-content-center  '>
@@ -190,8 +187,8 @@ export default function Tutorial(){
                             <img alt='imagem' className='border'></img>
                         </div>
                     </div>
-                </div>
-            </div> */}
+                 </div>
+             </div>
             <Rodape/>
         </div>
     )
