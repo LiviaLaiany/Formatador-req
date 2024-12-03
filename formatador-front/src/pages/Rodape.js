@@ -3,7 +3,7 @@ import logo from "../imagens/FDR.svg";
 export default function Rodape() {
 
     return (
-        <footer className="bg-dark mt-5 w-100 px-0">
+        <footer className="bg-dark mt-5 w-100 py-0 mb-0 px-0">
             <div className="container">
                 <div className="row justify-content-center border-bottom pb-3">
                     <div className="col-auto d-flex align-items-center justify-content-center">
