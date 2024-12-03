@@ -1,24 +1,41 @@
 
-#name{
+#name {
     background-color: #2CAEEF;
 }
-#box-2{
-    background-color: #FFEE55    ;
+
+#box-2 {
+    background-color: #FFEE55;
 }
-#bt-1, #bt-2{
-    background-color:#FFEE55 ;
+
+#bt-1, #bt-2, #bt-3 {
+    background-color: #FFEE55;
     color: black;
 }
-#bt-1:hover, #bt-2:hover, #name:hover{
+
+#bt-1:hover, #bt-2:hover, #name:hover, #bt-3:hover{
     background-color: #003060;
     color: white;
 }
-.nome{
-     z-index:-1;
+
+.nome {
+    z-index: 1; /* Ajustado para que o vídeo 'nome' seja visível */
+    position: relative; /* Garantir que o vídeo 'nome' seja posicionado corretamente */
 }
-.botoes{
+
+.botoes {
     z-index: 2;
 }
-.video{
-    z-index:1;
+
+.img-fluid {
+    position: relative;
+    z-index: 20; /* A imagem de fundo ficará atrás dos outros elementos */
 }
+
+#logo {
+    position: absolute; /* O logo com vídeo será posicionado sobre os outros elementos */
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+

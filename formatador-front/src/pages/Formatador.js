@@ -60,7 +60,10 @@ export default function Formatador() {
             <Nav text="Formatador" />
             <div style={{ backgroundColor: '#ebebeb', paddingTop: '10%' }} className="pb-3">
                 <div className="d-flex justify-content-between p-4">
-                    <span className="fw-bold">Criar novo documento</span>
+                    {/* <span className="fw-bold"><a href=''>Criar novo documento</a></span>*/}                            
+                    <button onClick={handleCriarProjeto} className="btn fw-bold btn-primary">
+                                Criar Novo Projeto
+                    </button>
                     <span className="fw-bold">Galeria de modelos</span>
                 </div>
 
@@ -68,13 +71,6 @@ export default function Formatador() {
                     {projetos?.length === 0 ? (
                         <div className="text-center">
                             <p>Nenhum projeto encontrado.</p>
-                            <button
-                                onClick={handleCriarProjeto}
-                                className="btn btn-primary"
-                                style={{ marginTop: '20px' }}
-                            >
-                                Criar Novo Projeto
-                            </button>
                         </div>
                     ) : (
                         <div className="row d-flex justify-content-center w-100">

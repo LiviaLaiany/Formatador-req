@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api.js';
 import Nav from './Navbar.js';
+import Rodape from './Rodape.js';
+import TutorialImage from  '../imagens/Tutorial.svg';
+import Tutorial1 from '../imagens/Tutorial1.svg';
 import '../css/CriarModeloPersonalizado.css';
 
 export default function CriarModeloPersonalizado() {
@@ -46,25 +49,35 @@ export default function CriarModeloPersonalizado() {
     };
 
     return (
-        <div>
+        <div className='box-1 '>
             <Nav/>
-            <div className=''>
-                <span className='align-self-center d-flex justify-content-center criar rounded ' ><h1  className='rounded p-1 m-3'>Criar Novo Modelo Personalizado</h1></span>
-                <div className='justify-content-center d-flex align-items-center'>
-                    <form onSubmit={handleSubmit} className='my-2'>
-                        <label className='form-label'>
-                            Nome do Modelo: <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} required  className='form-control'/>
+            <span className='align-self-center d-flex justify-content-center text-light my-2' ><h2  className=' p-1 m-3 fs-2'>Criar Novo Modelo Personalizado</h2></span>
+            
+            <div className='d-flex justify-content-center  align-items-center'>
+                
+            <div className=' w-50 rounded align-self-center bg-light'>
+                <div className='justify-content-center d-flex align-items-center w-100'>
+                    <form onSubmit={handleSubmit} className='my-2  '>
+                        <label className='form-label text-center my-2 container-fluid'>
+                           
+                            <h3 className=''> Nome do Modelo:  </h3><input type="text" value={nome} onChange={(e) => setNome(e.target.value)} required id='form' className=' form-control'/>
+                            
                         </label>
+                        <p>Selecione os campos que deseja no modelo do seu Documento de Requisistos</p>
+                        <p className=''>Obs: os campos já marcados são obrigatórios</p>
                         <div className='row'>
-                            <div className='col-5'>
+                            
+                            <div className='col-5 form-check form-switch'>
                                 <h3>Capa</h3>
                                 {capa.map((campo, index) => (
                                     <div key={index}>
                                         <input
                                             type="checkbox"
+                                            role="switch"
                                             checked={campo.selecionado || campo.obrigatorio}
                                             disabled={campo.obrigatorio}
                                             onChange={() => toggleCampo(capa, setCapa, index)}
+                                            className='form-check-input'
                                         />
                                         <span>{campo.titulo}</span>
                                     </div>
@@ -72,12 +85,15 @@ export default function CriarModeloPersonalizado() {
                             </div>
                             <div className='col-2'></div>
                             
-                            <div className='col-5'>
+                            <div className='col-5  form-check form-switch '>
                                 <h3>Conteúdo</h3>
+                                
                                 {conteudo.map((secao, index) => (
                                 <div key={index}>
                                     <input
                                         type="checkbox"
+                                        className='form-check-input'
+                                        role="switch"
                                         checked={secao.selecionado || secao.obrigatorio}
                                         disabled={secao.obrigatorio}
                                         onChange={() => toggleCampo(conteudo, setConteudo, index)}
@@ -89,13 +105,16 @@ export default function CriarModeloPersonalizado() {
                             </div>             
                             
                         </div>
+                        <div className='d-flex justify-content-center align-items-center my-5'>
+                            <button type="submit" className='btn criar'>Salvar</button>
+                        </div>
                         
-                        <button type="submit" className='btn criar'>Salvar</button>
                     </form>
                 </div>
-                
+            </div>
             </div>
             
+            <Rodape/>
         </div>
     );
 }

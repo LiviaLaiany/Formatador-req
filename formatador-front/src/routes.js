@@ -18,7 +18,7 @@ export default function Rotas() {
         <Route path='/formatador' element={<Formatador />}/>
         <Route path='/projetos/criar' element={<CriarProjeto />}/>
         <Route path='/tutorial' element={<Tutorial />}/>
-        <Route path='/paginainicial' element={<Paginainicial />}/>
+        <Route path='/' element={<Paginainicial />}/>
         <Route path='/projetos/:id' element={<ShowProjeto />}/>
         <Route path='/modelos/:id' element={<ShowModelo />}/>
         <Route path="/modelos/criar" element={<CriarModeloPersonalizado />} />

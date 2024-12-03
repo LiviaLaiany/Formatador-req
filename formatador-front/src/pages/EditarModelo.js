@@ -50,7 +50,7 @@ export default function EditarModelo() {
     }
 
     return (
-        <div>
+        <div className=''>
             <h1>Editar Modelo</h1>
             <form onSubmit={handleSubmit}>
                 <label>

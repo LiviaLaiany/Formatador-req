@@ -59,7 +59,6 @@ export default function Tutorial(){
                      <div className='justify-content-between d-flex'>
                          <img src= {Tutorial2}></img>
                          <img src= {Tutorial3}></img>
-
                      </div>
                      <div className='row vh-100 mx-5 justify-content-center  '>
                          <div className='col-5 '>
