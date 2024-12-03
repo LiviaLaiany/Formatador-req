@@ -39,8 +39,31 @@ export default function Formatador() {
             });
     }, [token, navigate]);
 
+    const handleAbrirProjeto = (id) => {
+        navigate(`/projetos/${id}`);
+    };
+
     const handleCriarProjeto = () => {
         navigate('/projetos/criar');
+    };
+
+    const handleExcluirProjeto = (id, e) => {
+        e.stopPropagation()
+
+        if (window.confirm("Tem certeza que deseja deletar projeto?")) {
+            
+            api.delete(`v1/documentos/${id}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            .then( () => {
+                alert('Projeto deletado com sucesso')
+                navigate('/formatador')
+            }
+            ).catch((err) => {
+                alert('Erro ao deletar projeto: ' + err.message)
+            })
+
+        }
     };
 
     const handleAbrirModelo = (id) => {
@@ -49,10 +72,6 @@ export default function Formatador() {
 
     const handleCriarModelo = () => {
         navigate('/modelos/criar');
-    };
-
-    const handleAbrirProjeto = (id) => {
-        navigate(`/projetos/${id}`);
     };
 
     return (
@@ -71,6 +90,16 @@ export default function Formatador() {
                     {projetos?.length === 0 ? (
                         <div className="text-center">
                             <p>Nenhum projeto encontrado.</p>
+<<<<<<< HEAD
+=======
+                            <button
+                                onClick= {handleCriarProjeto}
+                                className="btn btn-primary"
+                                style={{ marginTop: '20px' }}
+                            >
+                                Criar Novo Projeto
+                            </button>
+>>>>>>> 2ebbf2b470d83a1f210d11115a035c88fff55343
                         </div>
                     ) : (
                         <div className="row d-flex justify-content-center w-100">
@@ -81,7 +110,12 @@ export default function Formatador() {
                                     onClick={() => handleAbrirProjeto(projeto.id)}
                                     style={{ cursor: 'pointer', height: '150px' }}
                                 >
-                                    <div className="text-center">{projeto.nome}</div>
+                                    <div className="text-center">
+                                        {projeto.nome}
+                                        <button key={projeto.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirProjeto(projeto.id, e)}>
+                                            Excluir
+                                        </button>
+                                    </div>
                                 </div>
                             ))}
                         </div>
