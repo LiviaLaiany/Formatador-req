@@ -47,17 +47,11 @@ export default function CriarProjeto() {
         <div>
            <Nav text="Formatador" />
 
-            <div className="container-fluid  p-0 ">
+            <div id="divGrande" className="container-fluid vh-100 p-0 ">
                 <div id="h2" className="container-fluid d-flex p-0">
-                    <h2 className="text-center">Criar Novo Projeto</h2>
+                    <h2 className="text-center fs-2">Criar Novo Projeto</h2>
                 </div>           
-                <div id="imagens" className="">
-                    <div className='justify-content-between d-flex'>
-                        <img src={TutorialImage} className='img-fluid d-none justify-content-around d-md-block '></img>
-                        <img src={Tutorial1} className='img-fluid d-none justify-content-around d-md-block'></img>
-                    </div>
-                </div>
-                <form id="forms" className="mt-4 container w-50" onSubmit={handleCriarProjeto}>
+                <form id="forms" className="mt-4 container rounded p-5 w-50 bg-light" onSubmit={handleCriarProjeto}>
                     <div className="mb-3">
                         <label htmlFor="nome" className="form-label">Nome do Projeto</label>
                         <input type="text" className="form-control text-dark" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite o nome do projeto" required></input>
@@ -66,9 +60,12 @@ export default function CriarProjeto() {
                         <label htmlFor="descricao" className="form-label">Descrição do Projeto</label>
                         <textarea className="form-control text-dark" id="descricao" value={descricao} onChange={(e) => setDescricao(e.target.value)} placeholder="Digite uma breve descrição do projeto" rows="4"></textarea>
                     </div>
-                    <button type="submit" className="btn  w-100" id="botao">
-                        Criar Projeto
-                    </button>
+                    <div className="align-items-center justify-content-center d-flex">
+                        <button type="submit" className="btn  w-50 " id="botao">
+                            Criar Projeto
+                        </button>
+                    </div>
+
                 </form>
             </div>
             <Rodape/>
