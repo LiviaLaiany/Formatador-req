@@ -1,0 +1,16 @@
+.show{
+    background-color: #2CAEEF;
+    color: white;
+}
+#botao{
+    background-color: #003060;
+    color: white;
+
+}
+#botao:hover{
+    background-color: #044383;
+
+}
+div{
+    border-radius: 3px;
+}

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api.js';
 import Nav from './Navbar.js';
-
+import "../css/ShowModelo.css";
+import Rodape from './Rodape.js';
 
 export default function ModeloDetalhes() {
     const { id } = useParams();
@@ -62,23 +63,27 @@ export default function ModeloDetalhes() {
         ));
 
     return (
-        <div>
-            <Nav text="Detalhes do Modelo" />
-            <div className="container mt-4">
-                <h2 className="text-center mb-4">{modelo.nome}</h2>
-
-                <h4>Capa</h4>
-                <div>{modelo.mod_json.capa.length > 0 ? renderCapa(modelo.mod_json.capa) : <p>Sem dados na capa.</p>}</div>
-
-                <h4 className="mt-4">Conteúdo</h4>
-                <div>
+        <div className='show'>
+            <Nav text="Formatador" />
+            <h2 className="text-center my-4  fs-2">{modelo.nome}</h2>
+            <div className="container card bg-light  text-dark rounded  mt-4 ">
+                <h4 className=' fs-2  mt-4 card-header color'>Capa</h4>
+                <div className='py-3 card-body rounded'>{modelo.mod_json.capa.length > 0 ? renderCapa(modelo.mod_json.capa) : <p>Sem dados na capa.</p>}</div>
+            </div>
+            <div className='container bg-light card  text-dark rounded  mt-4'>
+                <h4 className="mt-4 card-header fs-2">Conteúdo</h4>
+                <div className='rounded card-body box-2'>
                     {modelo.mod_json.conteudo.length > 0 ? renderConteudo(modelo.mod_json.conteudo) : <p>Sem dados no conteúdo.</p>}
                 </div>
-
-                <button className="btn btn-primary mt-4" onClick={() => navigate('/formatador')}>
-                    Voltar
-                </button>
+            <div/>
+                                    
+                <div className="align-items-center justify-content-center d-flex" onClick={() => navigate('/formatador')}>
+                        <button type="submit" className="btn  w-25  m-4" id="botao">
+                            Voltar
+                        </button>
+                </div>
             </div>
+            <Rodape/>
         </div>
     );
 }

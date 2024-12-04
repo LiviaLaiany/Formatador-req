@@ -1,5 +1,5 @@
 import logo from "../imagens/FDR.svg"; 
-import './Rodape.css';
+import '../css/Rodape.css';
 
 export default function Rodape() {
 
