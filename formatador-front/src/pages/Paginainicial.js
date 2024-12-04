@@ -10,7 +10,7 @@ import fundo3 from "../imagens/fundo3.svg";
 import { Link } from 'react-router-dom';
 
 
-
+//RESPONSIVO E PRONTO
 export default function Paginainicial(){
     
     return(

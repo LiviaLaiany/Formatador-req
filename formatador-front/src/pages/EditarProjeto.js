@@ -6,6 +6,7 @@ import Rodape from './Rodape.js';
 import '../css/CriarProjeto.css';
 import TutorialImage from '../imagens/Tutorial.svg';
 import Tutorial1 from '../imagens/Tutorial1.svg';
+//FALTA RESPONSIVO 
 
 export default function EditarProjeto() {
     const {id} = useParams();

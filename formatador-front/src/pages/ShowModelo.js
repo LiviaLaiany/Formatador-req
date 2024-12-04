@@ -4,7 +4,7 @@ import api from '../services/api.js';
 import Nav from './Navbar.js';
 import "../css/ShowModelo.css";
 import Rodape from './Rodape.js';
-
+//RESPONSIVO E PRONTO
 export default function ModeloDetalhes() {
     const { id } = useParams();
     const [modelo, setModelo] = useState(null);
@@ -70,7 +70,11 @@ export default function ModeloDetalhes() {
                 <h4 className=' fs-2  mt-4 card-header color'>Capa</h4>
                 <div className='py-3 card-body rounded'>{modelo.mod_json.capa.length > 0 ? renderCapa(modelo.mod_json.capa) : <p>Sem dados na capa.</p>}</div>
             </div>
+<<<<<<< HEAD
             <div className='container bg-light card  text-dark rounded mb-4 mt-4'>
+=======
+            <div className='container bg-light card  text-dark rounded  mt-4 mb-4'>
+>>>>>>> 89729ae4a26997f0d895aaffbb9c2308aef18c5c
                 <h4 className="mt-4 card-header fs-2">Conteúdo</h4>
                 <div className='rounded card-body box-2'>
                     {modelo.mod_json.conteudo.length > 0 ? renderConteudo(modelo.mod_json.conteudo) : <p>Sem dados no conteúdo.</p>}
