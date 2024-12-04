@@ -11,7 +11,7 @@ export default function ProjetoShow() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
+// RESPONSIVO E PRONTO
   // Carregar os dados do projeto
   useEffect(() => {
     const fetchProjeto = async () => {

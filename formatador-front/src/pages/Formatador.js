@@ -4,6 +4,7 @@ import api from '../services/api.js';
 import Nav from './Navbar.js';
 import '../css/Formatador.css';
 import mais from '../imagens/mais.svg';
+//FALTA RESPONSIVO E TUDO
 
 export default function Formatador() {
     const [token] = useState(localStorage.getItem('token'));

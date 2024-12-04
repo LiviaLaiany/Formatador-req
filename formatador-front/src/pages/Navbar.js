@@ -2,7 +2,8 @@ import React, {useLayoutEffect, useState, } from 'react';
 import logo from "../imagens/FDR-preto.svg"; 
 import { Link } from 'react-router-dom';
 import '../css/Navbar.css';
-
+//RESPONSIVO
+//AJEITAR CORES
 export default function Nav(props){
     const [TutStyle, setTutStyle] = useState({});
     const [FormStyle, setFormStyle] = useState({});

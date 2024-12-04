@@ -2,7 +2,8 @@
 import api from '../services/api.js'
 import {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-
+//RESPONSIVO 
+//barra branca a direita
 //IMAGENS E CSS
 import '../css/Login.css';
 import logo from "../imagens/FDR.svg"; 

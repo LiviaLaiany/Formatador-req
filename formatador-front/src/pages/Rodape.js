@@ -1,6 +1,6 @@
 import logo from "../imagens/FDR.svg"; 
 import '../css/Rodape.css';
-
+//RESPONSIVO E PRONTO
 export default function Rodape() {
 
     return (

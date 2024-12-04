@@ -6,7 +6,7 @@ import Rodape from './Rodape.js';
 import '../css/CriarProjeto.css';
 import TutorialImage from '../imagens/Tutorial.svg';
 import Tutorial1 from '../imagens/Tutorial1.svg';
-
+//FALTA RESPONSIVO 
 export default function CriarProjeto() {
     const [token] = useState(localStorage.getItem('token'));
     const [nome, setNome] = useState('');
