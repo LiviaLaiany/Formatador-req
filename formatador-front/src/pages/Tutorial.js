@@ -37,42 +37,6 @@ export default function Tutorial(){
                         <img src= {Tutorial3} className='d-none d-lg-block'></img>
                     </div>
                 </div>
-<<<<<<< HEAD
-                 <div className='justify-content-between d-flex'>
-                     <img src={TutorialImage} className='img-fluid d-none d-sm-block'></img>
-                     <img src={Tutorial1} className='d-none d-sm-block'></img>
-                 </div>
-                 <div>
-                     <div className='justify-content-between d-flex'>
-                         <img src= {Tutorial2}></img>
-                         <img src= {Tutorial3}></img>
-                     </div>
-                     <div className='row vh-100 mx-5 justify-content-center  '>
-                         <div className='col-5 '>
-                             <div className='d-flex justify-content-start align-items-center'>
-                                 <img src={T1}></img>
-                                 <div className='fw-bolder align-self-center '>Cadastre-se</div>
-                             </div>
-                             <div className='m-5 align-items-center '>
-                                 <span className='d-block text-center'>Para acessar as funcionalidades do nosso site é necessário que haja um cadastro com e-mail válido e senha.</span>
-                                 <span className='d-block text-center'>Ao se cadastrar, os seus Documentos já editados serão salvos na sua conta. Assim, se necessário poderá acessá-los.</span>
-                             </div>
-                         </div>
-                         <div className='col-5'>
-                             <img alt='imagem' className='border rounded ' src={Cadastro}></img>
-                         </div>
-                     </div>
-                     <div className='justify-content-between d-flex'>
-                         <img src={TutorialImage} className='img-fluid d-none d-sm-block'></img>
-                         <img src={Tutorial1} className='d-none d-sm-block'></img>
-                     </div>                
-                 </div>
-                 <div>
-                     <div className='justify-content-between d-flex'>
-                         <img src= {Tutorial2}></img>
-                         <img src= {Tutorial3}></img>
-=======
->>>>>>> 2ebbf2b470d83a1f210d11115a035c88fff55343
 
                 <div className='row px-0'>
                     <div className='col-12 col-lg-6 p-0'>
