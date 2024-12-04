@@ -47,6 +47,12 @@ export default function Formatador() {
         navigate('/projetos/criar');
     }
 
+    const handleEditarProjeto = (id, e) => {
+        e.stopPropagation();
+
+        navigate(`/projetos/editar/${id}`);
+    }
+
     const handleExcluirProjeto = (id, e) => {
         e.stopPropagation()
 
@@ -111,6 +117,9 @@ export default function Formatador() {
                                         {projeto.nome}
                                         <button key={projeto.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirProjeto(projeto.id, e)}>
                                             Excluir
+                                        </button>
+                                        <button key={projeto.id} className='btn btn-primary btn-sm' onClick={(e) => handleEditarProjeto(projeto.id, e)}>
+                                            Editar
                                         </button>
                                     </div>
                                 </div>
