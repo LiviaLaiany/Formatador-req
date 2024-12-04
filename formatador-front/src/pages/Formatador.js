@@ -96,13 +96,13 @@ export default function Formatador() {
                     {projetos?.length === 0 ? (
                         <div className="text-center">
                             <p>Nenhum projeto encontrado.</p>
-                            <button
+                            {/* <button
                                 onClick= {handleCriarProjeto}
                                 className="btn btn-primary"
                                 style={{ marginTop: '20px' }}
                             >
                                 Criar Novo Projeto
-                            </button>
+                            </button> */}
                         </div>
                     ) : (
                         <div className="row d-flex justify-content-center w-100">
@@ -113,7 +113,7 @@ export default function Formatador() {
                                     onClick={() => handleAbrirProjeto(projeto.id)}
                                     style={{ cursor: 'pointer', height: '150px' }}
                                 >
-                                    <div className="text-center">
+                                    <div className="text-center ">
                                         {projeto.nome}
                                         <button key={projeto.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirProjeto(projeto.id, e)}>
                                             Excluir

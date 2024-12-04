@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../services/api";
 import Nav from "./Navbar.js";
+import Rodape from './Rodape.js';
+import "../css/ShowProjeto.css";
 
 export default function ProjetoShow() {
   const { id } = useParams(); // Pega o ID do projeto da URL
@@ -56,7 +58,7 @@ export default function ProjetoShow() {
   }
 
   return (
-    <div>
+    <div className="show">
       <Nav text="Projeto Detalhado" />
       <div className="container">
         <h1 className="text-center mt-4">{projeto.nome}</h1>
@@ -94,6 +96,7 @@ export default function ProjetoShow() {
           )}
         </div>
       </div>
+      <Rodape/>
     </div>
   );
 }

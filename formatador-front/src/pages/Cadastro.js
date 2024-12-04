@@ -48,7 +48,7 @@ export default function Cadastro(){
                         <div className="d-flex flex-column align-items-center justify-content-center">
                             <input  placeholder="Nome" className="form-control mt-2 w-100" value={name} onChange={e => setName(e.target.value)}/>
                             <input id="email" placeholder="exemplo@dominio.com" className="form-control mt-2 w-100" value={email} onChange={e => setEmail(e.target.value)}/>
-                            <input id="senha" placeholder="Senha" className="form-control mt-2 w-100" value={password} onChange={e => setPassword(e.target.value)}/>
+                            <input type='password' id="senha" placeholder="Senha" className="form-control mt-2 w-100" value={password} onChange={e => setPassword(e.target.value)}/>
                         </div>
 
                         <div className="mt-5 d-flex align-items-center justify-content-center">

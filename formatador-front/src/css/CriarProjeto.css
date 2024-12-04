@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
-
+#divGrande{
+    background: #2CAEEF;
+}
 #nome{
     border-color: #003060;
-    border: solid 2px;
+    border: solid 1px;
 }
 #descricao{
     border-color: #003060;
-    border: solid 2px;
+    border: solid 1px;
 }
 #h2{
     background-color: #2CAEEF;
@@ -27,11 +29,6 @@
 }
 body{
     font-family: "DM Sans";
-}
-#imagens{
-    z-index: 3;
-    position: relative;
-    height: 86px;
 }
 #forms{
     position: relative;

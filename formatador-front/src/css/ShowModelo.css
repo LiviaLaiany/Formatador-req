@@ -1,12 +1,6 @@
-.criar{
+.show{
     background-color: #2CAEEF;
     color: white;
-}
-#form{
-    border: 1px solid #003060;
-}
-.box-1{
-    background-color: #2CAEEF;
 }
 #botao{
     background-color: #003060;
@@ -16,4 +10,7 @@
 #botao:hover{
     background-color: #044383;
 
+}
+div{
+    border-radius: 3px;
 }
