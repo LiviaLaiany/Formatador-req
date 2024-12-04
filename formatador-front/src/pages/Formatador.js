@@ -41,38 +41,38 @@ export default function Formatador() {
 
     const handleAbrirProjeto = (id) => {
         navigate(`/projetos/${id}`);
-    };
+    }
 
     const handleCriarProjeto = () => {
         navigate('/projetos/criar');
-    };
+    }
 
     const handleExcluirProjeto = (id, e) => {
         e.stopPropagation()
 
         if (window.confirm("Tem certeza que deseja deletar projeto?")) {
             
-            api.delete(`v1/documentos/${id}`, {
+            api.delete(`v1/projetos/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then( () => {
-                alert('Projeto deletado com sucesso')
-                navigate('/formatador')
+                alert('Projeto deletado com sucesso');
+                navigate(0);
             }
             ).catch((err) => {
-                alert('Erro ao deletar projeto: ' + err.message)
+                alert('Erro ao deletar projeto: ' + err.response.data.message);
             })
 
         }
-    };
+    }
 
     const handleAbrirModelo = (id) => {
-        navigate(`/modelos/${id}`)
+        navigate(`/modelos/${id}`);
     }
 
     const handleCriarModelo = () => {
         navigate('/modelos/criar');
-    };
+    }
 
     return (
         <div>
@@ -90,8 +90,6 @@ export default function Formatador() {
                     {projetos?.length === 0 ? (
                         <div className="text-center">
                             <p>Nenhum projeto encontrado.</p>
-<<<<<<< HEAD
-=======
                             <button
                                 onClick= {handleCriarProjeto}
                                 className="btn btn-primary"
@@ -99,7 +97,6 @@ export default function Formatador() {
                             >
                                 Criar Novo Projeto
                             </button>
->>>>>>> 2ebbf2b470d83a1f210d11115a035c88fff55343
                         </div>
                     ) : (
                         <div className="row d-flex justify-content-center w-100">
