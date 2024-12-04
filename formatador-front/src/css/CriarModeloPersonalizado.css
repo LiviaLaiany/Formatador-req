@@ -8,3 +8,12 @@
 .box-1{
     background-color: #2CAEEF;
 }
+#botao{
+    background-color: #003060;
+    color: white;
+
+}
+#botao:hover{
+    background-color: #044383;
+
+}
