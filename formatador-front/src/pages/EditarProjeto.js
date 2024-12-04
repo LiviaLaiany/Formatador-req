@@ -46,14 +46,14 @@ export default function EditarProjeto() {
     }
 
     return (
-        <div>
+        <div id="divGrande">
            <Nav text="Formatador" />
-
-            <div id="divGrande" className="container-fluid vh-100 p-0 ">
-                <div id="h2" className="container-fluid d-flex p-0">
+            {/* RESPONSIVO */}
+            <div  className="container vh-100 col-12 p-0 ">
+                <div id="h2" className="container d-flex p-0">
                     <h2 className="text-center fs-2">Editar Projeto</h2>
                 </div>           
-                <form id="forms" className="mt-4 container rounded p-5 w-50 bg-light" onSubmit={handleSubmit}>
+                <form id="forms" className="mt-4 container rounded p-5  bg-light" onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="nome" className="form-label">Nome do Projeto</label>
                         <input type="text" className="form-control text-dark" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite o nome do projeto" required></input>

@@ -53,7 +53,7 @@ export default function EditarModelo() {
         <div className=''>
             <h1>Editar Modelo</h1>
             <form onSubmit={handleSubmit}>
-                <label>
+                <label className=''>
                     Nome do Modelo:
                     <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} required />
                 </label>

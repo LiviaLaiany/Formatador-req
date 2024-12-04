@@ -31,6 +31,15 @@ body{
     font-family: "DM Sans";
 }
 #forms{
-    position: relative;
     z-index: 3;
+}
+@media (max-width: 576px) {
+    #forms {
+      max-width: 100vw; 
+    }
+  }
+@media(min-width: 768px){
+    #forms{
+        max-width: 50vw;
+    }
 }
