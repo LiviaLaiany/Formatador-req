@@ -7,6 +7,7 @@ import Rodape from './Rodape.js';
 import logo from '../imagens/FDR-preto.svg';
 import videologo from '../imagens/VideoLogo.mp4';
 import fundo3 from "../imagens/fundo3.svg";
+import { Link } from 'react-router-dom';
 
 
 
@@ -40,10 +41,10 @@ export default function Paginainicial(){
                 </div>
                 <div className='d-flex align-items-center justify-content-center my-1 my-sm-5 '>
                     
-                    <button className='btn botoes mx-3 text-center ' id='bt-1' >Acesse nosso Tutorial</button>
+                    <Link to={"/tutorial"} className='btn botoes mx-3 text-center ' id='bt-1' >Acesse nosso Tutorial</Link>
                     
-                    <button className='btn botoes text-center' id='bt-2'>Cadastre-se</button>
-                    <button className='btn botoes text-center mx-3' id='bt-3'>Login</button>
+                    <Link to={"/register"} className='btn botoes text-center' id='bt-2'>Cadastre-se</Link>
+                    <Link to={"/login"} className='btn botoes text-center mx-3' id='bt-3'>Login</Link>
 
                 </div>
             </div>

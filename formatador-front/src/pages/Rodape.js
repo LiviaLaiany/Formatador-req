@@ -5,7 +5,7 @@ export default function Rodape() {
 
     return (
 
-        <footer className=" w-100 py-0 mb-0 px-0">
+        <footer className=" w-100 py-0 mb-0  px-0">
 
             <div className="container">
                 <div className="row justify-content-center border-bottom pb-3">

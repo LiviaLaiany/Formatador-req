@@ -58,7 +58,7 @@ export default function Login(){
                         </div>
                         <div className="mt-5 d-flex align-items-center justify-content-center w-100">
                             <button className="btn btn-primary w-25 rounded-pill m-3" id="enviar" type='submit'>Enviar</button>
-                            <Link to='/register'>
+                            <Link to='/'>
                                 <button className='btn w-30 rounded-pill' id="volte">Voltar para página inicial</button>
                             </Link>
                         </div>

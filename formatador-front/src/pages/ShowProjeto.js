@@ -58,13 +58,13 @@ export default function ProjetoShow() {
   }
 
   return (
-    <div className="show">
+    <div className="show vh-100">
       <Nav text="Projeto Detalhado" />
       <div className="container">
-        <h1 className="text-center mt-4">{projeto.nome}</h1>
+        <h1 className="text-center mt-4 fs-2">{projeto.nome}</h1>
         <div className="card mt-4">
           <div className="card-header">
-            <strong>Informações do Projeto</strong>
+            <h3>Informações do Projeto</h3>
           </div>
           <div className="card-body">
             <p>
@@ -79,19 +79,22 @@ export default function ProjetoShow() {
           </div>
         </div>
 
-        <div className="mt-4">
-          <h3>Documentos de Requisitos</h3>
+        <div className="my-4 card bg-light">
+          <h3 className="card-header">Documentos de Requisitos</h3>
           {projeto.documentoRequisitos ? (
-            <div>
+            <div className="card-body">
               <p><strong>Nome do Documento:</strong> {projeto.documentoRequisitos.nome}</p>
               <p><strong>Data de Criação:</strong> {new Date(projeto.documentoRequisitos.created_at).toLocaleDateString()}</p>
             </div>
           ) : (
-            <div>
-              <p>Este projeto ainda não possui um documento de requisitos.</p>
-              <button onClick={handleCreateDocumento} className="btn btn-primary">
+            <div className="card-body">
+              <strong>Este projeto ainda não possui um documento de requisitos.</strong>
+              <div  className="d-flex justify-content-center align-items-center">
+                <button id="botao" onClick={handleCreateDocumento} className="btn btn-primary">
                 Criar Documento de Requisitos
-              </button>
+                </button>
+              </div>
+              
             </div>
           )}
         </div>

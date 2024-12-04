@@ -108,7 +108,7 @@ export default function CriarModeloPersonalizado() {
                             </div>
                             <div className="align-items-center justify-content-center m-5 d-flex">
                                 <button type="submit" className="btn  w-50" id="botao">
-                                    Criar Projeto
+                                    Criar Modelo
                                 </button>
                             </div>
                         </form>
