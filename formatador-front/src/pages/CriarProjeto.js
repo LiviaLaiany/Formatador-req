@@ -11,7 +11,7 @@ export default function CriarProjeto() {
     const [token] = useState(localStorage.getItem('token'));
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     const handleCriarProjeto = (e) => {
         e.preventDefault();
@@ -29,7 +29,7 @@ export default function CriarProjeto() {
                     Authorization: `Bearer ${token}`,
                 },
             }
-        ).then((response) => {
+        ).then(() => {
             alert('Projeto criado com sucesso!');
             navigate('/formatador');
         }).catch((error) => {
