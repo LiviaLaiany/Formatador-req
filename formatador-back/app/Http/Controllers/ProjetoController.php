@@ -94,6 +94,8 @@ class ProjetoController extends Controller
         }
         
         $projeto->save();
+
+        return response([],200);
     }
 
     /**

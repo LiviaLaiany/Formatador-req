@@ -47,6 +47,12 @@ export default function Formatador() {
         navigate('/projetos/criar');
     }
 
+    const handleEditarProjeto = (id, e) => {
+        e.stopPropagation();
+
+        navigate(`/projetos/editar/${id}`);
+    }
+
     const handleExcluirProjeto = (id, e) => {
         e.stopPropagation()
 
@@ -72,6 +78,25 @@ export default function Formatador() {
 
     const handleCriarModelo = () => {
         navigate('/modelos/criar');
+    }
+
+    const handleExcluirModelo = (id, e) => {
+        e.stopPropagation()
+
+        if (window.confirm("Tem certeza que deseja deletar modelo?")) {
+            
+            api.delete(`v1/modelos/${id}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            .then( () => {
+                alert('Modelo deletado com sucesso');
+                navigate(0);
+            }
+            ).catch((err) => {
+                alert('Erro ao deletar modelo: ' + err.response.data.message);
+            })
+
+        }
     }
 
     return (
@@ -112,6 +137,9 @@ export default function Formatador() {
                                         <button key={projeto.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirProjeto(projeto.id, e)}>
                                             Excluir
                                         </button>
+                                        <button key={projeto.id} className='btn btn-primary btn-sm' onClick={(e) => handleEditarProjeto(projeto.id, e)}>
+                                            Editar
+                                        </button>
                                     </div>
                                 </div>
                             ))}
@@ -129,7 +157,20 @@ export default function Formatador() {
                                 style={{ height: '150px', cursor: 'pointer' }}
                                 onClick={() => handleAbrirModelo(modelo.id)}
                             >
-                                <div className="text-center">{modelo.nome}</div>
+                                <div className="text-center">
+                                    {modelo.nome}
+
+                                    {
+                                        modelo.id != 1 ? 
+                                            (<button key={modelo.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirModelo(modelo.id, e)}>
+                                                Excluir
+                                            </button>
+                                            )
+                                        : (<></>)
+                                    }
+
+                                    
+                                </div>
                             </div>
                         ))}
                     </div>
