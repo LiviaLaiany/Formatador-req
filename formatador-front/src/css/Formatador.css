@@ -1,6 +1,9 @@
-#Documentos{
+.botao{
     background-color: #003060;
+    color: white;
+
 }
-#Modelos{
-    background-color: #68BBE4;
+.botao:hover{
+    background-color: #044383;
+
 }

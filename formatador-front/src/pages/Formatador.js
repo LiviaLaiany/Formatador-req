@@ -102,88 +102,98 @@ export default function Formatador() {
     }
 
     return (
-        <div className="" style={{ backgroundColor:'#2CAEEF' }}>
+        <div className=" " style={{ backgroundColor:'#2CAEEF' }}>
             <Nav text="Formatador" />
-            <div style={{  paddingTop: '10%' }} className="pb-3 vh-100  container rounded my-5  ">
-                <div className=" p-4 bg-light rounded " id='projeto'>
-                    <button onClick={handleCriarProjeto} className="btn fw-bold btn-primary">
-                        Criar Novo Projeto
-                    </button>
-                
+            <div className='d-flex align-items-center justify-content-center'>
+                <div style={{ }} className="pb-3 vh-100 row container rounded my-5  ">
+                    <div className=" p-4 bg-light rounded  col-5 " id='projeto'>
+                        <div className='d-flex align-items-center justify-content-center'>
+                            <button onClick={handleCriarProjeto} className="btn fw-bold  align-self-center w-50 btn-primary  " >
+                                Criar Novo Projeto
+                            </button>
+                        </div>
+                        
+                    
 
-                    <div className="container">
-                        {projetos?.length === 0 ? (
-                            <div className="text-center">
-                                <p>Nenhum projeto encontrado.</p>
-                                {/* <button
-                                    onClick= {handleCriarProjeto}
-                                    className="btn btn-primary"
-                                    style={{ marginTop: '20px' }}
-                                >
-                                    Criar Novo Projeto
-                                </button> */}
-                            </div>
-                        ) : (
-                            <div className="row d-flex justify-content-center w-100">
-                                {projetos.map((projeto) => (
-                                    <div
-                                        key={projeto.id}
-                                        className="col-3 col-sm-1 border border-dark bg-light d-flex align-items-center justify-content-center m-2"
-                                        onClick={() => handleAbrirProjeto(projeto.id)}
-                                        style={{ cursor: 'pointer', height: '150px' }}
-                                    >
-                                        <div className="text-center fs-5">
-                                            {projeto.nome}
-                                            <button key={projeto.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirProjeto(projeto.id, e)}>
-                                                Excluir
-                                            </button>
-                                            <button key={projeto.id} className='btn btn-primary btn-sm' onClick={(e) => handleEditarProjeto(projeto.id, e)}>
-                                                Editar
-                                            </button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                </div>                   
-                <div className="container   bg-light " id='modelo'>
-                    <h3 className="text-center">Meus Modelos</h3>
-                    <div className="row d-flex justify-content-center">
-                        {modelos.map((modelo) => (
-                            <div
-                                key={modelo.id}
-                                className="col-3 col-sm-1 border border-dark bg-light d-flex align-items-center justify-content-center m-2"
-                                style={{ height: '150px', cursor: 'pointer' }}
-                                onClick={() => handleAbrirModelo(modelo.id)}
-                            >
+                        <div className=" w-100">
+                            {projetos?.length === 0 ? (
                                 <div className="text-center">
-                                    {modelo.nome}
-
-                                    {
-                                        modelo.id != 1 ? 
-                                            (<button key={modelo.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirModelo(modelo.id, e)}>
-                                                Excluir
-                                            </button>
-                                            )
-                                        : (<></>)
-                                    }
-
-                                    
+                                    <p>Nenhum projeto encontrado.</p>
+                                    {/* <button
+                                        onClick= {handleCriarProjeto}
+                                        className="btn btn-primary"
+                                        style={{ marginTop: '20px' }}
+                                    >
+                                        Criar Novo Projeto
+                                    </button> */}
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="text-center mt-4">
-                        <button
-                            onClick={handleCriarModelo}
-                            className="btn btn-primary"
-                        >
-                            Criar Novo Modelo
-                        </button>
+                            ) : (
+                                <div className="row d-flex justify-content-center w-100">
+                                    <strong className='fs-2 text-center'>Meus projetos </strong>
+                                    {projetos.map((projeto) => (
+                                        <div
+                                            key={projeto.id}
+                                            className="col-3 col-sm-1 border border-dark w-25 h-50 bg-light d-flex align-items-center justify-content-center m-2"
+                                            onClick={() => handleAbrirProjeto(projeto.id)}
+                                            style={{ cursor: 'pointer' }}
+                                        >
+                                            <div className="text-center d-flex align-items-center justify-content-center h-25 fs-5">
+                                                {projeto.nome}
+                                                <button key={projeto.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirProjeto(projeto.id, e)}>
+                                                    Excluir
+                                                </button>
+                                                <button key={projeto.id} className='btn btn-primary btn-sm' onClick={(e) => handleEditarProjeto(projeto.id, e)}>
+                                                    Editar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </div>         
+                    <div className='col-2'></div>          
+                    <div className="container col-5  bg-light " id='modelo'>
+                       
+                        <div className="text-center mt-4 " >
+                            <button
+                                onClick={handleCriarModelo}
+                                className="btn fw-bold btn-primary"
+                            >
+                                Criar Novo Modelo
+                            </button>
+                        </div>
+                        <h3 className="text-center mt-5 fs-2">Meus Modelos</h3>
+                        <div className="row d-flex justify-content-center">
+                            {modelos.map((modelo) => (
+                                <div
+                                    key={modelo.id}
+                                    className="col-3 col-sm-3 border border-dark bg-light d-flex align-items-center justify-content-center m-2"
+                                    style={{cursor: 'pointer' }}
+                                    onClick={() => handleAbrirModelo(modelo.id)}
+                                >
+                                    <div className="text-center">
+                                        {modelo.nome}
+                                        {
+                                            modelo.id != 1 ? 
+                                                (<button key={modelo.id} className='btn btn-danger btn-sm d-block mt-3 align-self-center' onClick={(e) => handleExcluirModelo(modelo.id, e)}>
+                                                    Excluir
+                                                </button>
+                                                )
+                                            : (<></>)
+                                        }
+
+                                        
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        
                     </div>
                 </div>
+
             </div>
+            
             <Rodape/>
         </div>
     );
