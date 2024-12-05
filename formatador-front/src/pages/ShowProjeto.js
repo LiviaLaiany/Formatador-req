@@ -41,10 +41,9 @@ export default function ProjetoShow() {
     });
   }, [id, navigate]);
 
-  const handleCriarDocumento = () => {
-    navigate(`/documentos/create?pro_id=${projeto.id}`);
+  const handleCriarDocumento = (modelo) => {
+    navigate(`/documentos/criar/${projeto.id}/${modelo}`);
   };
-
   return (
     <div className="show ">
       <Nav text="Formatador" />
@@ -92,7 +91,7 @@ export default function ProjetoShow() {
                       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                      <form onSubmit={handleCriarDocumento}>
+                      <form onSubmit={(e) => handleCriarDocumento(e.target.value)}>
                         <select className="form-select">
                           {modelos.map((modelo) => (
                             <option key={modelo.id}>{modelo.nome}</option>
