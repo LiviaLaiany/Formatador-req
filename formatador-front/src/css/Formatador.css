@@ -1,6 +1,72 @@
-#Documentos{
+.botao{
     background-color: #003060;
+    color: white;
+
 }
-#Modelos{
-    background-color: #68BBE4;
+.botao:hover{
+    background-color: #044383;
+
 }
+.folder-tab {
+    background-color: #f7c131;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  .card-body {
+    padding: 20px;
+  }
+  .card-footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+  }
+  .folder {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .folder h5 {
+    margin-top: 15px;
+    font-size: 1.25rem;
+  }
+  
+  .folder p {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  .folder-button {
+    margin-top: 20px;
+  }
+  .folder {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+.folder i {
+    font-size: 4rem;
+    color: #6c757d;
+}
+.folder h5 {
+    margin-top: 15px;
+    font-size: 1.25rem;
+}
+.folder p {
+    font-size: 1rem;
+    color: #6c757d;
+}
+.folder-button {
+    margin-top: 20px;
+}  
