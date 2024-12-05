@@ -112,10 +112,7 @@ export default function Formatador() {
                                 Criar Novo Projeto
                             </button>
                         </div>
-                        
-                    
-
-                        <div className=" w-100">
+                        <div className=" h-100 w-100">
                             {projetos?.length === 0 ? (
                                 <div className="text-center">
                                     <p>Nenhum projeto encontrado.</p>
@@ -128,8 +125,8 @@ export default function Formatador() {
                                     </button> */}
                                 </div>
                             ) : (
-                                <div className="row d-flex justify-content-center w-100">
-                                    <strong className='fs-2 text-center'>Meus projetos </strong>
+                                <div className="row d-flex justify-content-center h-50 w-100">
+                                    <strong className='fs-2 justify-content-center text-center align-items-center d-flex'>Meus projetos </strong>
                                     {projetos.map((projeto) => (
                                         <div
                                             key={projeto.id}
@@ -137,21 +134,50 @@ export default function Formatador() {
                                             onClick={() => handleAbrirProjeto(projeto.id)}
                                             style={{ cursor: 'pointer' }}
                                         >
-                                            <div className="text-center d-flex align-items-center justify-content-center h-25 fs-5">
+                                            <div className="text-center d-flex align-items-center justify-content-center h-100 fs-5">
                                                 {projeto.nome}
-                                                <button key={projeto.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirProjeto(projeto.id, e)}>
-                                                    Excluir
-                                                </button>
-                                                <button key={projeto.id} className='btn btn-primary btn-sm' onClick={(e) => handleEditarProjeto(projeto.id, e)}>
-                                                    Editar
-                                                </button>
+                                                <div className='row'>
+                                                    <div className='col-6'>
+                                                        <button key={projeto.id} className='btn btn-danger btn-sm' onClick={(e) => handleExcluirProjeto(projeto.id, e)}>
+                                                            Excluir
+                                                        </button>                                                        
+                                                    </div>
+                                                    <div className='col-6'>
+                                                        <button key={projeto.id} className='btn btn-primary btn-sm' onClick={(e) => handleEditarProjeto(projeto.id, e)}>
+                                                            Editar
+                                                        </button>   
+                                                    </div>
+                                                 
+                                                </div>
                                             </div>
                                         </div>
                                     ))}
                                 </div>
                             )}
                         </div>
-                    </div>         
+                    </div>
+
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        {/* Card que simula uma pastinha */}
+        <div className="col-md-3">
+          <div className="card shadow">
+            {/* Aba da pastinha */}
+            <div className="folder-tab">
+              <i className="bi bi-folder" style={{ fontSize: '2rem', color: '#f0ad4e' }}></i>
+            </div>
+            <div className="card-body text-center">
+              <h5 className="card-title">Minha Pastinha</h5>
+              <p className="card-text">Aqui você pode organizar seus arquivos.</p>
+            </div>
+            <div className="card-footer text-center">
+              <button className="btn btn-primary">Abrir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+     
                     <div className='col-2'></div>          
                     <div className="container col-5  bg-light " id='modelo'>
                        
