@@ -6,7 +6,7 @@ import Rodape from './Rodape.js';
 import '../css/CriarProjeto.css';
 import TutorialImage from '../imagens/Tutorial.svg';
 import Tutorial1 from '../imagens/Tutorial1.svg';
-//FALTA RESPONSIVO 
+//RESPONSIVO E PRONTO
 
 export default function EditarProjeto() {
     const {id} = useParams();
@@ -50,7 +50,7 @@ export default function EditarProjeto() {
         <div id="divGrande">
            <Nav text="Formatador" />
             {/* RESPONSIVO */}
-            <div  className="container vh-100 col-12 p-0 ">
+            <div  className="container p-4 pb-sm-4 vh-100 col-12 p-0 ">
                 <div id="h2" className="container d-flex p-0">
                     <h2 className="text-center fs-2">Editar Projeto</h2>
                 </div>           

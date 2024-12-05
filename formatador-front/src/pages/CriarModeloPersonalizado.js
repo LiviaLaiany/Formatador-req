@@ -7,8 +7,7 @@ import TutorialImage from  '../imagens/Tutorial.svg';
 import Tutorial1 from '../imagens/Tutorial1.svg';
 import '../css/CriarModeloPersonalizado.css';
 
-// FAZER A RESPONSIVIDADE
-
+//RESPONSIVO E PRONTO
 export default function CriarModeloPersonalizado() {
     const [token] = useState(localStorage.getItem('token'));
     const [modeloBase, setModeloBase] = useState(null);

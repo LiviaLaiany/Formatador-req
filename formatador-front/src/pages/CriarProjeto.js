@@ -6,7 +6,7 @@ import Rodape from './Rodape.js';
 import '../css/CriarProjeto.css';
 import TutorialImage from '../imagens/Tutorial.svg';
 import Tutorial1 from '../imagens/Tutorial1.svg';
-//FALTA RESPONSIVO 
+//RESPONSIVO E PRONTO
 export default function CriarProjeto() {
     const [token] = useState(localStorage.getItem('token'));
     const [nome, setNome] = useState('');
@@ -47,7 +47,7 @@ export default function CriarProjeto() {
         <div>
            <Nav text="Formatador" />
             {/* RESPONSIVO */}
-            <div id="divGrande" className="container-fluid  vh-100 p-0 ">
+            <div id="divGrande" className="container-fluid p-4 pb-sm-4 vh-100 p-0 ">
                 <div id="h2" className="container-fluid  d-flex p-0">
                     <h2 className="text-center fs-2">Criar Novo Projeto</h2>
                 </div>

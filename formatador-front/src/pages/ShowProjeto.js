@@ -48,7 +48,7 @@ export default function ProjetoShow() {
   return (
     <div className="show ">
       <Nav text="Formatador" />
-      <div className="container vh-100">
+      <div className="container  vh-100">
         <h1 className="text-center mt-4 fs-2">{projeto?.nome}</h1>
         <div className="card mt-4">
           <div className="card-header">
