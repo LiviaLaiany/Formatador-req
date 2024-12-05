@@ -42,7 +42,7 @@ export default function Login(){
 
     return(
         <form onSubmit={handleLogin}>
-            <div className="row w-100 h-100 ">
+            <div className="row h-100 ">
                 <div className="col-sm h-auto   justify-content-center d-flex" id="back">
                     <img src={fundo2} className="position-fixed fixed-bottom  img-fluid w-25 d-none d-sm-block" alt="fundo"></img>
                     <img src={fundo1} className="position-fixed fixed-top img-fluid w-25 d-none d-sm-block"  alt="fundo"></img>
@@ -57,10 +57,14 @@ export default function Login(){
                             <input id="email" placeholder="exemplo@dominio.com" className="form-control mt-2 w-100" value={email} onChange={e => setEmail(e.target.value)}/>
                             <input type='password' id="senha" placeholder="Senha" className="form-control mt-2 w-100" value={password} onChange={e => setPassword(e.target.value)}/>
                         </div>
+                        <button className="btn btn-primary w-25 rounded-pill m-3" id="enviar" type='submit'>Enviar</button>
+
                         <div className="mt-5 d-flex align-items-center justify-content-center w-100">
-                            <button className="btn btn-primary w-25 rounded-pill m-3" id="enviar" type='submit'>Enviar</button>
                             <Link to='/'>
-                                <button className='btn w-30 rounded-pill' id="volte">Voltar para página inicial</button>
+                                <button className='btn w-100 rounded-pill' id="volte">Página inicial</button>
+                            </Link>
+                            <Link to='/register'>
+                                <button className='btn w-100 rounded-pill m-3' id="volte">Cadastro</button>
                             </Link>
                         </div>
                         <div className='align-items-center d-flex justify-content-center'>
