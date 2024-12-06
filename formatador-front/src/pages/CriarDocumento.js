@@ -71,7 +71,7 @@ export default function CriarDocumento() {
     }, [pro_id, mod_id, token]);
 
     useEffect(() => {
-        summernoteRefs.current.forEach((ref) => {
+        Object.values(summernoteRefs.current).forEach((ref) => {
             if (ref) {
                 $(ref).summernote({
                     height: 100,
@@ -85,13 +85,13 @@ export default function CriarDocumento() {
         });
 
         return () => {
-            summernoteRefs.current.forEach((ref) => {
+            Object.values(summernoteRefs.current).forEach((ref) => {
                 if (ref) {
                     $(ref).summernote("destroy");
                 }
             });
         };
-    });
+    }, [modelo]);
 
     const handleNome = (e) => {
         setNome(e.target.value);
@@ -206,13 +206,13 @@ export default function CriarDocumento() {
                 <form onSubmit={handleSubmit}>
                     <h4 className="mt-4">Capa</h4>
                     {modelo?.mod_json?.capa?.map((campo, index) => (
-                        <div key={index} className="mb-3">
+                        <div key={`capa-${index}`} className="mb-3">
                             <label htmlFor={campo?.titulo} className="form-label">
                                 {campo?.titulo} {campo?.obrigatorio && <span className="text-danger">*</span>}
                             </label>
                             {campo?.tipo === "campo_texto" ? (
                                 <div
-                                    ref={(el) => (summernoteRefs.current[index] = el)}
+                                    ref={(el) => (summernoteRefs.current[campo.titulo] = el)}
                                     data-name={campo?.titulo}
                                     className="summernote"
                                 />
@@ -223,23 +223,25 @@ export default function CriarDocumento() {
 
                     <h4 className="mt-4">Conteúdo</h4>
                     {modelo?.mod_json?.conteudo?.map((secao, index) => (
-                        <div key={index} className="mb-3">
+                        <div key={`conteudo-${index}`} className="mb-3">
                             <h5>{secao.titulo}</h5>
                             {secao.descricao && <p>{secao.descricao}</p>}
 
                             {/* Verifica se a seção tem componentes ou é uma seção simples */}
                             {secao.componentes ? (
                                 secao.componentes.map((componente, compIndex) => (
-                                    <div key={compIndex} className="mb-3">
+                                    <div key={`conteudo-${index}-componente-${compIndex}`} className="mb-3">
                                         <label htmlFor={componente?.titulo} className="form-label">
                                             {componente?.titulo} {componente?.obrigatorio && <span className="text-danger">*</span>}
                                         </label>
                                         {componente?.tipo === "campo_texto" ? (
+                                            
                                             <div
-                                                ref={(el) => (summernoteRefs.current[`${index}-${compIndex}`] = el)}
+                                                ref={(el) => (summernoteRefs.current[componente.titulo] = el)}
                                                 data-name={componente.titulo}
                                                 className="summernote"
                                             />
+                                            
                                         ) : componente.tipo === "arquivo" ? (
                                             <input
                                                 type="file"
@@ -400,7 +402,7 @@ export default function CriarDocumento() {
                                 </div>
                             ) : secao.tipo === "campo_texto" && (
                                 <div
-                                    ref={(el) => (summernoteRefs.current[index] = el)}
+                                    ref={(el) => (summernoteRefs.current[secao.titulo] = el)}
                                     data-name={secao.titulo}
                                     className="summernote"
                                 />

@@ -47,12 +47,13 @@ class ModeloSeeder extends Seeder
                     'tipo' => 'secao',
                     'titulo' => 'Introdução',
                     'obrigatorio' => true,
-                    'texto-secao' => [
-                        'tipo' => 'campo_texto',
-                        'obrigatorio' => false,
-                        'descricao' => 'Texto que aparece logo após o título da introdução, explicando o contexto inicial do projeto.'
-                    ],
                     'componentes' => [
+                        [
+                            'tipo' => 'campo_texto',
+                            'titulo' => 'Texto da Introdução',
+                            'obrigatorio' => true,
+                            'descrição' => 'Texto que aparece logo após o título da introdução, explicando o contexto inicial do projeto.'
+                        ],
                         [
                             'tipo' => 'campo_texto',
                             'titulo' => 'Objetivo Geral',
@@ -90,17 +91,9 @@ class ModeloSeeder extends Seeder
                 ],
                 [
                     'tipo' => 'campo_texto',
-                    'titulo' => 'Descrição Geral',
+                    'titulo' => 'Análise de Público-Alvo',
                     'obrigatorio' => false,
-                    'descricao' => 'Descrição Geral do projeto.',
-                    'componentes' => [
-                         [
-                            'tipo' => 'campo_texto',
-                            'titulo' => 'Análise de Público-Alvo',
-                            'obrigatorio' => false,
-                            'descricao' => 'Texto com análise do público-alvo.',
-                        ],
-                    ]
+                    'descricao' => 'Texto com análise do público-alvo.',
                 ],
                 [
                     'tipo' => 'tabela',
@@ -128,12 +121,13 @@ class ModeloSeeder extends Seeder
                     'tipo' => 'secao',
                     'titulo' => 'Anexos',
                     'obrigatorio' => false,
-                    'texto-secao' => [
-                        'tipo' => 'campo_texto',
-                        'obrigatorio' => false,
-                        'descricao' => 'Texto explicando o que pode ser anexado ao documento.'
-                    ],
                     'componentes' => [
+                        [
+                            'tipo' => 'campo_texto',
+                            'titulo' => 'Texto dos Anexos',
+                            'obrigatorio' => false,
+                            'descricao' => 'Texto explicando o que pode ser anexado ao documento.'
+                        ],
                         [
                             'tipo' => 'campo_texto',
                             'titulo' => 'Descrição',
