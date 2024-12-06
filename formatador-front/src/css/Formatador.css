@@ -28,7 +28,9 @@ strong{
 #linha1{
   height: 100px;
 }
-
+.texto-fluido {
+    font-size: clamp(0.85rem, 1vw, 1rem);
+}
 .card {
   position: relative;
   overflow: hidden; /* Garante que os elementos internos não saiam da borda do card */
@@ -86,7 +88,34 @@ strong{
   opacity: 1; /* Torna o botão visível */
 }
 
+/* @media (max-width: 576px) {
+  .text-truncate {
+      font-size: 5px;
+  }
+} */
 
+/* Para telas médias (até 768px de largura) */
+@media (max-width: 768px) {
+  .text-truncate {
+      font-size: 14px;
+  }
+}
+@media (max-width: 992px) {
+  .texto-limitado {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limita para 2 linhas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adiciona "..." no final */
+  }
+}
+
+/* Para telas maiores, não aplica limitação */
+@media (min-width: 992px) {
+  .texto-limitado {
+    -webkit-line-clamp: unset;
+  }
+}
 
 
 

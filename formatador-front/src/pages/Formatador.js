@@ -127,9 +127,9 @@ export default function Formatador() {
     return (
         <div className=" " style={{ backgroundColor:'#2CAEEF' }}>
             <Nav text="Formatador" />
-            <div className='d-flex min-vh-100 flex-column align-items-center justify-content-center'>
-                <div style={{ }} className="pb-3  row container rounded my-5  ">
-                    <div className=" card vh-auto shadow-sm p-4 bg-light rounded  col-5 " id='projeto'>
+            <div className='container d-flex flex-md-row min-vh-100 align-items-stretch justify-content-center gap-3'>
+                <div style={{ }} className="pb-3  h-50 row container rounded my-5  ">
+                    <div className="card  mx-auto vh-auto shadow-sm p-4 bg-light rounded col-12 col-md-5" id='projeto'>
                         <div className='d-flex align-items-center justify-content-center'>
                             <button onClick={handleCriarProjeto} className="btn shadow-sm fw-bold  align-self-center min-w-50 w-sm-50    btn-primary " >
                                 Criar Novo Projeto
@@ -149,15 +149,12 @@ export default function Formatador() {
                                 </div>
                             ) : (
                                 <div className="row d-flex justify-content-center h-100 w-100" id='card projeto'>
-                                    <div className='row' id='linha1'>
-                                        <strong className='fs-2 justify-content-center text-center align-items-center d-flex'>Meus Projetos </strong>
-                                    </div>
-                                    
-                                    <div className='h-auto row d-flex align-items-center flex-column '>{projetos.map((projeto) => (
-                                        <div className="container my-3 d-flex justify-content-center flex-column align-items-center">
-                                            <div className="row container w-100 justify-content-center align-items-center">
+                                    <strong className='fs-2 justify-content-center text-center align-items-center d-flex'>Meus Projetos </strong>
+                                    <div className='h-auto w-100 w-md-auto row d-flex align-items-center flex-column '>{projetos.map((projeto) => (
+                                        <div className="container w-100 w-md-auto p-0 my-3 d-flex justify-content-center flex-column align-items-center">
+                                            <div className="row container w-100 w-md-auto p-0 p-md-0 justify-content-center align-items-center">
                                                 {/* Card que simula uma pastinha */}
-                                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 align-items-center flex-column d-flex justify-content-center w-100">
+                                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-0 p-md-auto align-items-center flex-column d-flex justify-content-center w-100">
                                                     <div className="card shadow-sm align-items-center pb-3 justify-content-center p-0 h-100 w-100">
                                                         {/* Aba da pastinha */}
                                                         <div className="folder-tab align-items-center justify-content-between d-flex w-100" id='barraAmarela'>
@@ -165,28 +162,29 @@ export default function Formatador() {
                                                                 id='botaoProjeto'
                                                                 key={projeto.id}
                                                                 title='Visualizar Projeto'
-                                                                className="text-center text-light d-flex align-items-center justify-content-start m-2 w-100"
+                                                                className="text-center text-light d-flex align-items-center texto-limitado w-auto p-1 justify-content-start "
                                                                 onClick={() => handleAbrirProjeto(projeto.id)}
                                                                 style={{ cursor: 'pointer' }}
                                                             > 
-                                                                <span 
+                                                                <span
+                                                                    title={`Visualizar ${projeto.nome}`}
                                                                     className="text-truncate" 
-                                                                    style={{ display: 'block', maxWidth: '100%', fontSize: '1rem' }}
+                                                                    // style={{ display: 'block', maxWidth: '100%', fontSize: '1rem' }}
                                                                 >
                                                                     {projeto.nome}
                                                                 </span>
                                                             </div>
 
                                                             <i
-                                                                className="bi bi-folder text-light rounded"
+                                                                className="bi bi-folder text-light p-1 rounded"
                                                                 onClick={() => toggleButtons(projeto.id)}
                                                                 style={{ cursor: 'pointer' }}
-                                                                title='Editar ou Excluir'
+                                                                title={`Editar ou Excluir ${projeto.nome}`}
                                                             ></i>  
                                                         </div>
 
                                                         <div className='row'>
-                                                            <div>
+                                                            <div className='texto-fluido w-auto'>
                                                                 {projeto?.descricao}
                                                             </div>
                                                         </div>
@@ -197,6 +195,7 @@ export default function Formatador() {
                                                                     <div className="row justify-content-center">
                                                                         <div className="col-6">
                                                                             <button
+                                                                                title="Excluir Projeto"
                                                                                 className="btn btn-danger btn-sm"
                                                                                 onClick={(e) => handleExcluirProjeto(projeto.id, e)}
                                                                             >
@@ -205,6 +204,7 @@ export default function Formatador() {
                                                                         </div>
                                                                         <div className="col-6">
                                                                             <button
+                                                                                title="Editar Projeto"
                                                                                 className="btn btn-primary btn-sm"
                                                                                 onClick={(e) => handleEditarProjeto(projeto.id, e)}
                                                                             >
@@ -221,15 +221,15 @@ export default function Formatador() {
                                             </div>
                                         </div>                                            
                                     ))}
-                                    </div>
+                                </div>
                             </div>
                             )}
                         </div>
                     </div> 
-                    <div className='col-2'></div>          
-                    <div className="container h-auto col-5 card shadow-sm rounded bg-light p-4 " id='modelo'>
-                       
-                        <div className="text-center" >
+                    {/* Espaçamento */}
+                    <div className='col-12 col-md-1 m-3'></div>                    
+                    <div className="card  mx-auto vh-auto shadow-sm p-4 bg-light rounded col-12 col-md-5" id='modelo'>
+                        <div className="text-center justify-content-center d-flex" >
                             <button
                                 onClick={handleCriarModelo}
                                 className="btn fw-bold btn-primary"
@@ -238,46 +238,41 @@ export default function Formatador() {
                             </button>
                         </div>
                         <strong className='fs-2 justify-content-center text-center align-items-center d-flex'>Meus Modelos </strong>
-                        <div title='Visualizar Modelo' className="row h-auto d-flex  justify-content-center">
-                            {modelos.map((modelo) => (
-                                <div id='cardModelo'
-                                key={modelo.id}
-                                className="col-6 card card-modelo col-sm-3 bg-light d-flex align-items-center justify-content-center m-2"
-                                style={{ cursor: 'pointer' }}
-                                onClick={() => handleAbrirModelo(modelo.id)}
-                                >
-                                <div className="flex-column align-items-center justify-content-center d-flex" >
-                                    {/* <i className="align-items-end w-100 justify-content-end d-flex m-1 col-6 bi bi-file-earmark"></i> */}
-                                    {/* Nome com limite de 20 caracteres */}
-                                    <div className="w-auto fs-6 nome-limited" title={modelo.nome}>
-                                        {limitarTexto(modelo.nome, 10)} {/* Limite de 20 caracteres */}
-                                    </div>
-                                    {/* Botão de excluir, apenas visível quando o mouse passa sobre o card */}
-                                    {modelo.id !== 1 ? (
+                        <div title='Visualizar Modelo ' className="row h-auto d-flex justify-content-center">
+                    {modelos.map((modelo) => (
+                        
+                        <div
+                            id="cardModelo"
+                            key={modelo.id}
+                            className="col-6 col-lg-3 card card-modelo bg-light d-flex align-items-center justify-content-center m-2"
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => handleAbrirModelo(modelo.id)}
+                        >
+                            <div className="flex-column align-items-center justify-content-center d-flex">
+                                <div className="w-auto texto-fluido nome-limited" title={modelo.nome}>
+                                    {limitarTexto(modelo.nome, 10)} {/* Limite de 10 caracteres */}
+                                </div>
+                                {modelo.id !== 1 && (
                                     <div className="btn-excluir">
                                         <button
-                                        title='Apagar Modelo'
-                                        key={modelo.id}
-                                        className="btn btn-danger btn-sm d-block mt-3 align-self-center"
-                                        onClick={(e) => handleExcluirModelo(modelo.id, e)}
+                                            title="Excluir Modelo"
+                                            key={modelo.id}
+                                            className="btn btn-danger btn-sm d-block mt-3 align-self-center"
+                                            onClick={(e) => handleExcluirModelo(modelo.id, e)}
                                         >
-                                        Excluir
+                                            Excluir
                                         </button>
                                     </div>
-                                    ) : null}
-                                </div>
-                                </div>
-                            ))}
+                                )}
                             </div>
-
-                        
-                    </div>
+                        </div>
+                    ))}
                 </div>
-
             </div>
-            
-            <Rodape/>
         </div>
+    </div>
+    <Rodape/>
+</div>
     );
 }
 
