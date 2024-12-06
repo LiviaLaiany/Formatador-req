@@ -40,7 +40,7 @@ export default function CriarModeloPersonalizado() {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then(() => navigate('/formatador'))
-            .catch((error) => alert('Erro ao criar modelo: ' + error.message));
+            .catch((error) => alert('Erro ao criar modelo: ' + error.response.data.message));
     };
 
     const toggleCampo = (array, setArray, index) => {
