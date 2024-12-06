@@ -1,3 +1,47 @@
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  width: 18rem; 
+  height: 25rem; 
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+}
+
+.card-body {
+  position: relative;
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-text {
+  display: -webkit-box; /* Estilização para truncar o texto */
+  -webkit-line-clamp: 3; /* Mostra apenas 3 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #666;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-size: 0.9rem;
+}
+.read-more-btn:hover {
+  color: #0056b3;
+}
+
 .hover-effect {
     transition: transform 0.4s ease-in-out, filter 0.3s;
   }
@@ -6,17 +50,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    height: auto;
-  }
-  
-  .card {
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 400px;
-    text-align: center;
-    padding: 20px;
   }
   
   .card:hover {
@@ -25,23 +58,16 @@
   }
   
   .card-header {
-    font-size: 1.5rem;
     font-weight: bold;
     border-radius: 10px 10px 0 0;
-    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
-  .card-body {
-    padding: 20px;
-  }
+
   
   .card-text {
-    font-size: 0.9rem;
     color: #666;
-    margin-bottom: 20px;
   }
   
   .btn1 {
@@ -59,7 +85,7 @@
     background-color: #007cf9;
     color: #ffffff;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 20px;
     font-size: 1rem;
     cursor: pointer;

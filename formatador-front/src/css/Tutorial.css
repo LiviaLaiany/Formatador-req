@@ -1,0 +1,55 @@
+.background {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.background:hover {
+    transform: translateY(-5px); /* Desloca levemente a seção */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 123, 255, 0.8); /* Fundo azul transparente */
+    border-radius: 50%; /* Forma arredondada */
+    padding: 10px; /* Espaçamento interno */
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: rgba(0, 86, 179, 1); /* Fundo mais escuro ao passar o mouse */
+    transform: scale(1.1); /* Ligeiro aumento */
+}
+
+.sobre-nos-container {
+    background-color: #f8f9fa; /* Fundo leve para destaque */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sobre-nos-container h3 {
+    color: #007bff;
+}
+
+
+.sobre-nos-container:hover {
+    transform: translateY(-5px); /* Desloca levemente a seção */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
+}
+
+/* Animação de fade-in para carregar a seção de forma suave */
+.sobre-nos-container {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
