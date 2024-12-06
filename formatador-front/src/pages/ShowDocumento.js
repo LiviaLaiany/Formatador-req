@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import api from '../services/api';
 import Nav from './Navbar.js';
 import Rodape from './Rodape.js';
+import '../css/summernotecss.css'; 
 
 export default function ShowDocumento() {
     const [token] = useState(localStorage.getItem('token'));
@@ -91,9 +92,9 @@ export default function ShowDocumento() {
         <div className="show">
             <Nav text="Formatador" />
             <div className="container vh-100">
-                <div className="my-4 card bg-light">
-                    <h3 className="card-header">{documento?.nome || "Carregando..."}</h3>
-                    <div className="card-body">
+                <div className="my-4 bg-light">
+                    <h3 className="text-dark">{documento?.nome || "Carregando..."}</h3>
+                    <div className="text-dark">
                         {renderCampos()}
                     </div>
                 </div>

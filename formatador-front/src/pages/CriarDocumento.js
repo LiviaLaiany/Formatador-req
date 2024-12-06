@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import $ from "jquery";
 import "summernote/dist/summernote-lite.css";
 import "summernote/dist/summernote-lite.js";
+import '../css/summernotecss.css';
 import api from '../services/api';
 import Nav from './Navbar.js';
 import Rodape from './Rodape.js';
@@ -32,12 +33,10 @@ export default function CriarDocumento() {
             setModelo(response.data);
             const camposForm = {};
 
-            // Inicializando os campos da capa
             response.data.mod_json.capa.forEach((campo) => {
                 camposForm[campo.titulo] = "";
             });
 
-            // Inicializando os campos do conteúdo
             response.data.mod_json.conteudo.forEach((secao) => {
                 if (secao.componentes) {
                     secao.componentes.forEach((componente) => {
@@ -78,8 +77,26 @@ export default function CriarDocumento() {
                     toolbar: [
                         ["font", ["bold", "italic", "underline", "clear"]],
                         ["color", ["color"]],
-                        ["view", ["codeview", "help"]],
+                        ["fontsize", ["fontsize"]],
+                        ["para", ["ul", "ol","paragraph"]],
+                        ['view', ['codeview', 'help']],
                     ],
+                    callbacks: {
+                        onKeydown: function (e) {
+                            if (e.key === "Tab") {
+                                e.preventDefault();
+                                if(e.shiftKey) {
+                                    document.execCommand("outdent");
+                                } else {
+                                    document.execCommand("indent")
+                                }
+                            }
+                        },
+                        onInit: function () {
+                            $(".notable-editable p").css("text-indent", "2em")
+                        },
+                        tabsize: 2,
+                    }
                 });
             }
         });
