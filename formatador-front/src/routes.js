@@ -10,6 +10,7 @@ import ShowModelo from './pages/ShowModelo.js';
 import EditarProjeto from './pages/EditarProjeto.js';
 import CriarModeloPersonalizado from './pages/CriarModeloPersonalizado.js';
 import CriarDocumento from './pages/CriarDocumento.js';
+import ShowDocumento from './pages/ShowDocumento.js';
 
 export default function Rotas() {
   return (
@@ -26,6 +27,7 @@ export default function Rotas() {
         <Route path='/modelos/:id' element={<ShowModelo />}/>
         <Route path="/modelos/criar" element={<CriarModeloPersonalizado />}/>
         <Route path="/documentos/criar/:pro_id/:mod_id" element={<CriarDocumento />}/>
+        <Route path='/documentos/:id' element={<ShowDocumento />}/>
       </Routes>
     </BrowserRouter>
   );

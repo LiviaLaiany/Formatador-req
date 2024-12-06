@@ -68,25 +68,23 @@ export default function ShowModelo() {
             <h2 className="text-center my-4 fs-2">{modelo.nome}</h2>
             <div className='container '>
                 <div className="container card bg-light text-dark rounded  mt-4 ">
-                <h4 className=' fs-2  mt-4 card-header color'>Capa</h4>
-                <div className='py-3 card-body rounded'>{modelo.mod_json.capa.length > 0 ? renderCapa(modelo.mod_json.capa) : <p>Sem dados na capa.</p>}</div>
-            </div>
-            <div className='container bg-light card text-dark rounded  mt-4 mb-4'>
-                <h4 className="mt-4 card-header fs-2">Conteúdo</h4>
-                <div className='rounded card-body box-2'>
-                    {modelo.mod_json.conteudo.length > 0 ? renderConteudo(modelo.mod_json.conteudo) : <p>Sem dados no conteúdo.</p>}
+                    <h4 className=' fs-2  mt-4 card-header color'>Capa</h4>
+                    <div className='py-3 card-body rounded'>{modelo.mod_json.capa.length > 0 ? renderCapa(modelo.mod_json.capa) : <p>Sem dados na capa.</p>}</div>
                 </div>
-            <div/>
-                                    
+                <div className='container bg-light card text-dark rounded  mt-4 mb-4'>
+                    <h4 className="mt-4 card-header fs-2">Conteúdo</h4>
+                    <div className='rounded card-body box-2'>
+                        {modelo.mod_json.conteudo.length > 0 ? renderConteudo(modelo.mod_json.conteudo) : <p>Sem dados no conteúdo.</p>}
+                    </div>
+                <div/>                     
                 <div className="align-items-center justify-content-center d-flex" onClick={() => navigate('/formatador')}>
                         <button type="submit" className="btn  min-w-25  m-4" id="botao">
                             Voltar
                         </button>
                 </div>
             </div>
-            </div>
-            
-            <Rodape/>
+        </div>    
+        <Rodape/>
         </div>
     );
 }

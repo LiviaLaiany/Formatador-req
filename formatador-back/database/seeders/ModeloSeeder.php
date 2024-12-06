@@ -47,12 +47,13 @@ class ModeloSeeder extends Seeder
                     'tipo' => 'secao',
                     'titulo' => 'Introdução',
                     'obrigatorio' => true,
-                    'texto-secao' => [
-                        'tipo' => 'campo_texto',
-                        'obrigatorio' => false,
-                        'descricao' => 'Texto que aparece logo após o título da introdução, explicando o contexto inicial do projeto.'
-                    ],
                     'componentes' => [
+                        [
+                            'tipo' => 'campo_texto',
+                            'titulo' => 'Texto da Introdução',
+                            'obrigatorio' => true,
+                            'descrição' => 'Texto que aparece logo após o título da introdução, explicando o contexto inicial do projeto.'
+                        ],
                         [
                             'tipo' => 'campo_texto',
                             'titulo' => 'Objetivo Geral',
@@ -77,51 +78,38 @@ class ModeloSeeder extends Seeder
                             'obrigatorio' => true,
                             'descricao' => 'Define as bases do projeto e orienta os leitores para que entendam o contexto do desenvolvimento.'
                         ],
-            // <--mudanças do problema 1-->
                         [
-                            'tipo' => 'campo_texto',
-                            // colocar tipo tabela 
-                            'titulo' => 'Termos e Defnições',
+                            'tipo' => 'tabela',
+                            'titulo' => 'Termos e Definições',
                             'obrigatorio' => false,
-                            'descricao' => 'Lista dos termos citados no documento e suas respectivas definições.'
+                            'descricao' => 'Lista dos termos citados no documento e suas respectivas definições.',
+                            'colunas' => ['Termo', 'Explicação'],
+                            'linhas' => []
                         ]
                         
                     ]
                 ],
                 [
                     'tipo' => 'campo_texto',
-                    'titulo' => 'Descrição Geral',
+                    'titulo' => 'Análise de Público-Alvo',
                     'obrigatorio' => false,
-                    'descricao' => 'Descrição Geral do projeto.',
-                    'componentes' => [
-                         [
-                            'tipo' => 'campo_texto',
-                            'titulo' => 'Análise de Público-Alvo',
-                            'obrigatorio' => false,
-                            'descricao' => 'Texto com análise do público-alvo.'
-                        ],                       
-                        [
-                            'tipo' => 'lista',
-                            //tabela
-                            'titulo' => 'Análise de Riscos',
-                            'obrigatorio' => false,
-                            'descricao' => 'Lista dos riscos do projeto com suas respectivas definições e impactos.'
-                        ]
-                    ]
+                    'descricao' => 'Texto com análise do público-alvo.',
                 ],
                 [
-                    'tipo' => 'lista',
-                    // tipo tabela
+                    'tipo' => 'tabela',
                     'titulo' => 'Requisitos Funcionais',
                     'obrigatorio' => true,
-                    'descricao' => 'Funcionalidades essenciais do sistema.'
+                    'descricao' => 'Funcionalidades essenciais do sistema.',
+                    'colunas' => ['ID', 'Descrição', 'Prioridade'],
+                    'linhas' => []
                 ],
                 [
-                    'tipo' => 'lista',
-                        // tipo tabela
+                    'tipo' => 'tabela',
                     'titulo' => 'Requisitos Não Funcionais',
                     'obrigatorio' => true,
-                    'descricao' => 'Especificações técnicas que o sistema deve cumprir.'
+                    'descricao' => 'Especificações técnicas que o sistema deve cumprir.',
+                    'colunas' => ['ID', 'Descrição', 'Prioridade'],
+                    'linhas' => []
                 ],
                 [
                     'tipo' => 'arquivo',
@@ -133,12 +121,13 @@ class ModeloSeeder extends Seeder
                     'tipo' => 'secao',
                     'titulo' => 'Anexos',
                     'obrigatorio' => false,
-                    'texto-secao' => [
-                        'tipo' => 'campo_texto',
-                        'obrigatorio' => false,
-                        'descricao' => 'Texto explicando o que pode ser anexado ao documento.'
-                    ],
                     'componentes' => [
+                        [
+                            'tipo' => 'campo_texto',
+                            'titulo' => 'Texto dos Anexos',
+                            'obrigatorio' => false,
+                            'descricao' => 'Texto explicando o que pode ser anexado ao documento.'
+                        ],
                         [
                             'tipo' => 'campo_texto',
                             'titulo' => 'Descrição',

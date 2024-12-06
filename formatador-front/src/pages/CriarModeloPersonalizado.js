@@ -40,12 +40,12 @@ export default function CriarModeloPersonalizado() {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then(() => navigate('/formatador'))
-            .catch((error) => alert('Erro ao criar modelo: ' + error.message));
+            .catch((error) => alert('Erro ao criar modelo: ' + error.response.data.message));
     };
 
     const toggleCampo = (array, setArray, index) => {
         const novoArray = [...array];
-        novoArray[index].selecionado = !novoArray[index].selecionado;
+        novoArray[index].obrigatorio = !novoArray[index].obrigatorio;
         setArray(novoArray);
     };
 
@@ -81,7 +81,7 @@ export default function CriarModeloPersonalizado() {
                                                 <input
                                                     type="checkbox"
                                                     role="switch"
-                                                    checked={campo.selecionado || campo.obrigatorio}
+                                                    checked={campo.obrigatorio}
                                                     disabled={campo.obrigatorio}
                                                     onChange={() => toggleCampo(capa, setCapa, index)}
                                                     className='form-check-input'
@@ -99,7 +99,7 @@ export default function CriarModeloPersonalizado() {
                                                 type="checkbox"
                                                 className='form-check-input'
                                                 role="switch"
-                                                checked={secao.selecionado || secao.obrigatorio}
+                                                checked={secao.obrigatorio}
                                                 disabled={secao.obrigatorio}
                                                 onChange={() => toggleCampo(conteudo, setConteudo, index)}
                                             />
