@@ -14,25 +14,87 @@ strong{
   height: 40px;
 }
 #barraAmarela:hover{
-  background-color: #003060;
+  background-color: #f7c131;
 }
 .bi-folder:hover {
-  background:#044383;
+  background:#ebad00;
 }
 .bi-folder{
   width: 50px;
 }
 #botaoProjeto:hover {
-  background:#044383;
+  background:#ebad00;
 }
 #linha1{
   height: 100px;
 }
 
+.card {
+  position: relative;
+  overflow: hidden; /* Garante que os elementos internos não saiam da borda do card */
+  /* transition: transform 0.1s ease; Efeito de transição suave ao passar o mouse */
+}
+
+.card:hover {
+  transform: scale(1.0); /* Aumenta o tamanho do card ao passar o mouse */
+}
+
+/* Definir o comportamento básico do card */
+.card-modelo {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease; /* Suavizar o aumento da altura */
+}
+
+/* Inicialmente, a div de excluir estará oculta */
+.btn-excluir {
+  display: none;
+}
+
+/* Quando o mouse passar sobre o card, o botão de excluir aparece e o card aumenta */
+.card-modelo:hover {
+  transform: scale(1.0); /* Aumenta ligeiramente o tamanho do card */
+  background-color:#b9dcff;
+}
+
+/* Exibir o botão de excluir quando passar o mouse sobre o card */
+.card-modelo:hover .btn-excluir {
+  display: block; /* Exibe o botão */
+}
+
+/* Controlar a largura do nome */
+.nome-limited {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.1s ease; /* Suaviza a transição */
+}
+
+/* Exibir o nome completo ao passar o mouse */
+.card-modelo:hover .nome-limited {
+  white-space: normal; /* Exibe o nome completo */
+}
+
+/* Se desejar uma transição suave para o botão */
+.btn-excluir {
+  opacity: 0;
+  transition: opacity 0.1s ease; /* Suaviza a transição de visibilidade */
+}
+
+.card-modelo:hover .btn-excluir {
+  opacity: 1; /* Torna o botão visível */
+}
+
+
+
+
+
+
 
 
 .folder-tab {
-    background-color: #f7c131;
+    background-color: #f1cd6b;
     border-radius: 5px 5px 0 0;
     padding: 10px;
     text-align: center;
