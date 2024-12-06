@@ -5,12 +5,18 @@ import Nav from "./Navbar.js";
 import Rodape from './Rodape.js';
 import "../css/ShowProjeto.css";
 
+import Modal from "react-bootstrap/Modal";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 export default function ProjetoShow() {
   const { id } = useParams();
   const [token] = useState(localStorage.getItem("token"));
   const [projeto, setProjeto] = useState(null);
   const [modelos, setModelos] = useState([]);
+  const [modeloEscolhido, setModeloEscolhido] = useState(null);
+  const [modal, setModal] = useState(false);
   const navigate = useNavigate();
+  
 // RESPONSIVO E PRONTO
   
   useEffect(() => {
@@ -36,13 +42,31 @@ export default function ProjetoShow() {
           localStorage.clear();
           navigate('/');
         } else {
-          alert('Erro ao carregar os modelos: ' + error.message);
+          alert('Erro ao carregar os modelos: ' + error.response.data.message);
         }
     });
   }, [id, navigate]);
 
-  const handleCriarDocumento = (modelo) => {
-    navigate(`/documentos/criar/${projeto.id}/${modelo}`);
+  const handleChange = (e) => {
+    setModeloEscolhido(e.target.value)
+  }
+
+  const showModal = () => {
+    setModal(true);
+  }
+
+  const closeModal = () => {
+    setModal(false);
+  }
+  
+
+  const handleCriarDocumento = () => {
+    if (modeloEscolhido) {
+      navigate(`/documentos/criar/${projeto.id}/${modeloEscolhido}`);
+    } else {
+      alert("Por favor, selecione um modelo.");
+    }
+    
   };
   return (
     <div className="show ">
@@ -78,37 +102,31 @@ export default function ProjetoShow() {
               <strong>Este projeto ainda não possui um documento de requisitos.</strong>
               <div  className="d-flex justify-content-center align-items-center">
 
-                <button type="button" id="botao" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
-                Criar Documento de Requisitos
+                <button type="button" id="botao" className="btn btn-primary" onClick={showModal}>
+                  Criar Documento de Requisitos
                 </button>
               </div>
               
-              <div className="modal fade" id="modal" tabIndex="-1" aria-labelledby="escolherModelo" aria-hidden="true">
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h1 className="modal-tittle fs-5 text-dark" id="escolherModelo">Escolha um modelo para o seu documento</h1>
-                      <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body">
-                      <form onSubmit={(e) => handleCriarDocumento(e.target.value)}>
-                        <select className="form-select">
-                          {modelos.map((modelo) => (
-                            <option key={modelo.id}>{modelo.nome}</option>
-                          ))}
-                        </select>
-                      </form>
-                    </div>
-                    <div className="modal-footer">
-                      <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                      <button type="submit" className="btn btn-primary">Salvar Modelo</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              
-
+              <Modal show={modal} onHide={closeModal}>
+                <Modal.Header>
+                  <Modal.Title>
+                    <h1 className="fs-5 text-dark">Escolha um modelo para o seu documento</h1>
+                  </Modal.Title>
+                  <button type="button" className="btn-close" onClick={closeModal}></button>
+                </Modal.Header>
+                <Modal.Body>
+                  <select className="form-select" value={modeloEscolhido || ""} onChange={closeModal && handleChange}>
+                    <option value="" disabled>Selecione clicando aqui!</option>
+                      {modelos.map((modelo) => (
+                    <option key={modelo.id} value={modelo.id}>{modelo.nome}</option>
+                    ))}
+                  </select>
+                </Modal.Body>
+                <Modal.Footer>
+                  <button type="button" className="btn btn-secondary" onClick={closeModal}>Fechar</button>
+                  <button type="submit" className="btn btn-primary" onClick={handleCriarDocumento}>Salvar Modelo</button>
+                </Modal.Footer>
+              </Modal>
             </div>
           )}
         </div>
