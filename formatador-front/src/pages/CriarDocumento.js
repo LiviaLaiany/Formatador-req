@@ -105,10 +105,11 @@ export default function CriarDocumento() {
         e.preventDefault();
         const docJson = { ...form };
 
-        // Processando os campos Summernote
-        summernoteRefs.current.forEach((ref, index) => {
-            if (ref && ref.dataset.name) {
-                docJson[ref.dataset.name] = formataTexto($(ref).summernote("code"));
+        Object.entries(summernoteRefs.current).forEach((ref, index) => {
+            if (ref) {
+                docJson[ref?.dataset?.name] = formataTexto($(ref).summernote("code"));
+            } else {
+                console.log(ref)
             }
         });
 
@@ -119,16 +120,18 @@ export default function CriarDocumento() {
             doc_json: docJson,
         };
 
-        api.post(`/v1/documentos`, novoDocumento, {
-            headers: { Authorization: `Bearer ${token}` },
-        })
-            .then(() => {
-                alert("Documento criado com sucesso!");
-                navigate(`/projetos/${pro_id}`);
-            })
-            .catch((err) => {
-                alert("Erro ao criar documento: " + err.message);
-            });
+        console.log(novoDocumento)
+
+        // api.post(`/v1/documentos`, novoDocumento, {
+        //     headers: { Authorization: `Bearer ${token}` },
+        // })
+        //     .then(() => {
+        //         alert("Documento criado com sucesso!");
+        //         navigate(`/projetos/${pro_id}`);
+        //     })
+        //     .catch((err) => {
+        //         alert("Erro ao criar documento: " + err.message);
+        //     });
     };
 
     const handleAdicionarLinha = (titulo) => {
