@@ -19,6 +19,8 @@ Route::group(['prefix' => 'v1', 'middleware' => 'jwt.verify'],function () {
     Route::apiResource('projetos', ProjetoController::class);
     Route::apiResource('modelos', ModeloController::class);
     Route::apiResource('documentos', DocumentoRequisitosController::class);
+
+    Route::post('documentos/getDocumentoWithProjeto', [DocumentoRequisitosController::class, 'getDocumentoWithProjeto'])->name('getDocumentoWithProjeto');
 });
 
 

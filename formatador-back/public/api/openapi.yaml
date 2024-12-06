@@ -609,6 +609,34 @@ paths:
         404:
           description: Documento não encontrado
 
+  /v1/documentos/getDocumentoWithProjeto:
+    post:
+      operationId: getDocumentoWithProjeto
+      summary: Acessar um documento de requisitos a partir do seu projeto
+      security:
+          - bearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pro_id:
+                  type: integer
+                  description: Id do projeto
+                  example: 1
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/documentos'
+        404:
+          description: Documento não encontrado
+    
+
 components:
   schemas:
     users:

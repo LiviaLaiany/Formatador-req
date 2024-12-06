@@ -29,6 +29,17 @@ class DocumentoRequisitosController extends Controller
         return $documentos;
     }
 
+    /**
+     * Get a document based on a project's id.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getDocumentoWithProjeto(Request $request) {
+        $documento = DocumentoRequisitos::where('pro_id', $request->input('pro_id'))->first();
+
+        return $documento;
+    }
+
      /**
      * Store a newly created resource in storage.
      *
@@ -60,7 +71,7 @@ class DocumentoRequisitosController extends Controller
         return response(
             ['location' => route('documentos.show', $documento->id)],
             201
-        );;
+        );
     }
 
     /**
