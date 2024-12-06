@@ -1,14 +1,8 @@
 import '../css/paginainicial.css';
 import nome from '../imagens/nome.mp4';
-import video1 from '../imagens/video1.mp4';
-import video3 from '../imagens/video3.mp4';
-import video5 from '../imagens/video5.mp4';
-import Rodape from './Rodape.js';
-import logo from '../imagens/FDR-preto.svg';
 import videologo from '../imagens/VideoLogo.mp4';
 import fundo3 from "../imagens/fundo3.svg";
 import { Link } from 'react-router-dom';
-import Nav from './Navbar.js';
 
 
 //RESPONSIVO E PRONTO
