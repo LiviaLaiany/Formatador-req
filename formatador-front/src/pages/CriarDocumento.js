@@ -80,6 +80,13 @@ export default function CriarDocumento() {
     const handleNome = (e) => {
         setNome(e.target.value);
     }
+    //so para rodar
+    const handleCelula = (e) => {
+        setNome(e.target.value);
+    }
+    const handleRemoverLinha = (e) => {
+        setNome(e.target.value);
+    }
 
     function formataTexto(texto) {
         return `<p style="text-align: justify; line-height: 1.5; text-indent: 1.25em; font-family: Arial, Times New Roman, serif; color: black; font-size: 12;">${texto}</p>`;

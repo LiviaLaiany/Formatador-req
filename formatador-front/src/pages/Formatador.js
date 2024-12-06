@@ -102,7 +102,13 @@ export default function Formatador() {
 
         }
     }
-
+    const [showButtons, setShowButtons] = useState({});
+    const toggleButtons = (id) => {
+        setShowButtons((prev) => ({
+            ...prev,
+            [id]: !prev[id]
+        }));
+    }
     return (
         <div className=" " style={{ backgroundColor:'#2CAEEF' }}>
             <Nav text="Formatador" />
@@ -110,11 +116,11 @@ export default function Formatador() {
                 <div style={{ }} className="pb-3 vh-100 row container rounded my-5  ">
                     <div className=" p-4 bg-light rounded  col-5 " id='projeto'>
                         <div className='d-flex align-items-center justify-content-center'>
-                            <button onClick={handleCriarProjeto} className="btn fw-bold  align-self-center w-50 btn-primary  " >
+                            <button onClick={handleCriarProjeto} className="btn shadow-sm fw-bold  align-self-center min-w-50 w-sm-50    btn-primary " >
                                 Criar Novo Projeto
                             </button>
                         </div>
-                        <div className=" d-flex justify-content-center align-items-center h-100 w-100 ">
+                        <div className=" d-flex justify-content-center align-items-center h-auto w-100 ">
                             {projetos?.length === 0 ? (
                                 <div className="text-center">
                                     <p>Nenhum projeto encontrado.</p>
@@ -128,27 +134,63 @@ export default function Formatador() {
                                 </div>
                             ) : (
                                 <div className="row d-flex justify-content-center h-100 w-100" id='card projeto'>
-                                    <strong className='fs-2 justify-content-center text-center align-items-center h-5 d-flex'>Meus projetos </strong>
+                                    <div className='row' id='linha1'>
+                                        <strong className='fs-2 justify-content-center text-center align-items-center d-flex'>Meus projetos </strong>
+                                    </div>
                                     
-                                    <div className='h-auto align-itens-center justify-content-center '>{projetos.map((projeto) => (
-                                        <div className="container h-30 w-100 my-3  align-itens-center d-flex justify-content-center ">
-                                            <div className="row w-100 justify-content-center">
+                                    <div className='h-auto row d-flex align-items-center flex-column '>{projetos.map((projeto) => (
+                                        <div className="container my-3 d-flex justify-content-center flex-column align-items-center">
+                                            <div className="row w-100 justify-content-center align-items-center">
                                                 {/* Card que simula uma pastinha */}
-                                                <div className="col-md-3 w-100 ">
-                                                    <div className="card shadow p-0 h-100 w-100 ">
+                                                <div  className="col-md-3 align-items-center flex-column d-flex justify-content-center w-100 ">
+                                                    <div className="card shadow-sm align-items-center justify-content-center p-0 h-100 w-100 ">
                                                         {/* Aba da pastinha */}
-                                                        <div className="folder-tab d-flex w-100">
-                                                            <div
+                                                        <div className="folder-tab align-items-center justify-content-between d-flex w-100" id='barraAmarela'>
+                                                            <div id='botaoProjeto'
                                                                 key={projeto.id}
-                                                                className="col-3 col-sm-1  text-light w-75 h-50  d-flex align-items-center justify-content-center m-2"
+                                                                className="col-3 col-sm-1  text-light w-25 h-auto  d-flex align-items-center justify-content-center m-2"
                                                                 onClick={() => handleAbrirProjeto(projeto.id)}
                                                                 style={{ cursor: 'pointer' }}
                                                             > 
                                                             {projeto.nome }     
                                                             </div>
-                                                                <i className="bi bi-folder w-25 text-light" ></i>
+                                                            <i
+                                                                    className="bi bi-folder text-light rounded"
+                                                                    onClick={() => toggleButtons(projeto.id)}
+                                                                    style={{ cursor: 'pointer' }}
+                                                                ></i>  
                                                         </div>
-                                                        <div className="card-body text-center">    
+                                                        <div className='row' >
+                                                            <div>
+                                                                {projeto?.descricao}
+                                                            </div>
+                                                        </div>
+                                                        {showButtons[projeto.id] && (
+                                                                <div className="card-body text-center">
+                                                                    <div className="d-flex flex-column align-items-center justify-content-center h-100 fs-5">
+                                                                        
+                                                                        <div className="row justify-content-center">
+                                                                            <div className="col-6">
+                                                                                <button
+                                                                                    className="btn btn-danger btn-sm"
+                                                                                    onClick={(e) => handleExcluirProjeto(projeto.id, e)}
+                                                                                >
+                                                                                    Excluir
+                                                                                </button>
+                                                                            </div>
+                                                                            <div className="col-6">
+                                                                                <button
+                                                                                    className="btn btn-primary btn-sm"
+                                                                                    onClick={(e) => handleEditarProjeto(projeto.id, e)}
+                                                                                >
+                                                                                    Editar
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            )}
+                                                        {/* <div className="card-body text-center">    
                                                             <div className="text-center align-items-center justify-content-center h-100 fs-5">
                                                                 <div className='row'>
                                                                     <div>
@@ -168,7 +210,7 @@ export default function Formatador() {
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                 </div>
                                             </div>
@@ -180,7 +222,7 @@ export default function Formatador() {
                         </div>
                     </div> 
                     <div className='col-2'></div>          
-                    <div className="container col-5  bg-light " id='modelo'>
+                    <div className="container col-5  rounded bg-light " id='modelo'>
                        
                         <div className="text-center mt-4 " >
                             <button
@@ -225,3 +267,4 @@ export default function Formatador() {
         </div>
     );
 }
+

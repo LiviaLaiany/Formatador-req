@@ -7,6 +7,30 @@
     background-color: #044383;
 
 }
+strong{
+  height: 100px;
+}
+#barraAmarela{
+  height: 40px;
+}
+#barraAmarela:hover{
+  background-color: #003060;
+}
+.bi-folder:hover {
+  background:#044383;
+}
+.bi-folder{
+  width: 50px;
+}
+#botaoProjeto:hover {
+  background:#044383;
+}
+#linha1{
+  height: 100px;
+}
+
+
+
 .folder-tab {
     background-color: #f7c131;
     border-radius: 5px 5px 0 0;
