@@ -77,11 +77,9 @@ class ModeloSeeder extends Seeder
                             'obrigatorio' => true,
                             'descricao' => 'Define as bases do projeto e orienta os leitores para que entendam o contexto do desenvolvimento.'
                         ],
-            // <--mudanças do problema 1-->
                         [
-                            'tipo' => 'campo_texto',
-                            // colocar tipo tabela 
-                            'titulo' => 'Termos e Defnições',
+                            'tipo' => 'tabela',
+                            'titulo' => 'Termos e Definições',
                             'obrigatorio' => false,
                             'descricao' => 'Lista dos termos citados no documento e suas respectivas definições.'
                         ]
@@ -101,8 +99,7 @@ class ModeloSeeder extends Seeder
                             'descricao' => 'Texto com análise do público-alvo.'
                         ],                       
                         [
-                            'tipo' => 'lista',
-                            //tabela
+                            'tipo' => 'tabela',
                             'titulo' => 'Análise de Riscos',
                             'obrigatorio' => false,
                             'descricao' => 'Lista dos riscos do projeto com suas respectivas definições e impactos.'
@@ -110,15 +107,13 @@ class ModeloSeeder extends Seeder
                     ]
                 ],
                 [
-                    'tipo' => 'lista',
-                    // tipo tabela
+                    'tipo' => 'tabela',
                     'titulo' => 'Requisitos Funcionais',
                     'obrigatorio' => true,
                     'descricao' => 'Funcionalidades essenciais do sistema.'
                 ],
                 [
-                    'tipo' => 'lista',
-                        // tipo tabela
+                    'tipo' => 'tabela',
                     'titulo' => 'Requisitos Não Funcionais',
                     'obrigatorio' => true,
                     'descricao' => 'Especificações técnicas que o sistema deve cumprir.'
