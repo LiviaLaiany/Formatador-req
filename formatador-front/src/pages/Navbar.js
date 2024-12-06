@@ -41,12 +41,40 @@ export default function Nav(props){
                 headers: { Authorization: `Bearer ${token}`},
             }).then( () => {
                 alert('Vocẽ deslogou!');
+                localStorage.removeItem('token');
                 navigate('/');
             }).catch((error) => {
                 console.log(token)
                 alert('Erro ao deslogar: '+error.response.data.message)
             })
 
+        }
+    }
+
+    const renderLoginouLogout = () => {
+        if (token) {
+            return (
+                <li className='nav-item rounded quadrado'>
+                    <button className='nav-link fs-5 m-2 fw-bold' onClick={handleClick}>
+                        Logout
+                    </button>
+                </li>
+            )
+        } else {
+            return (
+                <div className='d-flex'>
+                    <li className="nav-item rounded quadrado">
+                        <Link to={"/register"} className="nav-link fs-5 m-2 fw-bold">
+                            Cadastro
+                        </Link>
+                    </li>
+                    <li className="nav-item rounded quadrado">
+                        <Link to={"/login"} className="nav-link fs-5 m-2 fw-bold">
+                            Login
+                        </Link>
+                    </li>
+                </div>  
+            )
         }
     }
 
@@ -76,26 +104,7 @@ export default function Nav(props){
                                 Tutorial
                             </Link>
                             </li>
-                            {token ? (
-                                <li className='nav-item rounded quadrado' style={Display}>
-                                    <button className='nav-link fs-5 m-2 fw-bold' onClick={handleClick}>
-                                        Logout
-                                    </button>
-                                </li>
-                            ) : (
-                                <div>
-                                    <li className="nav-item rounded quadrado" style={Display}>
-                                        <Link to={"/register"} className="nav-link fs-5 m-2 fw-bold">
-                                            Cadastro
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item rounded quadrado" style={Display}>
-                                        <Link to={"/login"} className="nav-link fs-5 m-2 fw-bold">
-                                            Login
-                                        </Link>
-                                    </li>
-                                </div>
-                            )}
+                            {renderLoginouLogout()}
                         </ul>
                     </div>
                  </div>
