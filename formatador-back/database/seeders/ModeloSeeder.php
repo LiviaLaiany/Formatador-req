@@ -81,7 +81,9 @@ class ModeloSeeder extends Seeder
                             'tipo' => 'tabela',
                             'titulo' => 'Termos e Definições',
                             'obrigatorio' => false,
-                            'descricao' => 'Lista dos termos citados no documento e suas respectivas definições.'
+                            'descricao' => 'Lista dos termos citados no documento e suas respectivas definições.',
+                            'colunas' => ['Termo', 'Explicação'],
+                            'linhas' => []
                         ]
                         
                     ]
@@ -96,27 +98,25 @@ class ModeloSeeder extends Seeder
                             'tipo' => 'campo_texto',
                             'titulo' => 'Análise de Público-Alvo',
                             'obrigatorio' => false,
-                            'descricao' => 'Texto com análise do público-alvo.'
-                        ],                       
-                        [
-                            'tipo' => 'tabela',
-                            'titulo' => 'Análise de Riscos',
-                            'obrigatorio' => false,
-                            'descricao' => 'Lista dos riscos do projeto com suas respectivas definições e impactos.'
-                        ]
+                            'descricao' => 'Texto com análise do público-alvo.',
+                        ],
                     ]
                 ],
                 [
                     'tipo' => 'tabela',
                     'titulo' => 'Requisitos Funcionais',
                     'obrigatorio' => true,
-                    'descricao' => 'Funcionalidades essenciais do sistema.'
+                    'descricao' => 'Funcionalidades essenciais do sistema.',
+                    'colunas' => ['ID', 'Descrição', 'Prioridade'],
+                    'linhas' => []
                 ],
                 [
                     'tipo' => 'tabela',
                     'titulo' => 'Requisitos Não Funcionais',
                     'obrigatorio' => true,
-                    'descricao' => 'Especificações técnicas que o sistema deve cumprir.'
+                    'descricao' => 'Especificações técnicas que o sistema deve cumprir.',
+                    'colunas' => ['ID', 'Descrição', 'Prioridade'],
+                    'linhas' => []
                 ],
                 [
                     'tipo' => 'arquivo',
