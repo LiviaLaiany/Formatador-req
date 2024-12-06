@@ -1,9 +1,14 @@
+import api from '../services/api.js'
+import {useNavigate} from 'react-router-dom';
 import React, {useLayoutEffect, useState, } from 'react';
 import logo from "../imagens/FDR-preto.svg"; 
 import { Link } from 'react-router-dom';
 import '../css/Navbar.css';
+
+
 //RESPONSIVO E PRONTO
 export default function Nav(props){
+    const [token] = useState(localStorage.getItem('token'));
     const [TutStyle, setTutStyle] = useState({});
     const [FormStyle, setFormStyle] = useState({});
     const [Display, setDisplay] = useState({});
@@ -12,6 +17,8 @@ export default function Nav(props){
     const toggleMenu = () => {
         setIsMenuOpen((prev) => !prev);
     };
+    const navigate = useNavigate();
+
     useLayoutEffect(() => {
         if(props.text === "Tutorial"){
             setTutStyle({backgroundColor : '#68BBE4', color:'white'});
@@ -27,6 +34,22 @@ export default function Nav(props){
         }
     }, [props.text]);
     
+    const handleClick = () => {
+        if (window.confirm("Tem certeza que deseja sair?")) {
+
+            api.post('/v1/logout', {}, {
+                headers: { Authorization: `Bearer ${token}`},
+            }).then( () => {
+                alert('Vocẽ deslogou!');
+                navigate('/');
+            }).catch((error) => {
+                console.log(token)
+                alert('Erro ao deslogar: '+error.response.data.message)
+            })
+
+        }
+    }
+
     return(
             <nav className="navbar navbar-expand-lg rounded fixed-sm-top  w-100" id="nav">
                 <div className="container-fluid">
@@ -53,16 +76,26 @@ export default function Nav(props){
                                 Tutorial
                             </Link>
                             </li>
-                            <li className="nav-item rounded quadrado" style={Display}>
-                            <Link to={"/register"} className="nav-link fs-5 m-2 fw-bold">
-                                Cadastro
-                            </Link>
-                            </li>
-                            <li className="nav-item rounded quadrado" style={Display}>
-                            <Link to={"/login"} className="nav-link fs-5 m-2 fw-bold">
-                                Login
-                            </Link>
-                            </li>
+                            {token ? (
+                                <li className='nav-item rounded quadrado' style={Display}>
+                                    <button className='nav-link fs-5 m-2 fw-bold' onClick={handleClick}>
+                                        Logout
+                                    </button>
+                                </li>
+                            ) : (
+                                <div>
+                                    <li className="nav-item rounded quadrado" style={Display}>
+                                        <Link to={"/register"} className="nav-link fs-5 m-2 fw-bold">
+                                            Cadastro
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item rounded quadrado" style={Display}>
+                                        <Link to={"/login"} className="nav-link fs-5 m-2 fw-bold">
+                                            Login
+                                        </Link>
+                                    </li>
+                                </div>
+                            )}
                         </ul>
                     </div>
                  </div>
