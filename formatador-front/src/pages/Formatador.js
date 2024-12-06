@@ -112,9 +112,9 @@ export default function Formatador() {
     return (
         <div className=" " style={{ backgroundColor:'#2CAEEF' }}>
             <Nav text="Formatador" />
-            <div className='d-flex h-100 align-items-center justify-content-center'>
-                <div style={{ }} className="pb-3 vh-100 row container rounded my-5  ">
-                    <div className=" p-4 bg-light rounded  col-5 " id='projeto'>
+            <div className='d-flex min-vh-100 flex-column align-items-center justify-content-center'>
+                <div style={{ }} className="pb-3  row container rounded my-5  ">
+                    <div className=" card vh-auto shadow-sm p-4 bg-light rounded  col-5 " id='projeto'>
                         <div className='d-flex align-items-center justify-content-center'>
                             <button onClick={handleCriarProjeto} className="btn shadow-sm fw-bold  align-self-center min-w-50 w-sm-50    btn-primary " >
                                 Criar Novo Projeto
@@ -135,7 +135,7 @@ export default function Formatador() {
                             ) : (
                                 <div className="row d-flex justify-content-center h-100 w-100" id='card projeto'>
                                     <div className='row' id='linha1'>
-                                        <strong className='fs-2 justify-content-center text-center align-items-center d-flex'>Meus projetos </strong>
+                                        <strong className='fs-2 justify-content-center text-center align-items-center d-flex'>Meus Projetos </strong>
                                     </div>
                                     
                                     <div className='h-auto row d-flex align-items-center flex-column '>{projetos.map((projeto) => (
@@ -222,9 +222,9 @@ export default function Formatador() {
                         </div>
                     </div> 
                     <div className='col-2'></div>          
-                    <div className="container col-5  rounded bg-light " id='modelo'>
+                    <div className="container col-5 card shadow-sm rounded bg-light p-4 " id='modelo'>
                        
-                        <div className="text-center mt-4 " >
+                        <div className="text-center" >
                             <button
                                 onClick={handleCriarModelo}
                                 className="btn fw-bold btn-primary"
@@ -232,12 +232,13 @@ export default function Formatador() {
                                 Criar Novo Modelo
                             </button>
                         </div>
-                        <h3 className="text-center mt-5 fs-2">Meus Modelos</h3>
-                        <div className="row d-flex justify-content-center">
-                            {modelos.map((modelo) => (
+                        <strong className='fs-2 justify-content-center text-center align-items-center d-flex'>Meus Modelos </strong>
+                        <div className="row  d-flex justify-content-center">
+                            {/* <div className=''> */}
+                                {modelos.map((modelo) => (
                                 <div
                                     key={modelo.id}
-                                    className="col-3 col-sm-3 border border-dark bg-light d-flex align-items-center justify-content-center m-2"
+                                    className="col-6 card col-sm-3 bg-light d-flex align-items-center justify-content-center m-2"
                                     style={{cursor: 'pointer' }}
                                     onClick={() => handleAbrirModelo(modelo.id)}
                                 >
@@ -254,8 +255,12 @@ export default function Formatador() {
 
                                         
                                     </div>
+                                    <i className="col-6 bi bi-file-earmark"></i>
                                 </div>
-                            ))}
+                                
+                                ))}    
+                            {/* </div> */}
+
                         </div>
                         
                     </div>
