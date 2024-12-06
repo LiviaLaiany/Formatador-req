@@ -111,10 +111,6 @@ export default function CriarDocumento() {
         };
     }, [modelo]);
 
-    const formataTexto = (texto) => {
-        return `<p style="text-align: justify; line-height: 1.5; text-indent: 1.25em; font-family: Arial, Times New Roman, serif; color: black; font-size: 12;">${texto}</p>`;
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const docJson = { ...form };
@@ -145,6 +141,10 @@ export default function CriarDocumento() {
         }).catch((err) => {
             alert("Erro ao criar documento: " + err.message);
         });
+    }
+
+    const handleVoltar = () => {
+        navigate(`/projetos/${pro_id}`)
     }
 
     const handleAdicionarLinha = (titulo) => {
@@ -439,9 +439,14 @@ export default function CriarDocumento() {
                         ) : null
                     ))}
 
-                    <button type="submit" className="btn btn-primary mt-4">
-                        Criar Documento
-                    </button>
+                    <div className="d-flex">
+                        <button type="submit" className="btn btn-primary me-3">
+                            Criar Documento
+                        </button>
+                        <button type="button" className="btn btn-secondary" onClick={handleVoltar}>
+                            Voltar
+                        </button>
+                    </div>
                 </form>
             </div>
             <Rodape />
