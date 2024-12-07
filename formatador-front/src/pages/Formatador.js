@@ -147,30 +147,26 @@ export default function Formatador() {
                                     <div className='h-auto w-100 w-md-auto row d-flex align-items-center flex-column '>{projetos.map((projeto) => (
                                         <div className="container w-100 w-md-auto p-0 my-3 d-flex justify-content-center flex-column align-items-center">
                                             <div className="row container w-100 w-md-auto p-0 p-md-0 justify-content-center align-items-center">
-                                                {/* Card que simula uma pastinha */}
                                                 <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-0 p-md-auto align-items-center flex-column d-flex justify-content-center w-100">
                                                     <div id='' className="cardPastaModelo card formatador-card shadow-sm align-items-center pb-3 justify-content-center p-0 h-100 w-100">
-                                                        {/* Aba da pastinha */}
                                                         <div className="folder-tab align-items-center justify-content-between d-flex w-100" id='barraAmarela'>
+                                                        <span title={`Visualizar ${projeto.nome}`} className="text-truncate text-white">
+                                                                    {projeto.nome}
+                                                                </span>
+
                                                             <div 
                                                                 id='botaoProjeto'
                                                                 key={projeto.id}
                                                                 title='Visualizar Projeto'
-                                                                className="text-center text-light d-flex align-items-center texto-limitado w-auto p-1 justify-content-start "
+                                                                className="text-center text-light d-flex align-items-end texto-limitado w-auto p-1 justify-content-start "
                                                                 onClick={() => handleAbrirProjeto(projeto.id)}
                                                                 style={{ cursor: 'pointer' }}
                                                             > 
-                                                                <span
-                                                                    title={`Visualizar ${projeto.nome}`}
-                                                                    className="text-truncate" 
-                                                                    // style={{ display: 'block', maxWidth: '100%', fontSize: '1rem' }}
-                                                                >
-                                                                    {projeto.nome}
-                                                                </span>
+                                                            <i class="bi bi-eye-fill color-white"></i>
                                                             </div>
 
                                                             <i id='iconePasta'
-                                                                className="bi bi-folder text-light p-1 rounded icone-bi-folder"
+                                                                className="bi bi-pencil text-light p-1 rounded icone-bi-folder"
                                                                 onClick={() => toggleButtons(projeto.id)}
                                                                 style={{ cursor: 'pointer' }}
                                                                 title={`Editar ou Excluir ${projeto.nome}`}
@@ -220,7 +216,6 @@ export default function Formatador() {
                             )}
                         </div>
                     </div> 
-                    {/* Espaçamento */}
                     <div className='col-12 col-md-1 m-3'></div>                    
                     <div className="card formatador-card mx-auto vh-auto shadow-sm p-4 bg-light rounded col-12 col-md-5" id='modelo'>
                         <div className="text-center justify-content-center d-flex" >
@@ -238,13 +233,13 @@ export default function Formatador() {
                         <div
                             id="cardModelo"
                             key={modelo.id}
-                            className="col-6 col-lg-3 card formatador-card formatador-card-modelo bg-light d-flex align-items-center justify-content-center m-2"
+                            className="col-6 col-lg-3 card formatador-card formatador-card-modelo bg-light d-flex  p-5 align-items-center justify-content-center m-2"
                             style={{ cursor: 'pointer' }}
                             onClick={() => handleAbrirModelo(modelo.id)}
                         >
                             <div className="flex-column align-items-center justify-content-center d-flex">
                                 <div className="w-auto texto-fluido nome-limited" title={modelo.nome}>
-                                    {limitarTexto(modelo.nome, 10)} {/* Limite de 10 caracteres */}
+                                    {limitarTexto(modelo.nome, 10)} 
                                 </div>
                                 {modelo.id !== 1 && (
                                     <div className="btn-excluir" id='botaoExcluir'>
