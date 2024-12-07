@@ -107,7 +107,7 @@ export default function ProjetoShow() {
   return (
     <div className="show ">
       <Nav text="Formatador" />
-      <div className="container p-4 pb-sm-4 vh-100">
+      <div className="container p-4 pb-sm-4 min-vh-100">
         <div className="row">
           <h1 className="text-center mt-4 fs-2">{projeto?.nome}</h1>
           <div className="card mt-4">
@@ -183,7 +183,7 @@ export default function ProjetoShow() {
                         <button type="submit" className="btn  min-w-25  m-4" id="botao">
                             Voltar
                         </button>
-            </div>
+          </div>
         </div>
       </div>
       <Rodape/>

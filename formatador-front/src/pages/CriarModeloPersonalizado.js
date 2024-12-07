@@ -111,16 +111,19 @@ export default function CriarModeloPersonalizado() {
                                             <span>{secao.titulo}</span>
                                         </div>
                                     ))}
-
                                     </div>             
-                                    
                                 </div>
-                                <div className="align-items-center justify-content-center m-5 d-flex">
+                                <div className="align-items-center justify-content-center mt-5 d-flex">
                                     <button type="submit" className="btn  min-w-50" id="botao">
                                         Criar Modelo
                                     </button>
-                            </div>
-                        </form>
+                                </div>
+                                <div className="align-items-center justify-content-center d-flex" onClick={() => navigate('/formatador')}>
+                                    <button type="submit" className="btn  min-w-25  m-4" id="botao">
+                                        Voltar
+                                    </button>
+                                </div>
+                            </form>
                     </div>
                 </div>
             </div>

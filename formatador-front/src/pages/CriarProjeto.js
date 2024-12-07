@@ -71,7 +71,11 @@ export default function CriarProjeto() {
                                 Criar Projeto
                             </button>
                         </div>
-
+                        <div className="align-items-center justify-content-center d-flex" onClick={() => navigate('/formatador')}>
+                            <button type="submit" className="btn  min-w-25  m-4" id="botao">
+                                Voltar
+                            </button>
+                        </div>
                     </form>
                 
             </div>

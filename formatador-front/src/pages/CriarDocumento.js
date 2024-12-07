@@ -454,6 +454,11 @@ export default function CriarDocumento() {
                             Criar Documento
                         </button>
                     </div>
+                    <div className="align-items-center justify-content-center d-flex" onClick={() => navigate(`/projetos/${projeto.id}`)}>
+                        <button type="submit" className="btn  min-w-25  m-4" id="botao">
+                            Voltar
+                        </button>
+                    </div>
                 </form>
                 
             </div>

@@ -1,4 +1,4 @@
-.texto-card-tutorial {
+.card1 {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -11,7 +11,7 @@
   justify-content: space-between; 
 }
 
-.tutorial-card-body {
+.card1-body {
   position: relative;
   flex-grow: 1;
   overflow: hidden;
@@ -20,16 +20,25 @@
   justify-content: space-between;
 }
 
-.tutorial-card-text {
-  display: -webkit-box; /* Estilização para truncar o texto */
-  -webkit-line-clamp: 3; /* Mostra apenas 3 linhas */
+
+.card1-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #666;
+  transition: all 0.3s ease;
 }
 
-.tutorial-read-more-btn {
+.card1-text.expanded {
+  display: block;
+  overflow: visible;
+  text-overflow: unset;
+  -webkit-line-clamp: unset;
+}
+
+.read-more-btn {
   background: none;
   border: none;
   color: #007bff;
@@ -38,7 +47,7 @@
   padding: 0;
   font-size: 0.9rem;
 }
-.tutorial-read-more-btn:hover {
+.read-more-btn:hover {
   color: #0056b3;
 }
 
@@ -46,18 +55,18 @@
     transition: transform 0.4s ease-in-out, filter 0.3s;
   }
   
-  .tutorial-card-container {
+  .caixa {
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .texto-card-tutorial:hover {
+  .card1:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
   
-  .tutorial-card-header {
+  .card1-header {
     font-weight: bold;
     border-radius: 10px 10px 0 0;
     display: flex;
@@ -66,79 +75,7 @@
   }
 
   
-  .tutorial-card-text {
+  .card1-text {
     color: #666;
   }
   
-  .btn1 {
-    background-color: #4fa6ff;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-  }
-  
-  .btn2 {
-    background-color: #007cf9;
-    color: #ffffff;
-    border: none;
-    padding: 10px;
-    border-radius: 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-  }
-  
-  .btn3 {
-    background-color: #0367cc;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-  }
-  
-  .btn4 {
-    background-color: #0251a0;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-  }
-  
-  
-  .btn5 {
-    background-color: #042c5c;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-  }
-  
-  .btn6 {
-    background-color: #011830;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-  }
-  
-  .btn1:hover, .btn2:hover, .btn3:hover, .btn4:hover, .btn5:hover, .btn6:hover{
-    transform: scale(1.05);
-    background-color: #ffee55;
-    color: black;
-  }
