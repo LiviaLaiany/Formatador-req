@@ -95,6 +95,10 @@ export default function ProjetoShow() {
     }
   }
 
+  const handleVerDocumento = () => {
+    navigate(`/documentos/${documento.id}`)
+  }
+
   return (
     <div className="show ">
       <Nav text="Formatador" />
@@ -126,7 +130,12 @@ export default function ProjetoShow() {
               <div className="card-body" >
                 <p><strong>Nome do Documento:</strong> {documento ? documento.nome : "Carregando..."}</p>
                 <p><strong>Data de Criação:</strong> {documento ? new Date(documento.created_at).toLocaleDateString() : "Carregando..."}</p>
-                <button className="btn btn-danger btn-sm" onClick={handleExcluirDocumento}>Excluir Documento</button>
+                <div className="mb-2">
+                  <button className="btn btn-primary btn-sm" onClick={handleVerDocumento}>Ver Documento</button>
+                </div>
+                <div>
+                  <button className="btn btn-danger btn-sm" onClick={handleExcluirDocumento}>Excluir Documento</button>
+                </div>
               </div>
             ) : (
               <div className="card-body">
