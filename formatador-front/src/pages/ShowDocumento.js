@@ -96,7 +96,7 @@ export default function ShowDocumento() {
     return (
         <div className="show">
             <Nav text="Formatador" />
-            <div className="container vh-100">
+            <div className="container min-vh-100">
                 <div className="my-4 bg-light">
                     <h3 className="text-dark">{documento?.nome || "Carregando..."}</h3>
                     <div className="text-dark">
