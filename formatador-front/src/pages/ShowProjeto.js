@@ -107,7 +107,7 @@ export default function ProjetoShow() {
   return (
     <div className="show ">
       <Nav text="Formatador" />
-      <div className="container  vh-100">
+      <div className="container p-4 pb-sm-4 vh-100">
         <div className="row">
           <h1 className="text-center mt-4 fs-2">{projeto?.nome}</h1>
           <div className="card mt-4">
@@ -135,12 +135,15 @@ export default function ProjetoShow() {
               <div className="card-body" >
                 <p><strong>Nome do Documento:</strong> {documento ? documento.nome : "Carregando..."}</p>
                 <p><strong>Data de Criação:</strong> {documento ? new Date(documento.created_at).toLocaleDateString() : "Carregando..."}</p>
-                <div className="mb-2">
-                  <button className="btn btn-primary btn-sm" onClick={handleVerDocumento}>Ver Documento</button>
+                <div className="d-flex justify-content-center align-items-center">
+                  <div className="mx-3">
+                    <button className="btn btn-primary btn-sm" onClick={handleVerDocumento}>Ver Documento</button>
+                  </div>
+                  <div>
+                    <button className="btn btn-danger btn-sm" onClick={handleExcluirDocumento}>Excluir Documento</button>
+                  </div>
                 </div>
-                <div>
-                  <button className="btn btn-danger btn-sm" onClick={handleExcluirDocumento}>Excluir Documento</button>
-                </div>
+                
               </div>
             ) : (
               <div className="card-body">
