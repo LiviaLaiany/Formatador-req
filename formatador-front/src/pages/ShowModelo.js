@@ -12,20 +12,25 @@ export default function ShowModelo() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        api.get(`/v1/modelos/${id}`, {
-            headers: { Authorization: `Bearer ${token}` },
-        })
-            .then((response) => {
-                setModelo(response.data);
+
+        if (!token) {
+            navigate('/')
+        } else {
+            api.get(`/v1/modelos/${id}`, {
+                headers: { Authorization: `Bearer ${token}` },
             })
-            .catch((error) => {
-                if (error.response?.status === 401 || error.response?.status === 498) {
-                    localStorage.clear();
-                    navigate('/');
-                } else {
-                    alert('Erro ao carregar o modelo: ' + error.message);
-                }
-            });
+                .then((response) => {
+                    setModelo(response.data);
+                })
+                .catch((error) => {
+                    if (error.response?.status === 401 || error.response?.status === 498) {
+                        localStorage.clear();
+                        navigate('/');
+                    } else {
+                        alert('Erro ao carregar o modelo: ' + error.message);
+                    }
+                });
+        }
     }, [id, token, navigate]);
 
     if (!modelo) {
@@ -68,7 +73,7 @@ export default function ShowModelo() {
             <h2 className="text-center my-4 fs-2">{modelo.nome}</h2>
             <div className='container '>
                 <div className="container card bg-light text-dark rounded  mt-4 ">
-                    <h4 className=' fs-2  mt-4 card-header color'>Capa</h4>
+                    <h4 className=' fs-2  mt-4 card-header'>Capa</h4>
                     <div className='py-3 card-body rounded'>{modelo.mod_json.capa.length > 0 ? renderCapa(modelo.mod_json.capa) : <p>Sem dados na capa.</p>}</div>
                 </div>
                 <div className='container bg-light card text-dark rounded  mt-4 mb-4'>

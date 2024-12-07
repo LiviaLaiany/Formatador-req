@@ -16,31 +16,36 @@ export default function Formatador() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        api.get('/v1/projetos', {
-            headers: { Authorization: `Bearer ${token}` },
-        })
-            .then((response) => setProjetos(response.data || []))
-            .catch((error) => {
-                if (error.response?.status === 401 || error.response?.status === 498) {
-                    localStorage.clear();
-                    navigate('/');
-                } else {
-                    alert('Erro ao carregar projetos: ' + error.message);
-                }
-            });
 
-        api.get('/v1/modelos', {
-            headers: { Authorization: `Bearer ${token}` },
-        })
-            .then((response) => setModelos(response.data || []))
-            .catch((error) => {
-                if (error.response?.status === 401 || error.response?.status === 498) {
-                    localStorage.clear();
-                    navigate('/');
-                } else {
-                    alert('Erro ao carregar modelos: ' + error.message);
-                }
-            });
+        if (!token) {
+            navigate('/');
+        } else {
+            api.get('/v1/projetos', {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+                .then((response) => setProjetos(response.data || []))
+                .catch((error) => {
+                    if (error.response?.status === 401 || error.response?.status === 498) {
+                        localStorage.clear();
+                        navigate('/');
+                    } else {
+                        alert('Erro ao carregar projetos: ' + error.message);
+                    }
+                });
+    
+            api.get('/v1/modelos', {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+                .then((response) => setModelos(response.data || []))
+                .catch((error) => {
+                    if (error.response?.status === 401 || error.response?.status === 498) {
+                        localStorage.clear();
+                        navigate('/');
+                    } else {
+                        alert('Erro ao carregar modelos: ' + error.message);
+                    }
+                });
+        }
     }, [token, navigate]);
 
     const handleAbrirProjeto = (id) => {
@@ -275,4 +280,3 @@ export default function Formatador() {
 </div>
     );
 }
-

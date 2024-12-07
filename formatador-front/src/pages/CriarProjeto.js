@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import api from '../services/api';
 import Nav from './Navbar.js';
@@ -12,6 +12,12 @@ export default function CriarProjeto() {
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const navigate = useNavigate();
+
+    useEffect(()  => {
+        if(!token) {
+            navigate('/')
+        }
+    })
 
     const handleCriarProjeto = (e) => {
         e.preventDefault();

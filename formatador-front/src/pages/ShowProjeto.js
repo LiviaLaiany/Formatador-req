@@ -21,43 +21,48 @@ export default function ProjetoShow() {
 // RESPONSIVO E PRONTO
   
   useEffect(() => {
-    api.get(`/v1/projetos/${id}`, {
-      headers: { Authorization: `Bearer ${token}`}
-    }).then((response) => {
-      setProjeto(response.data)
 
-      api.post(`/v1/documentos/getDocumentoWithProjeto`, {
-        pro_id: `${response.data.id}`
-      }, {
+    if (!token) {
+      navigate('/')
+    } else {
+      api.get(`/v1/projetos/${id}`, {
         headers: { Authorization: `Bearer ${token}`}
-      }).then((docResponse) => {
-        setDocumento(docResponse.data);
-        console.log("Documento atualizado:", docResponse.data);
-      }).catch((errorDoc) =>
-        console.log('Erro ao carregar documento' + errorDoc.response.data.message)
-      )
-
-    }).catch((error) => {
-        if (error.response?.status === 401 || error.response?.status === 498) {
-          localStorage.clear();
-          navigate('/');
-        } else {
-          alert('Erro ao carregar o projeto: ' + error.message);
-        }
-    })
-
-    api.get(`/v1/modelos`, {
-      headers: { Authorization: `Bearer ${token}`}
-    }).then((response) => {
-      setModelos(response.data);
-    }).catch((error) => {
-        if (error.response?.status === 401 || error.response?.status === 498) {
-          localStorage.clear();
-          navigate('/');
-        } else {
-          alert('Erro ao carregar os modelos: ' + error.response.data.message);
-        }
-    });
+      }).then((response) => {
+        setProjeto(response.data)
+  
+        api.post(`/v1/documentos/getDocumentoWithProjeto`, {
+          pro_id: `${response.data.id}`
+        }, {
+          headers: { Authorization: `Bearer ${token}`}
+        }).then((docResponse) => {
+          setDocumento(docResponse.data);
+          console.log("Documento atualizado:", docResponse.data);
+        }).catch((errorDoc) =>
+          console.log('Erro ao carregar documento' + errorDoc.response.data.message)
+        )
+  
+      }).catch((error) => {
+          if (error.response?.status === 401 || error.response?.status === 498) {
+            localStorage.clear();
+            navigate('/');
+          } else {
+            alert('Erro ao carregar o projeto: ' + error.message);
+          }
+      })
+  
+      api.get(`/v1/modelos`, {
+        headers: { Authorization: `Bearer ${token}`}
+      }).then((response) => {
+        setModelos(response.data);
+      }).catch((error) => {
+          if (error.response?.status === 401 || error.response?.status === 498) {
+            localStorage.clear();
+            navigate('/');
+          } else {
+            alert('Erro ao carregar os modelos: ' + error.response.data.message);
+          }
+      });
+    }
 
   }, [id, navigate]);
 

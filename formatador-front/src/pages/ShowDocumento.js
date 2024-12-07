@@ -12,13 +12,18 @@ export default function ShowDocumento() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        api.get(`v1/documentos/${id}`, {
-            headers: { Authorization: `Bearer ${token}`}
-        }).then((response) => {
-            setDocumento(response.data);
-        }).catch((error) => {
-            alert('Erro ao acessar documento: '+error.response?.data?.message)
-        })
+
+        if(!token) {
+            navigate('/')
+        } else {
+            api.get(`v1/documentos/${id}`, {
+                headers: { Authorization: `Bearer ${token}`}
+            }).then((response) => {
+                setDocumento(response.data);
+            }).catch((error) => {
+                alert('Erro ao acessar documento: '+error.response?.data?.message)
+            })
+        }
     }, [token]);
 
     const renderCampo = (titulo, valor) => {

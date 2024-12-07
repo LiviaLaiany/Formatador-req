@@ -16,16 +16,22 @@ export default function EditarProjeto() {
     const [descricao, setDescricao] = useState([]);
     const navigate = useNavigate();
 
+    
     useEffect(() => {
-        api.get(`/v1/projetos/${id}`, {
-            headers: { Authorization: `Bearer ${token}`}, 
-        }).then((response) => {
-            setProjeto(response.data)
-            setNome(response.data.nome);
-            setDescricao(response.data.descricao);
-        }).catch((err) => {
-            alert('Erro ao carregar projeto: '+err.message)
-        });
+
+        if (!token) {
+            navigate('/');
+        } else {
+            api.get(`/v1/projetos/${id}`, {
+                headers: { Authorization: `Bearer ${token}`}, 
+            }).then((response) => {
+                setProjeto(response.data)
+                setNome(response.data.nome);
+                setDescricao(response.data.descricao);
+            }).catch((err) => {
+                alert('Erro ao carregar projeto: '+err.message)
+            });   
+        }
     }, [id, token]);
 
     const handleSubmit = (e) => {

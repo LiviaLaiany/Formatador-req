@@ -17,15 +17,20 @@ export default function CriarModeloPersonalizado() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        api.get('/v1/modelos/1', { 
-            headers: { Authorization: `Bearer ${token}` },
-        })
-            .then((response) => {
-                setModeloBase(response.data.mod_json);
-                setCapa(response.data.mod_json.capa || []);
-                setConteudo(response.data.mod_json.conteudo || []);
+
+        if (!token) {
+            navigate('/')
+        } else {
+            api.get('/v1/modelos/1', { 
+                headers: { Authorization: `Bearer ${token}` },
             })
-            .catch((error) => alert('Erro ao carregar modelo base: ' + error.message));
+                .then((response) => {
+                    setModeloBase(response.data.mod_json);
+                    setCapa(response.data.mod_json.capa || []);
+                    setConteudo(response.data.mod_json.conteudo || []);
+                })
+                .catch((error) => alert('Erro ao carregar modelo base: ' + error.message));
+        }
     }, [token]);
 
     const handleSubmit = (e) => {
