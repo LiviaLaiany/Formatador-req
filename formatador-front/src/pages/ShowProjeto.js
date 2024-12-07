@@ -7,7 +7,6 @@ import "../css/ShowProjeto.css";
 
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { error } from "jquery";
 
 export default function ProjetoShow() {
   const { id } = useParams();
@@ -131,9 +130,8 @@ export default function ProjetoShow() {
               </div>
             ) : (
               <div className="card-body">
-                <strong>Este projeto ainda não possui um documento de requisitos.</strong>
+                <p className="fw-bold">Este projeto ainda não possui um documento de requisitos.</p>
                 <div  className="d-flex justify-content-center align-items-center">
-
                   <button type="button" id="botao" className="btn btn-primary mt-3" onClick={showModal}>
                     Criar Documento de Requisitos
                   </button>
