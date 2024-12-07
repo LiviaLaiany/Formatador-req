@@ -78,16 +78,15 @@ class ModeloSeeder extends Seeder
                             'obrigatorio' => true,
                             'descricao' => 'Define as bases do projeto e orienta os leitores para que entendam o contexto do desenvolvimento.'
                         ],
-                        [
-                            'tipo' => 'tabela',
-                            'titulo' => 'Termos e Definições',
-                            'obrigatorio' => false,
-                            'descricao' => 'Lista dos termos citados no documento e suas respectivas definições.',
-                            'colunas' => ['Termo', 'Explicação'],
-                            'linhas' => []
-                        ]
-                        
                     ]
+                ],
+                [
+                    'tipo' => 'tabela',
+                    'titulo' => 'Termos e Definições',
+                    'obrigatorio' => false,
+                    'descricao' => 'Lista dos termos citados no documento e suas respectivas definições.',
+                    'colunas' => ['Termo', 'Explicação'],
+                    'linhas' => []
                 ],
                 [
                     'tipo' => 'campo_texto',

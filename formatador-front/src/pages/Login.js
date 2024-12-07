@@ -51,7 +51,7 @@ export default function Login(){
                 <div className="col-sm vh-100 pt-5 d-flex justify-content-center align-items-center" id="back2">
                     <div className="d-flex flex-column justify-content-center align-items-center w-100" style={{ maxWidth: '400px' }}>
                         <div className="d-flex mb-5 pt-2 justify-content-center align-items-center w-100 fs-1 fw-bold rounded text-center" id="nome" style={{ minHeight: '50px' }}>
-                            <p>Login</p>
+                            Login
                         </div>
                         <div className="d-flex flex-column align-items-center justify-content-center w-100">
                             <input id="email" placeholder="exemplo@dominio.com" className="form-control mt-2 w-100" value={email} onChange={e => setEmail(e.target.value)}/>

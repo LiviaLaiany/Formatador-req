@@ -1,106 +1,99 @@
-.botao{
-    background-color: #003060;
-    color: white;
+/* div.botao{
+  background-color: #003060;
+  color: white;
 
 }
-.botao:hover{
-    background-color: #044383;
+div.botao:hover{
+  background-color: #044383;
 
-}
-strong{
+} */
+.strong-meusProjeto, .strong-meusModelos{
   height: 100px;
-}
-#barraAmarela{
+  }
+  #barraAmarela{
   height: 40px;
-}
-#barraAmarela:hover{
+  }
+  #barraAmarela:hover{
   background-color: #f7c131;
-}
-.bi-folder:hover {
+  }
+  .icone-bi-folder:hover {
   background:#ebad00;
-}
-.bi-folder{
+  }
+  .icone-bi-folder{
   width: 50px;
-}
-#botaoProjeto:hover {
+  }
+  #botaoProjeto:hover {
   background:#ebad00;
-}
-#linha1{
+  }
+  /* div#linha1{
   height: 100px;
-}
-.texto-fluido {
+  } */
+  .texto-fluido-formatador {
     font-size: clamp(0.85rem, 1vw, 1rem);
-}
-.card {
+  }
+  .formatador-card {
   position: relative;
   overflow: hidden; /* Garante que os elementos internos não saiam da borda do card */
   /* transition: transform 0.1s ease; Efeito de transição suave ao passar o mouse */
-}
-
-.card:hover {
+  }
+  
+  .formatador-card:hover {
   transform: scale(1.0); /* Aumenta o tamanho do card ao passar o mouse */
-}
-
-/* Definir o comportamento básico do card */
-.card-modelo {
+  }
+  
+  /* Definir o comportamento básico do card */
+  .formatador-card-modelo {
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease; /* Suavizar o aumento da altura */
-}
-
-/* Inicialmente, a div de excluir estará oculta */
-.btn-excluir {
+  }
+  
+  /* Inicialmente, a div de excluir estará oculta */
+  .btn-excluir {
   display: none;
-}
-
-/* Quando o mouse passar sobre o card, o botão de excluir aparece e o card aumenta */
-.card-modelo:hover {
+  }
+  
+  /* Quando o mouse passar sobre o card, o botão de excluir aparece e o card aumenta */
+  .formatador-card-modelo:hover {
   transform: scale(1.0); /* Aumenta ligeiramente o tamanho do card */
   background-color:#b9dcff;
-}
-
-/* Exibir o botão de excluir quando passar o mouse sobre o card */
-.card-modelo:hover .btn-excluir {
+  }
+  
+  /* Exibir o botão de excluir quando passar o mouse sobre o card */
+  .formatador-card-modelo:hover .btn-excluir {
   display: block; /* Exibe o botão */
-}
-
-/* Controlar a largura do nome */
-.nome-limited {
+  }
+  
+  /* Controlar a largura do nome */
+  .nome-limited {
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: all 0.1s ease; /* Suaviza a transição */
-}
-
-/* Exibir o nome completo ao passar o mouse */
-.card-modelo:hover .nome-limited {
+  }
+  
+  /* Exibir o nome completo ao passar o mouse */
+  .formatador-card-modelo:hover .nome-limited {
   white-space: normal; /* Exibe o nome completo */
-}
-
-/* Se desejar uma transição suave para o botão */
-.btn-excluir {
+  }
+  
+  /* Se desejar uma transição suave para o botão */
+  .btn-excluir {
   opacity: 0;
   transition: opacity 0.1s ease; /* Suaviza a transição de visibilidade */
-}
-
-.card-modelo:hover .btn-excluir {
-  opacity: 1; /* Torna o botão visível */
-}
-
-/* @media (max-width: 576px) {
-  .text-truncate {
-      font-size: 5px;
   }
-} */
-
-/* Para telas médias (até 768px de largura) */
-@media (max-width: 768px) {
+  
+  .formatador-card-modelo:hover .btn-excluir {
+  opacity: 1; /* Torna o botão visível */
+  }
+  /* Para telas médias (até 768px de largura) */
+  @media (max-width: 768px) {
   .text-truncate {
       font-size: 14px;
   }
-}
-@media (max-width: 992px) {
+  }
+  @media (max-width: 992px) {
   .texto-limitado {
     display: -webkit-box;
     -webkit-line-clamp: 2; /* Limita para 2 linhas */
@@ -108,21 +101,15 @@ strong{
     overflow: hidden;
     text-overflow: ellipsis; /* Adiciona "..." no final */
   }
-}
-
-/* Para telas maiores, não aplica limitação */
-@media (min-width: 992px) {
+  }
+  
+  /* Para telas maiores, não aplica limitação */
+  @media (min-width: 992px) {
   .texto-limitado {
     -webkit-line-clamp: unset;
   }
-}
-
-
-
-
-
-
-.folder-tab {
+  }
+  div.folder-tab {
     background-color: #f1cd6b;
     border-radius: 5px 5px 0 0;
     padding: 10px;
@@ -131,57 +118,57 @@ strong{
     margin-bottom: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   }
-  .card {
+  .formatador-card {
     border: none;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
-  .card-body {
+  .formatador-card-body {
     padding: 20px;
   }
-  .card-footer {
+  /* div.formatador-card-footer {
     background-color: #f8f9fa;
     padding: 10px;
-  }
-  .folder {
+  } */
+  /* .folder {
     background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-  }
+  } */
   
-  .folder h5 {
+  /* .folder h5 {
     margin-top: 15px;
     font-size: 1.25rem;
   }
   
-  .folder p {
+  div.folder p {
     font-size: 1rem;
     color: #6c757d;
-  }
+  } */
   
-  .folder-button {
+  /* .folder-button {
     margin-top: 20px;
-  }
-  .folder {
+  } */
+  /* div.folder {
     background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
-}
-.folder i {
+  }
+  div.folder i {
     font-size: 4rem;
     color: #6c757d;
-}
-.folder h5 {
+  }
+  div.folder h5 {
     margin-top: 15px;
     font-size: 1.25rem;
-}
-.folder p {
+  }
+  div.folder p {
     font-size: 1rem;
     color: #6c757d;
-}
-.folder-button {
+  } */
+  /* .folder-button {
     margin-top: 20px;
-}  
+  }   */
