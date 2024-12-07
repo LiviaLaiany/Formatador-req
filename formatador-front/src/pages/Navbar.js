@@ -81,7 +81,7 @@ export default function Nav(props){
     return(
             <nav className="navbar navbar-expand-lg rounded fixed-sm-top  w-100" id="nav">
                 <div className="container-fluid">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href={"/"}>
                         <img src={logo} alt="Logo" width="100px" className="d-inline-block align-text-top"></img>
                     </a>
                     <button className="navbar-toggler" type="button" onClick={toggleMenu}>

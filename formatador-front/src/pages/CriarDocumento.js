@@ -7,6 +7,7 @@ import '../css/summernotecss.css';
 import api from '../services/api';
 import Nav from './Navbar.js';
 import Rodape from './Rodape.js';
+import '../css/CriarDocumento.css';
 
 export default function CriarDocumento() {
     const [token] = useState(localStorage.getItem('token'));
@@ -211,26 +212,28 @@ export default function CriarDocumento() {
     };
 
     return (
-        <div>
-            <Nav />
-            <div className="container mt-4">
-                <h2 className="text-center">Criar Documento de Requisitos</h2>
-                <form onSubmit={handleSubmit}>
-                <div className="mt-4">
-                    <h4>Projeto: {projeto?.nome || "Carregando..."}</h4>
-                    <h5>Modelo: {modelo?.nome || "Carregando..."}</h5>
-                    <label className='form-label my-3'>
-                        <h3 className='text-center'>Nome do Documento:</h3>
+        <div className="color">
+            <Nav text='Formatador'/>
+            <h2 className="text-center m-5 text-light">Criar Documento de Requisitos</h2>
+
+            <div className="container my-4 rounded">
+                <form onSubmit={handleSubmit} className="pb-5">
+                <div className="my-4 bg-white py-2 border border-black">
+                    <h4 className="text-center fs-2 my-3">Projeto: {projeto?.nome || "Carregando..."}</h4>
+                    <h5 className="text-center fs-5">Modelo: {modelo?.nome || "Carregando..."}</h5>
+                    <label className=' my-3 w-100 d-flex align-items-center justify-content-center'>
+                        <h3 className='text-center fs-5 mx-3 align-self-center'>Nome do Documento:</h3>
                         <input
                             type="text"
                             value={nome}
                             onChange={(e) => setNome(e.target.value)}
                             required
-                            className='form-control w-100'
+                            className='form-control w-25'
                         />
                     </label>
                 </div>
-                    <h4 className="mt-4">Capa</h4>
+                <div className="bg-white rounded p-3 border border-black">
+                    <h4 className="mt-4 text-center">Capa</h4>
                     {modelo?.mod_json?.capa?.map((campo, index) => (
                         campo.obrigatorio == true ? (
                             <div key={`capa-${index}`} className="mb-3">
@@ -248,7 +251,9 @@ export default function CriarDocumento() {
                         </div>
                         ) :  null
                     ))}
-                    <h4 className="mt-4">Conteúdo</h4>
+                </div>
+                <div className="bg-white my-3 p-3 rounded border border-black ">
+                    <h4 className="my-4 text-center">Conteúdo</h4>
                     {modelo?.mod_json?.conteudo?.map((secao, index) => (
                         secao.obrigatorio == true ? (
                             <div key={`conteudo-${index}`} className="mb-3">
@@ -346,7 +351,7 @@ export default function CriarDocumento() {
                                                     ))}
                                                     <button
                                                         type="button"
-                                                        className="btn btn-primary btn-sm mt-2"
+                                                        className="btn btn-primary btn-sm mt-2 botao"
                                                         onClick={() => handleAdicionarItemLista(componente.titulo)}
                                                     >
                                                         Adicionar Item
@@ -395,7 +400,7 @@ export default function CriarDocumento() {
                                     </table>
                                     <button
                                         type="button"
-                                        className="btn btn-primary btn-sm"
+                                        className="btn btn-primary btn-sm botao"
                                         onClick={() => handleAdicionarLinha(secao.titulo)}
                                     >
                                         Adicionar Linha
@@ -422,7 +427,7 @@ export default function CriarDocumento() {
                                     ))}
                                     <button
                                         type="button"
-                                        className="btn btn-primary btn-sm mt-2"
+                                        className="btn btn-primary btn-sm mt-2 botao"
                                         onClick={() => handleAdicionarItemLista(secao.titulo)}
                                     >
                                         Adicionar Item
@@ -438,11 +443,14 @@ export default function CriarDocumento() {
                         </div>
                         ) : null
                     ))}
-
-                    <button type="submit" className="btn btn-primary mt-4">
-                        Criar Documento
-                    </button>
+                    </div>
+                    <div className="d-flex justify-content-center align-items-center ">
+                        <button type="submit" className="btn btn-primary  mt-4 " id="botao">
+                            Criar Documento
+                        </button>
+                    </div>
                 </form>
+                
             </div>
             <Rodape />
         </div>

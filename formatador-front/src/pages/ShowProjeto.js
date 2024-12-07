@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import api from "../services/api";
 import Nav from "./Navbar.js";
 import Rodape from './Rodape.js';
@@ -138,6 +138,7 @@ export default function ProjetoShow() {
                     Criar Documento de Requisitos
                   </button>
                 </div>
+              
                 
                 <Modal show={modal} onHide={closeModal}>
                   <Modal.Header>
@@ -161,7 +162,13 @@ export default function ProjetoShow() {
                 </Modal>
               </div>
             )}
+            
           </div>
+          <div className="align-items-center justify-content-center d-flex" onClick={() => navigate('/formatador')}>
+                        <button type="submit" className="btn  min-w-25  m-4" id="botao">
+                            Voltar
+                        </button>
+            </div>
         </div>
       </div>
       <Rodape/>

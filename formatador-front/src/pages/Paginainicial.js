@@ -3,11 +3,21 @@ import nome from '../imagens/nome.mp4';
 import videologo from '../imagens/VideoLogo.mp4';
 import fundo3 from "../imagens/fundo3.svg";
 import { Link } from 'react-router-dom';
-
+import {animateScroll} from 'react-scroll';
 
 //RESPONSIVO E PRONTO
 export default function Paginainicial(){
-    
+    const options = {
+        // Your options here, for example:
+        duration: 2000,
+        delay:    10,            // Sem delay
+      
+        smooth: true,
+      };
+      
+      // Scroll to 100 pixels from the top of the page
+          animateScroll.scrollTo(1000, options);
+      
     return(
         <div>
             

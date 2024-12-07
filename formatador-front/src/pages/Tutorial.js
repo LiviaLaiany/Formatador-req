@@ -21,7 +21,7 @@ export default function Tutorial(){
                 <div className='row p-3 d-flex align-items-center mb-1 justify-content-center mt-3'>
                     <h3 className='text-center'>Siga esse Passo a Passo para acessar o nosso Formatador de Documento de Requisitos</h3>
                 </div> 
-                <div className='row p-3 d-flex align-items-center mb-4 justify-content-center'>
+                <div className='row p-3 d-flex align-items-center mb-lg-3 justify-content-center'>
                     <img src={Passos} className='d-none d-lg-block w-75'></img>
                 </div> 
                 <div className='row mb-5 mt-3'>
@@ -54,8 +54,8 @@ export default function Tutorial(){
                             </Carousel.Item>
                         </Carousel>
                     </div>
-                    <div className='sobre-nos-container col-12 col-lg-6 p-2 w-50'>
-                        <h3 className='text-start'>Sobre Nós</h3>
+                    <div className='sobre-nos-container col-12 col-lg-6 p-3'>
+                        <h3 className='text-center lg-text-start'>Sobre Nós</h3>
                         <p>
                             Somos estudantes do <strong>Instituto Federal do Rio Grande do Norte - Campus Caicó</strong> e 
                             desenvolvemos esse Projeto de Formatador de Requisitos buscando auxiliar e fornecer um ambiente 
